@@ -1,0 +1,689 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FlexRule.Decisions</name>
+    </assembly>
+    <members>
+        <member name="T:FlexRule.Decisions.DecisionFactory">
+            <summary>
+            Factory for decision engine commands
+            </summary>
+        </member>
+        <member name="M:FlexRule.Decisions.DecisionFactory.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:FlexRule.Decisions.Tables.Definitions.IRow">
+            <summary>
+            Define the cells in a table
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.IRow.Item(FlexRule.Decisions.Tables.Definitions.EffectType)">
+            <summary>
+            Get cells with specific effect
+            </summary>
+            <param name="effect"></param>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.IRow.Table">
+            <summary>
+            The table that holds this row
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.IRow.Cells">
+            <summary>
+            All cells on a row
+            </summary>
+        </member>
+        <member name="T:FlexRule.Decisions.Tables.DecisionTableBuilder">
+            <summary>
+            Builds a DecisionTable step-by-step
+            </summary>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.#ctor">
+            <summary>
+            Constructs default builder
+            </summary>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.#ctor(System.String)">
+            <summary>
+            Constructs builder by assigning a name for decision table
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.#ctor(FlexRule.Decisions.Tables.Readers.IValueTransformer)">
+            <summary>
+            Constructs builder and sets a transformer
+            </summary>
+            <param name="transformer"></param>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.AddAction(System.String,System.String,FlexRule.Decisions.Tables.Definitions.LoopInfo)">
+            <summary>
+            Adds an action column using expressions
+            </summary>
+            <param name="name"></param>
+            <param name="expression"></param>
+            <param name="loop"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.AddActionCall(System.String,System.String,FlexRule.Decisions.Tables.Definitions.LoopInfo)">
+            <summary>
+            Adds an action column
+            </summary>
+            <param name="name"></param>
+            <param name="expression"></param>
+            <param name="loop"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.AddCondition(System.String,System.String,System.Boolean)">
+            <summary>
+            Adds a condition column
+            </summary>
+            <param name="name"></param>
+            <param name="expression"></param>
+            <param name="template"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.AddName(System.String)">
+            <summary>
+            Adds a name column
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.AddData(System.String[])">
+            <summary>
+            Adds data for columns (e.g. name, condition, action)
+            </summary>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.AddDebug(System.String[])">
+            <summary>
+            Adds cells debug information
+            </summary>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.AddSourceInfo(FlexRule.ISourceInfo[])">
+            <summary>
+            Adds cells line information
+            </summary>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.AddInput(System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds an input parameter to decision with type and assembly of the parameter
+            </summary>
+            <param name="variable"></param>
+            <param name="assembly"></param>
+            <param name="type"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.AddInputOutput(System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds an input-output (InOut) parameter to decision with type and assembly of the parameter
+            </summary>
+            <param name="variable"></param>
+            <param name="assembly"></param>
+            <param name="type"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.AddInputOutput(System.String[])">
+            <summary>
+            Adds input-output (InputOutput) parameter to decision
+            </summary>
+            <param name="variables"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.AddOutput(System.String[])">
+            <summary>
+            Adds output parameter to decision
+            </summary>
+            <param name="variables"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.AddOutput(System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds output parameter to decision
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.AddLocal(System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds output parameter to decision
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.AddLocal(System.String[])">
+            <summary>
+            Adds local parameters for decision
+            </summary>
+            <param name="variables"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.AddImport(System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Adds an import/using command do declaration 
+            </summary>
+            <param name="assembly"></param>
+            <param name="type"></param>
+            <param name="function"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.AddImport(System.String)">
+            <summary>
+            Adds an import/using command do declaration 
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableBuilder.Build(FlexRule.Core.Model.IElementModel)">
+            <summary>
+            Builds the final table
+            </summary>
+            <param name="modelSource">A reference to the actual model for the table. When null, in source information does not provide reference to it</param>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.DecisionTableBuilder.Entries">
+            <summary>
+            Transformer to replace the data cell values
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.DecisionTableBuilder.DecisionName">
+            <summary>
+            Name of decision table
+            </summary>
+        </member>
+        <member name="T:FlexRule.Decisions.Tables.DecisionTableEngine">
+            <summary>
+            DecisionTable engine that enables discrimination network 
+            </summary>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableEngine.#ctor(FlexRule.Validation.Validator,FlexRule.Core.Model.IElementModel,System.String)">
+            <summary>
+            Creates an instance of Decision Table engine and builds the discrimination network logic
+            </summary>
+            <remarks>
+            Discrimination network will be read from <paramref name="decisionTableModel"/> column's definition
+            </remarks>
+            <param name="validator"></param>
+            <param name="decisionTableModel"></param>
+            <param name="baseFolde"></param>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableEngine.GetDiscriminators(FlexRule.Core.Model.IElementModel)">
+            <summary>
+            Lists the discriminator columns
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableEngine.#ctor(FlexRule.Decisions.Tables.DecisionTableExecutionContext,FlexRule.Validation.Validator,FlexRule.Decisions.Tables.Parser.TableBehaviour)">
+            <summary>
+            Creates a Decision Table engine with no discrimination network
+            </summary>
+            <remarks>
+            Discrimination network can be prepared in the context parameter <paramref name="ctx"/> by using <see cref="M:FlexRule.Decisions.Tables.DecisionTableExecutionContext.AddDiscriminator(System.String,System.Boolean)"/>
+            </remarks>
+            <param name="ctx"></param>
+            <param name="validator"></param>
+            <param name="behaviour"></param>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.DecisionTableEngine.#ctor(FlexRule.Validation.Validator,FlexRule.Decisions.Tables.Parser.TableBehaviour)">
+            <summary>
+            Creates a Decision Table engine with no discrimination network defined
+            </summary>
+            <remarks>
+            Discrimination network can be prepared in the context by using <see cref="M:FlexRule.Decisions.Tables.DecisionTableExecutionContext.AddDiscriminator(System.String,System.Boolean)"/> via <see cref="P:FlexRule.Decisions.Tables.DecisionTableEngine.Context"/>
+            </remarks>
+            <param name="validator"></param>
+            <param name="behaviour"></param>
+        </member>
+        <member name="T:FlexRule.Decisions.Tables.Definitions.Coverage">
+            <summary>
+            Defines the coverage of a <see cref="T:FlexRule.Decisions.Tables.Definitions.ICell"/>
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.Coverage.FirstRow">
+            <summary>
+            Beginning of row
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.Coverage.LastRow">
+            <summary>
+            LAst row
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.Coverage.FirstColumn">
+            <summary>
+            Beginning of column
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.Coverage.LastColumn">
+            <summary>
+            Last column
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.Coverage.SingularColumn">
+            <summary>
+            True if the range is only for one column
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.Coverage.SingularRow">
+            <summary>
+            True if the range is only for one row
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.Coverage.Singular">
+            <summary>
+            True if the range is for one row and one column (one cell)
+            </summary>
+        </member>
+        <member name="T:FlexRule.Decisions.Tables.Definitions.Location">
+            <summary>
+            Defines the location of a <see cref="T:FlexRule.Decisions.Tables.Definitions.ICell"/>
+            </summary>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Definitions.Location.ToCellName(System.Int32,System.Int32)">
+            <summary>
+            Generate cell name based on row and column
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Decisions.Tables.Definitions.LoopInfo">
+            <summary>
+            Defines looping information on action cells
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.LoopInfo.Collection">
+            <summary>
+            Expression for the array to loop through
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.LoopInfo.Element">
+            <summary>
+            Element name of each item in the array
+            </summary>
+        </member>
+        <member name="T:FlexRule.Decisions.Tables.Definitions.ICell">
+            <summary>
+            Cell in a row
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ICell.IsEmpty">
+            <summary>
+            True when the cell is empty; otherwise false
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ICell.Effect">
+            <summary>
+            Effect of the cell
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ICell.Index">
+            <summary>
+            Index of cell in the row
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ICell.Row">
+            <summary>
+            Parent row that holds the cells
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ICell.Loop">
+            <summary>
+            Defines the loop information for a cell
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ICell.Debug">
+            <summary>
+            When a cell requires debugging
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ICell.Value">
+            <summary>
+            Value of a cell
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ICell.Location">
+            <summary>
+            Location of a in table
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ICell.SourceInfo">
+            <summary>
+            Source line information
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ICell.Coverage">
+            <summary>
+            Coverage of cell in table
+            </summary>
+            <remarks>
+             Merged cells may have coverage more than one column in one row
+            </remarks>
+        </member>
+        <member name="T:FlexRule.Decisions.Tables.Definitions.EffectType">
+            <summary>
+            Effect type of the column
+            </summary>
+        </member>
+        <member name="F:FlexRule.Decisions.Tables.Definitions.EffectType.Name">
+            <summary>
+            Name of rule
+            </summary>
+        </member>
+        <member name="F:FlexRule.Decisions.Tables.Definitions.EffectType.Condition">
+            <summary>
+            Conditions value
+            </summary>
+        </member>
+        <member name="F:FlexRule.Decisions.Tables.Definitions.EffectType.Action">
+            <summary>
+            Action
+            </summary>
+        </member>
+        <member name="F:FlexRule.Decisions.Tables.Definitions.EffectType.Priority">
+            <summary>
+            Priority
+            </summary>
+        </member>
+        <member name="F:FlexRule.Decisions.Tables.Definitions.EffectType.GroupName">
+            <summary>
+            Priority
+            </summary>
+        </member>
+        <member name="T:FlexRule.Decisions.Tables.Definitions.ColumnType">
+            <summary>
+            Column has a type which is defined by effect of column in table
+            </summary>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Definitions.ColumnType.#ctor(FlexRule.Decisions.Tables.Definitions.EffectType,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="cellType"></param>
+            <param name="template"></param>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ColumnType.Effect">
+            <summary>
+            Effect of column
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ColumnType.Template">
+            <summary>
+            True if the column is optional
+            </summary>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Definitions.ITable.GetSettings">
+            <summary>
+            Get table behaviour settings
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Definitions.ITable.GetDataRow(System.Int32)">
+            <summary>
+            Get a data row
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ITable.ColumnNamesRow">
+            <summary>
+            Defines the name of each column
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ITable.ExpressionsRow">
+            <summary>
+            Expressions on the table columns
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ITable.SplitterIndex">
+            <summary>
+            Index of the splitter on the table header
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ITable.Rows">
+            <summary>
+            Rows of table
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ITable.ColumnsCount">
+            <summary>
+            Total numbers of columns in the table
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ITable.ActionsCount">
+            <summary>
+            Total numbers of actions column
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ITable.ConditionsCount">
+            <summary>
+            Total numbers of conditions column
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ITable.EffectRow">
+            <summary>
+            Effect row
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ITable.TableNameRow">
+            <summary>
+            Get table name row
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ITable.TermRefRow">
+            <summary>
+            Get table term row
+            </summary>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Definitions.ITable.OutputRow">
+            <summary>
+            Get table output row
+            </summary>
+        </member>
+        <member name="T:FlexRule.Decisions.Tables.Definitions.RowType">
+            <summary>
+            Different types of row in a table
+            </summary>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Parser.Expressions.UsingExpression.#ctor(FlexRule.DSL.Expressions.Expression,System.String,FlexRule.Decisions.Tables.Parser.Expressions.TableParsingContext)">
+            <summary>
+            Using definition in a description
+            </summary>
+            <param name="parent">parent expression</param>
+            <param name="cellValue">type@assembly</param>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Parser.Expressions.UsingExpression.ParseTypeAndAssembly(System.String)">
+            <summary>
+            Parse value to type and assembly
+            </summary>
+            <param name="value">type@assembly</param>
+            <returns>an array of string[]{"type", "assembly"}</returns>
+        </member>
+        <member name="T:FlexRule.Decisions.Tables.Readers.ExcelTableReader">
+            <summary>
+            Reads Excel files and creates <see cref="T:FlexRule.Decisions.Tables.Definitions.ITable"/>
+            </summary>
+        </member>
+        <member name="T:FlexRule.Decisions.Tables.Readers.TableReaderBase">
+            <summary>
+            Base class for Table reader
+            </summary>
+        </member>
+        <member name="T:FlexRule.Decisions.Tables.Readers.ITableReader">
+            <summary>
+            Reads table from container e.g. XML, Excel...
+            </summary>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Readers.ITableReader.GetTables(FlexRule.Core.Model.IRuleSet,System.String)">
+            <summary>
+            Reads the content as a table
+            </summary>
+            <param name="ruleSet">RuleSet reference to load the dependencies from</param>
+            <param name="baseFolder">Base folder address to load the rest of dependencies from</param>
+            <remarks>
+            Only one of <paramref name="ruleSet"/> or <paramref name="baseFolder"/> can be used, or both can be null which means no dependencies will be resolved at execution plan creation.
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Readers.ITableReader.Entries">
+            <summary>
+            Transforms value of cells during read
+            </summary>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Readers.ExcelTableReader.#ctor(System.String,System.String)">
+            <summary>
+            Constructs reader by the excel file for a sheet 
+            </summary>
+            <param name="filePath"></param>
+            <param name="activeSheet">sets <see cref="P:FlexRule.Decisions.Tables.Readers.ExcelTableReader.ActiveSheet"/></param>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Readers.ExcelTableReader.#ctor(System.String)">
+            <summary>
+            Constructs reader by the excel file 
+            </summary>
+            <param name="filePath"></param>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Readers.ExcelTableReader.ReadSheet">
+            <summary>
+            Reads <see cref="P:FlexRule.Decisions.Tables.Readers.ExcelTableReader.ActiveSheet"/>, if <see cref="P:FlexRule.Decisions.Tables.Readers.ExcelTableReader.ActiveSheet"/> is null reads the first sheet
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.Decisions.Tables.Readers.ExcelTableReader.ActiveSheet">
+            <summary>
+            The sheet to be read
+            </summary>
+        </member>
+        <member name="T:FlexRule.Decisions.Tables.Readers.IValueTransformer">
+            <summary>
+            Transforms values
+            </summary>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Readers.IValueTransformer.ImportFromGlossary(FlexRule.Glossaries.Glossary,System.Boolean)">
+            <summary>
+            Applies transformer for terms and synonyms
+            </summary>
+            <param name="glossary"></param>
+            <param name="ignoreCase"></param>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Readers.IValueTransformer.Add(System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Adds the transform rule to table or column
+            </summary>
+            <param name="from">Word that is read</param>
+            <param name="to">Word to replace with</param>
+            <param name="ignoreCase">true if <param name="from"/> is not case-sensitive</param>
+            <param name="column"></param>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Readers.IValueTransformer.AddTrue(System.String,System.Boolean,System.String)">
+            <summary>
+            Makes sure result to be read as 'true' boolean value
+            </summary>
+            <param name="expression"></param>
+            <param name="ignoreCase"></param>
+            <param name="column"></param>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Readers.IValueTransformer.AddFalse(System.String,System.Boolean,System.String)">
+            <summary>
+            Makes sure result to be read as 'false' boolean value
+            </summary>
+            <param name="expression"></param>
+            <param name="ignoreCase"></param>
+            <param name="column"></param>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Readers.IValueTransformer.AddString(System.String[])">
+            <summary>
+            Makes sure values will be surrounded by "
+            </summary>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Readers.IValueTransformer.AddDateTime(System.String[])">
+            <summary>
+            Makes sure values will be surrounded by #
+            </summary>
+            <param name="columns"></param>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Readers.IValueTransformer.GetValue(System.String,System.String)">
+            <summary>
+            Gets a new value based of transform rules for table or column
+            </summary>
+            <param name="value"></param>
+            <param name="column">Specify read rule for a specific column</param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Decisions.Tables.Parser.ITableParser">
+            <summary>
+            Table Translator that allows different behaviour of a table model
+            </summary>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Parser.ITableParser.Parse(System.Collections.Generic.IEnumerable{FlexRule.Decisions.Tables.Definitions.ITable})">
+            <summary>
+            Parse tables to <see cref="T:FlexRule.Core.Model.IElementModel"/>
+            </summary>
+            <param name="tables">Table expressions</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Parser.ITableParser.Parse(System.Collections.Generic.IEnumerable{FlexRule.Decisions.Tables.Definitions.ITable},FlexRule.Core.Model.IElementModel)">
+            <summary>
+            Parse tables to <see cref="T:FlexRule.Core.Model.IElementModel"/>
+            </summary>
+            <param name="tables">Table expressions</param>
+            <param name="glossaryFormula">Glossary reference for table to be injected into the parsing process</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.StaticAnalysis.StaticAnalyzer.GetConflictingRules(FlexRule.Core.Model.IRuleSet,System.String)">
+            <summary>
+            Finds the value conflicts base on value formats
+            </summary>
+            <param name="ruleset">RuleSet to resolve dependencies</param>
+            <param name="baseFolder">Folder to resolve dependencies</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.StaticAnalysis.StaticAnalyzer.GetMissingRules(FlexRule.Core.Model.IRuleSet,System.String)">
+            <summary>
+            List of all the combinations that are missed in the decision table
+            </summary>
+            <param name="ruleset">RuleSet to resolve dependencies</param>
+            <param name="baseFolder">Folder to resolve dependencies</param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Decisions.Tables.Parser.TableParser">
+            <summary>
+            Table Translator that creates table logic
+            </summary>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Parser.TableParser.CreateParser(FlexRule.Core.Model.IElementModel)">
+            <summary>
+            Creates a table parser
+            </summary>
+            <param name="dtModel">This is just a reference to the actual model definition</param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Decisions.Tables.Readers.XmlTableReader">
+            <summary>
+            Reads XML as a <see cref="T:FlexRule.Decisions.Tables.Definitions.ITable"/>
+            </summary>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Readers.XmlTableReader.#ctor(FlexRule.Core.Model.IElementModel,FlexRule.Glossaries.Glossary)">
+            <summary>
+            Constructs the read by byte array of contents
+            </summary>
+            <param name="dtModel">DecisionTable element</param>
+            <param name="businessGlossary">Allows injecting business glossary to reader</param>
+        </member>
+        <member name="M:FlexRule.Decisions.Tables.Readers.XmlTableReader.#ctor(System.Byte[],FlexRule.Glossaries.Glossary)">
+            <summary>
+            Constructs the read by byte array of contents
+            </summary>
+            <param name="xmlContent"></param>
+            <param name="businessGlossary"></param>
+        </member>
+    </members>
+</doc>

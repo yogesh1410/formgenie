@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FlexRule.Database</name>
+    </assembly>
+    <members>
+        <member name="T:FlexRule.Data.DataFactory">
+            <summary>
+            This factory is responsible to create the ActiveElement commands
+            </summary>
+        </member>
+        <member name="M:FlexRule.Data.DataFactory.Create(FlexRule.ActiveElement,FlexRule.Core.Model.IElementModel,System.Object[])">
+            <summary>
+            Creates database commands
+            </summary>
+        </member>
+        <member name="M:FlexRule.Data.Database.ActiveElementExtensions.BuildParameters(FlexRule.ActiveElement,FlexRule.IVariableContainer)">
+            <summary>
+            Builds a dictionary from ActiveElement parameters for all child 'Param' elements
+            </summary>
+        </member>
+        <member name="T:FlexRule.Data.Database.DbCommandActiveElement">
+            <summary>
+            Base class for implementing database commands
+            </summary>
+        </member>
+        <member name="M:FlexRule.Data.Database.DbCommandActiveElement.#ctor(FlexRule.ActiveElement,FlexRule.Core.Model.IElementModel,System.Boolean)">
+            <summary>
+            </summary>
+            <param name="parent"></param>
+            <param name="source"></param>
+            <param name="returnRequired"></param>
+        </member>
+        <member name="M:FlexRule.Data.Database.DbCommandActiveElement.TryOpenConnection(System.Data.IDbConnection)">
+            <summary>
+            Tries to open database connection if it is not opened already
+            </summary>
+            <param name="connection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Data.Database.DbCommandActiveElement.ExecuteDatabase(FlexRule.IActiveElementExecutionContextProvider,System.Data.IDbConnection)">
+            <summary>
+            Executes database command
+            </summary>
+            <param name="contextProvider"></param>
+            <param name="connection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Data.Database.DbCommandActiveElement.Execute(FlexRule.IActiveElementExecutor)">
+            <summary>
+            This method will be called, when it is associate to be executed by engine.
+            </summary>
+            <param name="executor"></param>
+        </member>
+        <member name="P:FlexRule.Data.Database.DbCommandActiveElement.Database">
+            <summary>
+            Returns the <see cref="T:FlexRule.ActiveElement"/> associated with this command
+            </summary>
+        </member>
+        <member name="T:FlexRule.Data.Database.ReadonlyConext">
+            <summary>
+            Provides functionality to read data from a database using a connection with a type of <see cref="T:FlexRule.Data.IMetaObject"/>.
+            </summary>
+        </member>
+        <member name="M:FlexRule.Data.Database.DatabaseActiveElement.Execute(FlexRule.IActiveElementExecutor)">
+            <summary>
+            This method will be called, when it is scheduled to be executed by engine. 
+            </summary>
+            <param name="executor"></param>
+        </member>
+        <member name="T:FlexRule.Data.Database.DatabaseQueryFactory">
+            <summary>
+            This factory is responsible to create the ActiveElement commands
+            </summary>
+        </member>
+        <member name="M:FlexRule.Data.Database.DatabaseQueryFactory.Create(FlexRule.ActiveElement,FlexRule.Core.Model.IElementModel,System.Object[])">
+            <summary>
+            Creates database commands
+            </summary>
+        </member>
+        <member name="T:FlexRule.Data.SpreadSheets.ICell">
+            <summary>
+            Cell in a row
+            </summary>
+        </member>
+        <member name="P:FlexRule.Data.SpreadSheets.ICell.Value">
+            <summary>
+            Value of a cell
+            </summary>
+        </member>
+        <member name="P:FlexRule.Data.SpreadSheets.ICell.ValueString">
+            <summary>
+            Value of cell in string
+            </summary>
+        </member>
+        <member name="P:FlexRule.Data.SpreadSheets.ICell.Location">
+            <summary>
+            Location of a in table
+            </summary>
+        </member>
+        <member name="P:FlexRule.Data.SpreadSheets.ICell.Coverage">
+            <summary>
+            Coverage of cell in table
+            </summary>
+            <remarks>
+             Merged cells may have coverage more than one column in one row
+            </remarks>
+        </member>
+        <member name="P:FlexRule.Data.SpreadSheets.ICell.IsNumeric">
+            <summary>
+            Is value numeric
+            </summary>
+        </member>
+        <member name="T:FlexRule.Data.SpreadSheets.Coverage">
+            <summary>
+            Defines the coverage of a <see cref="T:FlexRule.Data.SpreadSheets.ICell"/>
+            </summary>
+        </member>
+        <member name="P:FlexRule.Data.SpreadSheets.Coverage.FirstRow">
+            <summary>
+            Beginning of row
+            </summary>
+        </member>
+        <member name="P:FlexRule.Data.SpreadSheets.Coverage.LastRow">
+            <summary>
+            LAst row
+            </summary>
+        </member>
+        <member name="P:FlexRule.Data.SpreadSheets.Coverage.FirstColumn">
+            <summary>
+            Beginning of column
+            </summary>
+        </member>
+        <member name="P:FlexRule.Data.SpreadSheets.Coverage.LastColumn">
+            <summary>
+            Last column
+            </summary>
+        </member>
+        <member name="P:FlexRule.Data.SpreadSheets.Coverage.SingularColumn">
+            <summary>
+            True if the range is only for one column
+            </summary>
+        </member>
+        <member name="P:FlexRule.Data.SpreadSheets.Coverage.SingularRow">
+            <summary>
+            True if the range is only for one row
+            </summary>
+        </member>
+        <member name="P:FlexRule.Data.SpreadSheets.Coverage.Singular">
+            <summary>
+            True if the range is for one row and one column (one cell)
+            </summary>
+        </member>
+        <member name="T:FlexRule.Data.SpreadSheets.ExcelTableReader">
+            <summary>
+            Reads Excel files and creates <see cref="!:ITable"/>
+            </summary>
+        </member>
+        <member name="M:FlexRule.Data.SpreadSheets.ExcelTableReader.#ctor(System.String,System.String)">
+            <summary>
+            Constructs reader by the excel file for a sheet 
+            </summary>
+            <param name="filePath"></param>
+            <param name="activeSheet">sets <see cref="P:FlexRule.Data.SpreadSheets.ExcelTableReader.ActiveSheet"/></param>
+        </member>
+        <member name="M:FlexRule.Data.SpreadSheets.ExcelTableReader.#ctor(System.String)">
+            <summary>
+            Constructs reader by the excel file 
+            </summary>
+            <param name="filePath"></param>
+        </member>
+        <member name="M:FlexRule.Data.SpreadSheets.ExcelTableReader.ReadSheet">
+            <summary>
+            Reads <see cref="P:FlexRule.Data.SpreadSheets.ExcelTableReader.ActiveSheet"/>, if <see cref="P:FlexRule.Data.SpreadSheets.ExcelTableReader.ActiveSheet"/> is null reads the first sheet
+            </summary>
+            <returns>Matrix of cells that has value and other cell related information i.e. Location...</returns>
+        </member>
+        <member name="P:FlexRule.Data.SpreadSheets.ExcelTableReader.ActiveSheet">
+            <summary>
+            The sheet to be read
+            </summary>
+        </member>
+        <member name="T:FlexRule.Data.SpreadSheets.Location">
+            <summary>
+            Defines the location of a <see cref="T:FlexRule.Data.SpreadSheets.ICell"/>
+            </summary>
+        </member>
+        <member name="M:FlexRule.Data.SpreadSheets.Location.ToCellName(System.Int32,System.Int32)">
+            <summary>
+            Generate cell name based on row and column
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

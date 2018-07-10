@@ -1,0 +1,377 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FlexRule.Engine</name>
+    </assembly>
+    <members>
+        <member name="T:FlexRule.IExecutableModel">
+            <summary>
+            Encapsulate all executable instances of models
+            </summary>
+        </member>
+        <member name="M:FlexRule.IExecutableModel.Run(System.Object[])">
+            <summary>
+            Executes engine
+            </summary>
+            <param name="inputs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.IExecutableModel.Run(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            
+            </summary>
+            <param name="inputs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.IExecutableModel.Run(FlexRule.RunParameter,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="parameter"></param>
+            <param name="inputs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.IExecutableModel.Run(FlexRule.RunParameter,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            
+            </summary>
+            <param name="parameter"></param>
+            <param name="inputs"></param>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.IExecutableModel.Model">
+            <summary>
+            Rule model that is used for this instance of <see cref="T:FlexRule.IExecutableModel"/>
+            </summary>
+        </member>
+        <member name="P:FlexRule.IExecutableModel.Descriptions">
+            <summary>
+            Signature definition of rule engine that is prepared by provided model
+            </summary>
+        </member>
+        <member name="P:FlexRule.IExecutableModel.OnRunning">
+            <summary>
+            A hook to allow configuration on <see cref="T:FlexRule.ExecutorSetupInformation"/> or <see cref="T:FlexRule.IActiveElementExecutionContext"/>. Or you can handle <see cref="T:FlexRule.ActiveElementEngine"/> events.
+            </summary>
+        </member>
+        <member name="P:FlexRule.IExecutableModel.Entries">
+            <summary>
+            This property is for transformation of data when engine is based on a Decision Table.
+            </summary>
+        </member>
+        <member name="T:FlexRule.IIntRuntimeEngine">
+            <summary>
+            This is for testing purpose interface
+            </summary>
+        </member>
+        <member name="E:FlexRule.IIntRuntimeEngine.ExecutionPlanLoaded">
+            <summary>
+            This event is raise when an execution plan is loaded
+            </summary>
+        </member>
+        <member name="T:FlexRule.IWorkflowExecutableModel">
+            <summary>
+            Workflow executable model allows resuming logic from a specific point in the model
+            </summary>
+            <remarks>
+            This also has its internal WorkFlow manager <see cref="T:FlexRule.Flows.Workflows.IWorkflowManager"/> that is used to configure managers when required.
+            </remarks>
+        </member>
+        <member name="M:FlexRule.IWorkflowExecutableModel.Resume(FlexRule.Flows.Workflows.WorkflowExecutionContext,FlexRule.Flows.Workflows.Model.IReceiverSignal)">
+            <summary>
+            Allows resuming a <see cref="T:FlexRule.Flows.Workflows.Workflow"/> by sending a message to workflow as a signal
+            </summary>
+            <param name="workflowContext"></param>
+            <param name="signal"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.IWorkflowExecutableModel.Resume(System.String,System.Nullable{System.TimeSpan},FlexRule.Flows.Workflows.Model.IReceiverSignal)">
+            <summary>
+            Allows resuming a <see cref="T:FlexRule.Flows.Workflows.Workflow"/> by sending a message to workflow as a signal
+            </summary>
+            <param name="instanceId">Workflow engine tries to retrieve a stored context from a storage when this parameter is provided</param>
+            <param name="lockAmount">Workflow engine tries to lock an instance based on its owner</param>
+            <param name="signal"></param>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.IWorkflowExecutableModel.Identity">
+            <summary>
+            Workflow identity of the workflow definition associated with the manager <see cref="P:FlexRule.Flows.Workflows.IWorkflowManager.WorkflowIdentity"/>
+            </summary>
+        </member>
+        <member name="P:FlexRule.IWorkflowExecutableModel.Registry">
+            <summary>
+            Register of Workflow engine associated with the manager <see cref="P:FlexRule.Flows.Workflows.IWorkflowManager.Registry"/>
+            </summary>
+        </member>
+        <member name="M:FlexRule.RuntimeEngineExtensions.RegisterFormula(FlexRule.IExecutableModel,FlexRule.Glossaries.Glossary)">
+            <summary>
+            Registers formulas into an engine
+            </summary>
+            <param name="engine"></param>
+            <param name="formulaGlossary"></param>
+        </member>
+        <member name="M:FlexRule.RuntimeEngineExtensions.SetRootFolder(FlexRule.IExecutableModel,System.String)">
+            <summary>
+            Sets the root path of rules. So they can be found on runtime and addressed relatively.
+            </summary>
+            <param name="engine"></param>
+            <param name="rootPath"></param>
+        </member>
+        <member name="M:FlexRule.RuntimeEngineExtensions.AddAssemblyPrivateLocation(FlexRule.IExecutableModel,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Appends a list of private folder paths to resolve custom assemblies and types on runtime.
+            </summary>
+        </member>
+        <member name="M:FlexRule.RuntimeEngineExtensions.RegisterType(FlexRule.IExecutableModel,System.String,System.String,System.String)">
+            <summary>
+            Registers a type on execution context inside both <see cref="T:FlexRule.IVariableContainer"/> and <see cref="P:FlexRule.ExecutorSetupInformation.TypeIdRegistry"/>.
+            </summary>
+            <param name="engine"></param>
+            <param name="assembly">name of assembly that has the type definition <param name="typeName"></param></param>
+            <param name="typeName">Full type name, including namespace and name</param>
+            <param name="aliasName">Alias for the type name to register and expose type as other name than its original</param>
+        </member>
+        <member name="M:FlexRule.RuntimeEngineExtensions.RegisterType(FlexRule.IExecutableModel,System.Type,System.String)">
+            <summary>
+            Registers a type on execution context inside both <see cref="T:FlexRule.IVariableContainer"/> and <see cref="P:FlexRule.ExecutorSetupInformation.TypeIdRegistry"/>.
+            </summary>
+            <param name="engine"></param>
+            <param name="type">Type to register in context</param>
+            <param name="aliasName">Alias for the type name to register and expose type as other name than its original</param>
+        </member>
+        <member name="M:FlexRule.RuntimeEngineExtensions.EnsureLoaded(FlexRule.IExecutableModel)">
+            <summary>
+            Ensures the underlaying transformed model is created for execution.
+            </summary>
+            <remarks>
+            Some models like DecisionTable, Natural Language, Decision Requirement Diagram (DRD) and Information Requirement diagram (IRD) need to be transformed to either Validation or Flow for execution. 
+            This process happens automatically on-demand when the first execution is required, but prior to call for execution if the transformed model needed, this method can force the engine to prepare the executable model.
+            </remarks>
+            <param name="engine"></param>
+        </member>
+        <member name="M:FlexRule.RuntimeEngineExtensions.RegisterFunction(FlexRule.IExecutableModel,System.Object)">
+            <summary>
+            Registers all the methods on the type that are marked by <see cref="T:FlexRule.FunctionAttribute"/> 
+            </summary>
+            <param name="engine"></param>
+            <param name="target">Type if the methods are static, otherwise object instance</param>
+        </member>
+        <member name="M:FlexRule.RuntimeEngineExtensions.RegisterFunction(FlexRule.IExecutableModel,System.String,System.Reflection.MethodInfo,System.Object)">
+            <summary>
+            Registers another <see cref="T:FlexRule.IExecutableModel"/> as a function
+            </summary>
+            <param name="engine"></param>
+            <param name="function"></param>
+            <param name="method"></param>
+            <param name="target"></param>
+        </member>
+        <member name="M:FlexRule.RuntimeEngineExtensions.RegisterFunction(FlexRule.IExecutableModel,System.String,System.Delegate)">
+            <summary>
+            Registers all the methods on the type that are marked by <see cref="T:FlexRule.FunctionAttribute"/> 
+            </summary>
+            <param name="engine"></param>
+            <param name="function"></param>
+            <param name="target">Type if the methods are static, otherwise object instance</param>
+        </member>
+        <member name="M:FlexRule.RuntimeEngineExtensions.RegisterFunction(FlexRule.IExecutableModel,System.String,FlexRule.IExecutableModel,System.String)">
+            <summary>
+            Registers another <see cref="T:FlexRule.IExecutableModel"/> as a function
+            </summary>
+            <param name="engine"></param>
+            <param name="name"></param>
+            <param name="function"></param>
+            <param name="functionReturn"></param>
+        </member>
+        <member name="T:FlexRule.IRuntimeEngine">
+            <summary>
+            Rule engine encapsulates all the plumbing and execution plan management of a rule.
+            </summary>
+            <remarks>
+            Rules can be any of <see cref="T:FlexRule.Validation.Validator"/>, <see cref="T:FlexRule.Procedural.Procedure"/>, <see cref="T:FlexRule.Flows.Flow"/> or Decision table form either <see cref="T:FlexRule.Decisions.Tables.Readers.ExcelTableReader"/> or <see cref="T:FlexRule.Decisions.Tables.Readers.XmlTableReader"/>.
+            This class simplifies the integration and use of rules in your system.
+            </remarks>
+        </member>
+        <member name="P:FlexRule.IRuntimeEngine.EnableFullLog">
+            <summary>
+            Sets <see cref="P:FlexRule.IRuntimeEngine.Events"/> to capture all activities during executions
+            </summary>
+            <remarks>
+            When this property is set to true, engine itself collects all the events. When no event collection is required simply change it to false.
+            </remarks>
+        </member>
+        <member name="P:FlexRule.IRuntimeEngine.Events">
+            <summary>
+            List of events to be captured during execution
+            </summary>
+            <remarks>
+            After events are captured, they can be collection at <see cref="P:FlexRule.RuntimeResult.Events"/>
+            </remarks>
+        </member>
+        <member name="P:FlexRule.IRuntimeEngine.Workflow">
+            <summary>
+            Workflow runtime instance
+            </summary>
+        </member>
+        <member name="T:FlexRule.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:FlexRule.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:FlexRule.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:FlexRule.Properties.Resources.array">
+            <summary>
+              Looks up a localized string similar to var array = function () { return $fr$engine.functions.array.apply(window, arguments); };.
+            </summary>
+        </member>
+        <member name="P:FlexRule.Properties.Resources.now">
+            <summary>
+              Looks up a localized string similar to var now = function () { return $fr$engine.functions.now.apply(window, arguments); };.
+            </summary>
+        </member>
+        <member name="P:FlexRule.Properties.Resources.today">
+            <summary>
+              Looks up a localized string similar to var today = function () { return $fr$engine.functions.today.apply(window, arguments); };.
+            </summary>
+        </member>
+        <member name="M:FlexRule.RuntimeFactConceptExtensions.RunConcept(FlexRule.IRuntimeEngine,System.String,System.Object,System.Object)">
+            <summary>
+            Runs Fact Concept model against fact values to ensure consistency of values using the defined constraints
+            </summary>
+            <param name="runtime">Instance of engine from a Concept model</param>
+            <param name="factName">Name of the fact to be validated</param>
+            <param name="factValue">Value of the fact to run against defined constraints</param>
+            <param name="model">A value that can be used as '$model' in the constraints' expression as a reference value</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.RuntimeEngine.FromSpreadSheet(System.IO.Stream,System.String,System.Boolean)">
+            <summary>
+            Creates an <see cref="T:FlexRule.IRuntimeEngine"/> instance from a stream of spreadsheet content.
+            </summary>
+            <param name="spreadSheet"></param>
+            <param name="activeSheet"></param>
+            <param name="newFormat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.RuntimeEngine.FromXml(System.IO.Stream,System.String)">
+            <summary>
+            Creates an <see cref="T:FlexRule.IRuntimeEngine"/> instance from a stream of XML content.
+            </summary>
+            <param name="stream">A stream to an XML content of a base model</param>
+            <param name="baseFolder">Path to resolve all dependencies on execution plan creation</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.RuntimeEngine.FromXml(System.IO.Stream)">
+            <summary>
+            Creates an <see cref="T:FlexRule.IRuntimeEngine"/> instance from a stream of XML content.
+            </summary>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.RuntimeEngine.FromXml(System.Byte[],System.String)">
+            <summary>
+            Creates an <see cref="T:FlexRule.IRuntimeEngine"/> instance.
+            </summary>
+            <param name="content">An XML content of a base model</param>
+            <param name="baseFolder">Path to resolve all dependencies on execution plan creation</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.RuntimeEngine.FromRuleSet(FlexRule.Core.Model.IRuleSet,System.String,FlexRule.Glossaries.Glossary,FlexRule.Resources.Resource)">
+            <summary>
+            Creates an <see cref="T:FlexRule.IRuntimeEngine"/> instance from a ruleset
+            </summary>
+            <param name="ruleSet">A <see cref="T:FlexRule.Core.Model.IRuleSet"/> that holds all the related models for loading execution plan and executing logic</param>
+            <param name="ruleSetQuery">Address to the main model within the provided <paramref name="ruleSet"/></param>
+            <param name="businessGlossary">When glossary is provided, the internal business glossary will not be used</param>
+            <param name="resource">Use preloaded resource in messaging of rule execution</param>
+        </member>
+        <member name="M:FlexRule.RunParameter.#ctor(System.String,System.Object)">
+            <summary>
+            Logic with name and input parameters
+            </summary>
+            <param name="logicName">A null logic which the default (first) logic will be picked</param>
+            <param name="defaultObject"></param>
+        </member>
+        <member name="M:FlexRule.RunParameter.#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logic with name and input parameters
+            </summary>
+            <param name="logicName"></param>
+            <param name="inputParameters"></param>
+        </member>
+        <member name="P:FlexRule.RunParameter.Arguments">
+            <summary>
+            Array of arguments
+            </summary>
+        </member>
+        <member name="P:FlexRule.RunParameter.DictionaryArguments">
+            <summary>
+            NAme-value dictionary of arguments
+            </summary>
+        </member>
+        <member name="P:FlexRule.RunParameter.Name">
+            <summary>
+            Name of logic
+            </summary>
+        </member>
+        <member name="T:FlexRule.RuntimeResult">
+            <summary>
+            Result of executing a logic (e.g. validation, procedure, flow, decision...) that contains notifications, variable container, logs and return result.
+            </summary>
+        </member>
+        <member name="P:FlexRule.RuntimeResult.Outcome">
+            <summary>
+            Result of validation of when the logic is DecisionTable, Natural Language or Validation.
+            </summary>
+        </member>
+        <member name="P:FlexRule.RuntimeResult.Return">
+            <summary>
+            Result of execution of logic when they have a return value
+            </summary>
+        </member>
+        <member name="P:FlexRule.RuntimeResult.Events">
+            <summary>
+            When <see cref="P:FlexRule.IRuntimeEngine.EnableFullLog"/> is set to true, all events will be stored in this collection, otherwise it is null.
+            </summary>
+        </member>
+        <member name="P:FlexRule.RuntimeResult.IsCanceled">
+            <summary>
+            Indicates the engine execution has been canceled for any reason <see cref="P:FlexRule.RuntimeResult.CancelReason"/>
+            </summary>
+        </member>
+        <member name="P:FlexRule.RuntimeResult.CancelReason">
+            <summary>
+            Shows the reason of the cancelation.
+            </summary>
+        </member>
+        <member name="M:FlexRule.VariableContainerExtensions.RegisterFunction(FlexRule.IVariableContainer,System.String,FlexRule.IExecutableModel,System.String)">
+            <summary>
+            Registers a logic as a function
+            </summary>
+            <param name="container"></param>
+            <param name="name"></param>
+            <param name="function"></param>
+            <param name="functionReturn">Parameter name that is used as return value of function. Null if there is no return.</param>
+        </member>
+        <member name="M:FlexRule.Flows.Workflows.WorkflowExtensions.EnableLongRunningProcess(FlexRule.IWorkflowExecutableModel,FlexRule.Flows.Workflows.LongRunningProcessConfig)">
+            <summary>
+            Configures set of behavior for a workflow engine that allows executing long-running business transactions.
+            </summary>
+            <remarks>
+            This configuration allows workflow states to be stored on a durable storage e.g. Ms SQL Server and retrieved when required. 
+            </remarks>
+            <param name="workflow">Workflow instance <see cref="P:FlexRule.RuntimeEngine.Workflow"/></param>
+            <param name="config">Configuration for the long-running process</param>
+        </member>
+    </members>
+</doc>

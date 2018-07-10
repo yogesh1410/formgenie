@@ -1,0 +1,89 @@
+﻿{
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "RodentsFliesOtherPestControl": {
+      "$id": "/properties/RodentsFliesOtherPestControl",
+      "type": "object",
+      "properties": {
+        "C1": {
+          "$id": "/properties/RodentsFliesOtherPestControl/properties/C1",
+          "type": "object",
+          "properties": {
+            "RodentMonitoring": {
+              "$id": "/properties/RodentsFliesOtherPestControl/properties/C1/properties/RodentMonitoring",
+              "type": "boolean",
+              "title": "The Rodentmonitoring Schema ",
+              "default": false,
+              "examples": [
+                false
+              ]
+            }
+          }
+        },
+        "C2": {
+          "$id": "/properties/RodentsFliesOtherPestControl/properties/C2",
+          "type": "object",
+          "properties": {
+            "RodentActivitySwitch": {
+              "$id": "/properties/RodentsFliesOtherPestControl/properties/C2/properties/RodentActivitySwitch",
+              "type": "boolean",
+              "title": "The Rodentactivityswitch Schema ",
+              "default": false,
+              "examples": [
+                false
+              ]
+            }
+          }
+        },
+        "C3": {
+          "$id": "/properties/RodentsFliesOtherPestControl/properties/C3",
+          "type": "object",
+          "properties": {
+            "FliesMonitoring": {
+              "$id": "/properties/RodentsFliesOtherPestControl/properties/C3/properties/FliesMonitoring",
+              "type": "boolean",
+              "title": "The Fliesmonitoring Schema ",
+              "default": false,
+              "examples": [
+                false
+              ]
+            }
+          }
+        },
+        "C4": {
+          "$id": "/properties/RodentsFliesOtherPestControl/properties/C4",
+          "type": "object",
+          "properties": {
+            "FliesActivity": {
+              "$id": "/properties/RodentsFliesOtherPestControl/properties/C4/properties/FliesActivity",
+              "type": "boolean",
+              "title": "The Fliesactivity Schema ",
+              "default": false,
+              "examples": [
+                false
+              ]
+            }
+          }
+        },
+        "C5": {
+          "$id": "/properties/RodentsFliesOtherPestControl/properties/C5",
+          "type": "object",
+          "properties": {
+            "DebrisRemoval": {
+              "$id": "/properties/RodentsFliesOtherPestControl/properties/C5/properties/DebrisRemoval",
+              "type": "boolean",
+              "title": "The Debrisremoval Schema ",
+              "default": false,
+              "examples": [
+                false
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

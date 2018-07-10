@@ -1,0 +1,13 @@
+﻿{
+  "RefrigerationProcedures": {
+    "E1": {
+      "EggsProcessed": false
+    },
+    "E2": {
+      "EggsTemp": false
+    },
+    "E3": {
+      "EggsTransported": false
+    }
+  }
+}

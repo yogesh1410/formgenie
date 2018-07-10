@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Xamarin.Forms.3.0.0.482510\build\netstandard1.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.3.0.0.482510\build\netstandard1.0\Xamarin.Forms.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{56411AC7-E356-4C3A-BE45-1ED1DF1D8F77}</ProjectGuid>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <UseMSBuildEngine>true</UseMSBuildEngine>
+    <OutputType>Library</OutputType>
+    <RootNamespace>formgenie</RootNamespace>
+    <AssemblyName>formgenie</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App.xaml" />
+    <EmbeddedResource Include="Data\Biosecurity\FormModel.json" />
+    <EmbeddedResource Include="Data\CleaningAndDisinfectionProducts\FormModel.json" />
+    <EmbeddedResource Include="Data\Pullets\FormModel.json" />
+    <EmbeddedResource Include="Data\RefrigerationProcedures\FormModel.json" />
+    <EmbeddedResource Include="Data\RodentFliesPestControl\FormModel.json" />
+    <EmbeddedResource Include="Data\Biosecurity\FormData.json" />
+    <EmbeddedResource Include="Data\CleaningAndDisinfectionProducts\FormData.json" />
+    <EmbeddedResource Include="Data\Pullets\FormData.json" />
+    <EmbeddedResource Include="Data\RefrigerationProcedures\FormData.json" />
+    <EmbeddedResource Include="Data\RodentFliesPestControl\FormData.json" />
+    <EmbeddedResource Include="Data\CleaningAndDisinfectionProducts\ValidationSchema.json" />
+    <EmbeddedResource Include="Data\Biosecurity\ValidationSchema.json" />
+    <EmbeddedResource Include="Data\Pullets\ValidationSchema.json" />
+    <EmbeddedResource Include="Data\RefrigerationProcedures\ValidationSchema.json" />
+    <EmbeddedResource Include="Data\RodentFliesPestControl\ValidationSchema.json" />
+    <EmbeddedResource Include="MyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Engine\ComponentSelector.cs" />
+    <Compile Include="Engine\IComponentSelector.cs" />
+    <Compile Include="Data\Pullets\MockPullets.cs" />
+    <Compile Include="Engine\Entities\FormModel.cs" />
+    <Compile Include="Data\Biosecurity\MockBiosecurity.cs" />
+    <Compile Include="Data\EggFarmSectionList.cs" />
+    <Compile Include="Data\RodentFliesPestControl\MockRodentsFliesOtherPestControl.cs" />
+    <Compile Include="Data\CleaningAndDisinfectionProducts\MockCleaningAndDisinfectionProducts.cs" />
+    <Compile Include="Data\RefrigerationProcedures\MockRefrigerationProcedures.cs" />
+    <Compile Include="Engine\Services\FormService.cs" />
+    <Compile Include="Engine\Views\Components\ButtonView.cs" />
+    <Compile Include="Engine\Views\Components\FormGroupBoxView.cs" />
+    <Compile Include="Engine\Views\Components\LabelEditorView.cs" />
+    <Compile Include="Engine\Views\Components\LabelView.cs" />
+    <Compile Include="Engine\Views\Components\SwitchView.cs" />
+    <Compile Include="Engine\Views\Components\YesNoSwitchView.cs" />
+    <Compile Include="Microservices\Views\AssessmentDetailPage.cs" />
+    <Compile Include="Microservices\Views\AssessmentMasterPage.cs" />
+    <Compile Include="Microservices\Views\AvailableAssessmentList.cs" />
+    <Compile Include="Microservices\Views\ContainerPage.cs" />
+    <Compile Include="Microservices\Views\DefaultScreen.cs" />
+    <Compile Include="Microservices\Views\QuestionSwitchPattern.cs" />
+    <Compile Include="Microservices\Views\WelcomePage.cs" />
+    <Compile Include="Engine\Repository\FormRepository.cs" />
+    <Compile Include="Engine\Repository\IFormRepository.cs" />
+    <Compile Include="Engine\Services\LayoutGenerator.cs" />
+    <Compile Include="Engine\Constants\Constants.cs" />
+    <Compile Include="DependencyServices\ISaveAndLoad.cs" />
+    <Compile Include="Engine\Views\Components\LabelViewModel.cs" />
+    <Compile Include="Engine\Views\Components\LabelEditorViewModel.cs" />
+    <Compile Include="Engine\Entities\FormInstance.cs" />
+    <Compile Include="Engine\Repository\DataObjects\FormInstanceData.cs" />
+    <Compile Include="Engine\Repository\DataObjects\FormModelData.cs" />
+    <Compile Include="Engine\Views\Components\SwitchViewModel.cs" />
+    <Compile Include="Engine\Utilities\Utility.cs" />
+    <Compile Include="Engine\Services\FormDataService.cs" />
+    <Compile Include="MyPage.xaml.cs">
+      <DependentUpon>MyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Engine\Views\Components\CameraView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>..\packages\Xamarin.Forms.3.0.0.482510\lib\netstandard1.0\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform">
+      <HintPath>..\packages\Xamarin.Forms.3.0.0.482510\lib\netstandard1.0\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>..\packages\Xamarin.Forms.3.0.0.482510\lib\netstandard1.0\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="FlexRule.Core.Element">
+      <HintPath>..\packages\FlexRulePackage.2.0.6\lib\FlexRule.Core.Element.dll</HintPath>
+    </Reference>
+    <Reference Include="FlexRule.Core.Library">
+      <HintPath>..\packages\FlexRulePackage.2.0.6\lib\FlexRule.Core.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="FlexRule.Database">
+      <HintPath>..\packages\FlexRulePackage.2.0.6\lib\FlexRule.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="FlexRule.Decisions">
+      <HintPath>..\packages\FlexRulePackage.2.0.6\lib\FlexRule.Decisions.dll</HintPath>
+    </Reference>
+    <Reference Include="FlexRule.Engine">
+      <HintPath>..\packages\FlexRulePackage.2.0.6\lib\FlexRule.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="FlexRule.Flows">
+      <HintPath>..\packages\FlexRulePackage.2.0.6\lib\FlexRule.Flows.dll</HintPath>
+    </Reference>
+    <Reference Include="FlexRule.Flows.Workflow">
+      <HintPath>..\packages\FlexRulePackage.2.0.6\lib\FlexRule.Flows.Workflow.dll</HintPath>
+    </Reference>
+    <Reference Include="FlexRule.Flows.Workflow.MSSQL">
+      <HintPath>..\packages\FlexRulePackage.2.0.6\lib\FlexRule.Flows.Workflow.MSSQL.dll</HintPath>
+    </Reference>
+    <Reference Include="FlexRule.Internet">
+      <HintPath>..\packages\FlexRulePackage.2.0.6\lib\FlexRule.Internet.dll</HintPath>
+    </Reference>
+    <Reference Include="FlexRule.JavaScript">
+      <HintPath>..\packages\FlexRulePackage.2.0.6\lib\FlexRule.JavaScript.dll</HintPath>
+    </Reference>
+    <Reference Include="FlexRule.Procedure">
+      <HintPath>..\packages\FlexRulePackage.2.0.6\lib\FlexRule.Procedure.dll</HintPath>
+    </Reference>
+    <Reference Include="FlexRule.Runtime">
+      <HintPath>..\packages\FlexRulePackage.2.0.6\lib\FlexRule.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="FlexRule.Validation">
+      <HintPath>..\packages\FlexRulePackage.2.0.6\lib\FlexRule.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\FlexRulePackage.2.0.6\lib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\packages\FlexRulePackage.2.0.6\lib\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML">
+      <HintPath>..\packages\FlexRulePackage.2.0.6\lib\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net">
+      <HintPath>..\packages\FlexRulePackage.2.0.6\lib\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats">
+      <HintPath>..\packages\FlexRulePackage.2.0.6\lib\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Schema">
+      <HintPath>..\packages\Newtonsoft.Json.Schema.3.0.10\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.Schema.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\netstandard1.1\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Permissions">
+      <HintPath>..\packages\Plugin.Permissions.3.0.0.12\lib\netstandard1.0\Plugin.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Media">
+      <HintPath>..\packages\Xam.Plugin.Media.4.0.1.1\lib\netstandard1.0\Plugin.Media.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Engine\" />
+    <Folder Include="Data\Pullets\" />
+    <Folder Include="Engine\Entities\" />
+    <Folder Include="Data\Biosecurity\" />
+    <Folder Include="Data\RodentFliesPestControl\" />
+    <Folder Include="Data\CleaningAndDisinfectionProducts\" />
+    <Folder Include="Data\RefrigerationProcedures\" />
+    <Folder Include="Engine\Services\" />
+    <Folder Include="Engine\Views\" />
+    <Folder Include="Engine\Views\Components\" />
+    <Folder Include="Microservices\" />
+    <Folder Include="Microservices\Views\" />
+    <Folder Include="Engine\Repository\" />
+    <Folder Include="Engine\Constants\" />
+    <Folder Include="DependencyServices\" />
+    <Folder Include="Engine\Repository\DataObjects\" />
+    <Folder Include="Engine\Utilities\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\packages\Xamarin.Forms.3.0.0.482510\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.0.0.482510\build\netstandard1.0\Xamarin.Forms.targets')" />
+</Project>

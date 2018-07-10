@@ -1,0 +1,89 @@
+﻿{
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "Pullets": {
+      "$id": "/properties/Pullets",
+      "type": "object",
+      "properties": {
+        "A1": {
+          "$id": "/properties/Pullets/properties/A1",
+          "type": "object",
+          "properties": {
+            "ChicksProcured": {
+              "$id": "/properties/Pullets/properties/A1/properties/ChicksProcured",
+              "type": "boolean",
+              "title": "The Chicksprocured Schema ",
+              "default": false,
+              "examples": [
+                false
+              ]
+            }
+          }
+        },
+        "A2": {
+          "$id": "/properties/Pullets/properties/A2",
+          "type": "object",
+          "properties": {
+            "PulletEnvt": {
+              "$id": "/properties/Pullets/properties/A2/properties/PulletEnvt",
+              "type": "boolean",
+              "title": "The Pulletenvt Schema ",
+              "default": false,
+              "examples": [
+                false
+              ]
+            }
+          }
+        },
+        "A3": {
+          "$id": "/properties/Pullets/properties/A3",
+          "type": "object",
+          "properties": {
+            "Testing": {
+              "$id": "/properties/Pullets/properties/A3/properties/Testing",
+              "type": "boolean",
+              "title": "The Testing Schema ",
+              "default": false,
+              "examples": [
+                false
+              ]
+            }
+          }
+        },
+        "A4": {
+          "$id": "/properties/Pullets/properties/A4",
+          "type": "object",
+          "properties": {
+            "EggsTesting": {
+              "$id": "/properties/Pullets/properties/A4/properties/EggsTesting",
+              "type": "boolean",
+              "title": "The Eggstesting Schema ",
+              "default": false,
+              "examples": [
+                false
+              ]
+            }
+          }
+        },
+        "A5": {
+          "$id": "/properties/Pullets/properties/A5",
+          "type": "object",
+          "properties": {
+            "EnvtCleaned": {
+              "$id": "/properties/Pullets/properties/A5/properties/EnvtCleaned",
+              "type": "boolean",
+              "title": "The Envtcleaned Schema ",
+              "default": false,
+              "examples": [
+                false
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

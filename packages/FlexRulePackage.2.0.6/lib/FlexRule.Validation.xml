@@ -1,0 +1,1231 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FlexRule.Validation</name>
+    </assembly>
+    <members>
+        <member name="T:FlexRule.Validation.IValidatorDescriptions">
+            <summary>
+            Definition of a validator signature
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.IValidatorDescriptions.GetLogic(System.String,System.String)">
+            <summary>
+            GetExpression the loaded logic from validator
+            </summary>
+            <param name="name">Name of logic</param>
+            <param name="scope">Scope of logic</param>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.Validation.IValidatorDescriptions.Name">
+            <summary>
+            Name of validator
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.IValidatorDescriptions.Enabled">
+            <summary>
+            True if validator is enabled otherwise false
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.IValidatorDescriptions.Logics">
+            <summary>
+            Lists of all available logic in the validator
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.IValidatorDescriptions.Model">
+            <summary>
+            Validator model source
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.ActiveValidator">
+            <summary>
+            Creates and set context variables
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.Agenda.IActionExecutionContext">
+            <summary>
+            Inferencing execution context.
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.Agenda.IActionExecutionContext.Halt">
+            <summary>
+            Halts rules execution. The engine continues execution of the current production and exists the execution cycle.
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.Agenda.IAgenda`2.FireAll">
+            <summary>
+            Starts action execution cycle. 
+            This method blocks until there are no more productions to fire.
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.Agenda.IAgenda`2.FireAll(System.String)">
+            <summary>
+            Fires agenda for a specific group
+            </summary>
+            <param name="groupName"></param>
+        </member>
+        <member name="M:FlexRule.Validation.Agenda.IAgenda`2.AddGroup(System.String)">
+            <summary>
+            Adds an agenda group
+            </summary>
+            <param name="groupName"></param>
+        </member>
+        <member name="M:FlexRule.Validation.Agenda.IAgenda`2.SetFocus(System.String)">
+            <summary>
+            Focus the activation quote to a specific group of agenda
+            </summary>
+            <param name="groupName">A group name of null for default group</param>
+        </member>
+        <member name="M:FlexRule.Validation.Agenda.IAgenda`2.SetConflictResolutionStrategy(FlexRule.Validation.Agenda.Activations.IConflictResolutionStrategyProvider{`0,`1})">
+            <summary>
+            Provide a custom conflict resolution strategy for an agenda
+            </summary>
+            <param name="resolutionStrategyProvider"></param>
+        </member>
+        <member name="T:FlexRule.Validation.Agenda.IAgendaInfo">
+            <summary>
+            The context of <see cref="T:FlexRule.Validation.Agenda.IAgenda"/>
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Agenda.IAgendaInfo.CountGroups">
+            <summary>
+            Numbers of group in the <see cref="T:FlexRule.Validation.Agenda.IAgenda"/>
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Agenda.IAgendaInfo.CurrentGroup">
+            <summary>
+            Current group in the <see cref="T:FlexRule.Validation.Agenda.IAgenda"/>
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.Agenda.Agenda`2">
+            <summary>
+            Base agenda type
+            </summary>
+            <typeparam name="TInstance"></typeparam>
+            <typeparam name="TReason"></typeparam>
+        </member>
+        <member name="T:FlexRule.Validation.AliasContext">
+            <summary>
+            When an alias command is executed this class provides the validation context to the method
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.AliasContext.ChangeValue(System.String,System.Object)">
+            <summary>
+            Changes the value of the reference object in the validation context
+            </summary>
+            <param name="path">Property address of the reference object</param>
+            <param name="value">New value to be set</param>
+        </member>
+        <member name="P:FlexRule.Validation.AliasContext.Executor">
+            <summary>
+            Current executor running the validation
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.AliasContext.Alias">
+            <summary>
+            The alias node that is executed
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.AliasContext.Dictionary">
+            <summary>
+            Name and value pair of properties of action
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.Agenda.Activations.Activation`2">
+            <summary>
+            For any match, an activation will be placed into agenda
+            </summary>
+            <typeparam name="TInstance"></typeparam>
+            <typeparam name="TReason"></typeparam>
+        </member>
+        <member name="T:FlexRule.Validation.Agenda.Activations.IActivation`2">
+            <summary>
+            Item in agenda to be executed
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Agenda.Activations.IActivation`2.Instance">
+            <summary>
+            Logic instance that activates this item in <see cref="T:FlexRule.Validation.Agenda.IAgenda`2"/>
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Agenda.Activations.IActivation`2.Reason">
+            <summary>
+            Reason the activation is created. Usually is the match that met the criteria. i.e. in inference engine this would be token that holds to a working element memory.
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.Agenda.Activations.Activation`2.#ctor(`0,`1)">
+            <summary>
+            Creates an activation for an <paramref name="instance"/> and a <paramref name="reason"/>
+            </summary>
+            <param name="instance"></param>
+            <param name="reason"></param>
+        </member>
+        <member name="T:FlexRule.Validation.Agenda.Activations.IAgendaGroup`2">
+            <summary>
+            Group of agenda that holds multiple <see cref="T:FlexRule.Validation.Agenda.Activations.IActivation`2"/>
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Agenda.Activations.IAgendaGroup`2.Name">
+            <summary>
+            Name of the current group
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.Agenda.Activations.ActivationQueueStack`2">
+            <summary>
+            Manages list of different agendas
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.Agenda.Activations.IActivationQueue`2">
+            <summary>
+            Queue that is used for activating <see cref="T:FlexRule.Validation.Agenda.Activations.IActivation`2"/> in an agenda
+            </summary>
+            <typeparam name="TInstance"></typeparam>
+            <typeparam name="TReason"></typeparam>
+        </member>
+        <member name="T:FlexRule.Validation.Agenda.Activations.IAgendaTarget">
+            <summary>
+            Defines what agenda to target during activation and in what priority
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Agenda.Activations.IAgendaTarget.GroupName">
+            <summary>
+            Agenda group to run 
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Agenda.Activations.IAgendaTarget.Priority">
+            <summary>
+            Priority to activate the activation based on
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.Agenda.ActivationEventArgs`2">
+            <summary>
+            Activation arguments during event propagation
+            </summary>
+            <typeparam name="TInstance"></typeparam>
+            <typeparam name="TReason"></typeparam>
+        </member>
+        <member name="T:FlexRule.Validation.Agenda.IEventAggregator`2">
+            <summary>
+            Event aggregator to distribute activate and deactivate messages to consumer
+            </summary>
+            <typeparam name="TInstance"></typeparam>
+            <typeparam name="TReason"></typeparam>
+        </member>
+        <member name="T:FlexRule.Validation.Agenda.EventAggregator`2">
+            <summary>
+            Activation event aggregation propagates the activation and deactivation
+            </summary>
+            <typeparam name="TInstance"></typeparam>
+            <typeparam name="TReason"></typeparam>
+        </member>
+        <member name="T:FlexRule.Concepts.ConstraintType">
+            <summary>
+            Type of constraints
+            </summary>
+        </member>
+        <member name="F:FlexRule.Concepts.ConstraintType.Expression">
+            <summary>
+            Assert constraint based on a custom expression
+            </summary>
+        </member>
+        <member name="F:FlexRule.Concepts.ConstraintType.Required">
+            <summary>
+            Member name must exist in the structure
+            </summary>
+        </member>
+        <member name="F:FlexRule.Concepts.ConstraintType.NotNullOrEmpty">
+            <summary>
+            Value of member should not be null or empty
+            </summary>
+        </member>
+        <member name="F:FlexRule.Concepts.ConstraintType.Match">
+            <summary>
+            Assert value based on RegEx pattern
+            </summary>
+        </member>
+        <member name="F:FlexRule.Concepts.ConstraintType.CheckType">
+            <summary>
+            Assert value based on type of the member
+            </summary>
+        </member>
+        <member name="F:FlexRule.Concepts.ConstraintType.Min">
+            <summary>
+            Minimum of length on size is asserted
+            </summary>
+        </member>
+        <member name="F:FlexRule.Concepts.ConstraintType.Max">
+            <summary>
+            Maximum of length on size is asserted
+            </summary>
+        </member>
+        <member name="T:FlexRule.Concepts.MemberConstraint">
+            <summary>
+            Defines a constraint for a member
+            </summary>
+        </member>
+        <member name="P:FlexRule.Concepts.MemberConstraint.Negate">
+            <summary>
+            True if its a negate constraint logic
+            </summary>
+        </member>
+        <member name="P:FlexRule.Concepts.MemberConstraint.Member">
+            <summary>
+            Member that constraint belongs to
+            </summary>
+        </member>
+        <member name="P:FlexRule.Concepts.MemberConstraint.Type">
+            <summary>
+            Type of the constraint
+            </summary>
+        </member>
+        <member name="P:FlexRule.Concepts.MemberConstraint.Value">
+            <summary>
+            Value, expression, pattern that is required for constraint assertion
+            </summary>
+        </member>
+        <member name="P:FlexRule.Concepts.MemberConstraint.Message">
+            <summary>
+            Message that if the assertion fails will be added to Notification
+            </summary>
+        </member>
+        <member name="T:FlexRule.Concepts.Concept">
+            <summary>
+            The concept that defines related <see cref="T:FlexRule.Concepts.Fact"/>s and <see cref="T:FlexRule.Concepts.Option"/>s
+            </summary>
+        </member>
+        <member name="M:FlexRule.Concepts.Concept.Parse(FlexRule.Core.Model.IElementModel,System.String)">
+            <summary>
+            Loads the <paramref name="model"/> as a <see cref="T:FlexRule.Concepts.Concept"/>
+            </summary>
+            <param name="model"></param>
+            <param name="fileName">A file name that concept is defined in</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Concepts.Concept.AddDomain(FlexRule.Concepts.Domain)">
+            <summary>
+            Adds the <paramref name="domain"/> as part of a concept
+            </summary>
+            <param name="domain"></param>
+        </member>
+        <member name="P:FlexRule.Concepts.Concept.FileName">
+            <summary>
+            Filename that concepts is defined
+            </summary>
+        </member>
+        <member name="M:FlexRule.Concepts.ConceptChecks.CheckType(FlexRule.Concepts.Concept,System.String,System.String,System.Object,FlexRule.ExecutionContextInfo)">
+            <summary>
+            
+            </summary>
+            <param name="concept"></param>
+            <param name="factName">Address</param>
+            <param name="reference">Person.Addresses</param>
+            <param name="value"></param>
+            <param name="contextInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Concepts.Member">
+            <summary>
+            Defines a member of a domain
+            </summary>
+        </member>
+        <member name="P:FlexRule.Concepts.Member.Name">
+            <summary>
+            Name of member
+            </summary>
+        </member>
+        <member name="P:FlexRule.Concepts.Member.Type">
+            <summary>
+            Type of the member, it can be default types i.e. string, int,... 
+            </summary>
+        </member>
+        <member name="P:FlexRule.Concepts.Member.Fact">
+            <summary>
+            If the member is referencing a fact, this is the fact name within the concept
+            </summary>
+        </member>
+        <member name="P:FlexRule.Concepts.Member.Constraints">
+            <summary>
+            List of constraints on the member
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.IValidatorEngine">
+            <summary>
+            Validator contract that allows validating a default object or a set of input parameters
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.IValidatorEngine.Validate(System.Object)">
+            <summary>
+            Validates a default object as the main reference
+            </summary>
+            <param name="defaultObject"></param>
+            <returns>true if the default object is validated otherwise false</returns>
+        </member>
+        <member name="M:FlexRule.Validation.IValidatorEngine.Validate(System.Object,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Validates a default object as the main reference
+            </summary>
+            <param name="defaultObject"></param>
+            <param name="logicName"></param>
+            <param name="inputParameters"></param>
+            <returns>true if the default object is validated otherwise false</returns>
+        </member>
+        <member name="M:FlexRule.Validation.IValidatorEngine.Validate(System.Object,System.String,System.Object[])">
+            <summary>
+            Validates a default object as the main reference
+            </summary>
+            <param name="defaultObject"></param>
+            <param name="logicName"></param>
+            <param name="inputParameters"></param>
+            <returns>true if the default object is validated otherwise false</returns>
+        </member>
+        <member name="M:FlexRule.Validation.IValidatorEngine.Validate(System.Object,FlexRule.Validation.LogicInput,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Validates a default object as the main reference
+            </summary>
+            <param name="defaultObject"></param>
+            <param name="logic"></param>
+            <param name="inputParameters"></param>
+            <returns>true if the default object is validated otherwise false</returns>
+        </member>
+        <member name="M:FlexRule.Validation.IValidatorEngine.Validate(System.Object,FlexRule.Validation.LogicInput,System.Object[])">
+            <summary>
+            Validates a default object as the main reference
+            </summary>
+            <param name="defaultObject"></param>
+            <param name="logic"></param>
+            <param name="inputParameters"></param>
+            <returns>true if the default object is validated otherwise false</returns>
+        </member>
+        <member name="M:FlexRule.Validation.IValidatorEngine.Validate(System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Validates the set of input parameters using parameterless logic
+            </summary>
+            <param name="logicName"></param>
+            <param name="inputParameters"></param>
+            <returns>true if the default object is validated otherwise false</returns>
+        </member>
+        <member name="M:FlexRule.Validation.IValidatorEngine.Validate(System.String,System.Object[])">
+            <summary>
+            Validates the set of input parameters using parameterless logic section
+            </summary>
+            <param name="logicName"></param>
+            <param name="inputParameters"></param>
+            <returns>true if the default object is validated otherwise false</returns>
+        </member>
+        <member name="M:FlexRule.Validation.IValidatorEngine.Validate(FlexRule.Validation.LogicInput)">
+            <summary>
+            Validates logic with input parameters using parametric logic section
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.IValidatorEngine.Validate(FlexRule.Validation.LogicInput,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Validates the set of input parameters using a parametric logic section
+            </summary>
+            <param name="logic"></param>
+            <param name="inputParameters"></param>
+            <returns>true if the default object is validated otherwise false</returns>
+        </member>
+        <member name="M:FlexRule.Validation.IValidatorEngine.Validate(FlexRule.Validation.LogicInput,System.Object[])">
+            <summary>
+            Validates the set of input parameters using a parametric logic section
+            </summary>
+            <param name="logic"></param>
+            <param name="inputParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.ValidationBase.NoticeFor">
+            <summary>
+            When this event happens notices being written into notification
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.Languages.ExpressionBinder">
+            <summary>
+            Main registry for custom expression to be registered as part of Natural Language
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.Languages.ExpressionBinder.Register(System.String,System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Register a custom regular expression pattern
+            </summary>
+            <param name="regexPattern"></param>
+        </member>
+        <member name="P:FlexRule.Validation.Languages.ExpressionBinder.Identifiers">
+            <summary>
+            Returns all the user defined identifiers
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.Languages.NaturalFactory">
+            <summary>
+            This factory is responsible to create the ActiveElement commands for neutral language
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.Languages.NaturalFactory.#ctor">
+            <summary>
+            Default constructor of factory
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.Languages.Parser.BusinessLanguageAttribute">
+            <summary>
+            Decorates methods as a business language expressions
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.Languages.Parser.INaturalParser">
+            <summary>
+            Base interface to parse a stream of neutral validation rule
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.Languages.Parser.INaturalParser.Parse(System.IO.StreamReader)">
+            <summary>
+            Parse a stream
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.Languages.Parser.INaturalParser.Parse(System.String)">
+            <summary>
+            Parse available loaded data
+            </summary>
+            <param name="data">DSL Natural Language text</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.Languages.Parser.INaturalParser.Parse(FlexRule.Core.Model.IElementModel,System.String)">
+            <summary>
+            Parse Natural Language (NL) model
+            </summary>
+            <param name="model">Model must have 'Natural' root element. This model should have the  Glossary included.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.Languages.Parser.INaturalParser.Parse(FlexRule.Core.Model.IRuleSet,System.String)">
+            <summary>
+            Parse Natural Language (NL) model
+            </summary>
+            <param name="ruleSet"></param>
+            <param name="ruleSetQuery">ruleset:// address to the NL model. Model must have 'Natural' root element.</param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Validation.Languages.Parser.NaturalParser">
+            <summary>
+            Default implementation of <see cref="T:FlexRule.Validation.Languages.Parser.INaturalParser"/>
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.Validator">
+            <summary>
+            Creates a procedure for execution using a provided context and model
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.Validator.#ctor(FlexRule.Core.Model.IElementModel)">
+            <summary>
+            Creates execution plan using a model
+            </summary>
+            <param name="model"></param>
+        </member>
+        <member name="M:FlexRule.Validation.Validator.#ctor(FlexRule.Deployment.Module)">
+            <summary>
+            Creates execution plan using <see cref="T:FlexRule.Deployment.Module"/>
+            </summary>
+            <param name="module"></param>
+        </member>
+        <member name="M:FlexRule.Validation.Validator.#ctor(FlexRule.Core.Model.IRuleSet,System.String)">
+            <summary>
+            Creates execution plan using <see cref="T:FlexRule.Core.Model.RuleSet"/> and an address to the model inside the <see cref="T:FlexRule.Core.Model.RuleSet"/>
+            </summary>
+            <param name="ruleSet"></param>
+            <param name="ruleSetQuery"></param>
+        </member>
+        <member name="M:FlexRule.Validation.Validator.#ctor(FlexRule.IElementActivatorRegistry,FlexRule.Core.Model.IElementModel)">
+            <summary>
+            Creates execution plan by custom registry and a model
+            </summary>
+            <param name="registry"></param>
+            <param name="model">Model which includes the procedure definitions</param>
+        </member>
+        <member name="M:FlexRule.Validation.Validator.#ctor(FlexRule.IElementActivatorRegistry,FlexRule.Core.Model.IRuleSet,System.String)">
+            <summary>
+            Creates execution plan using a custom registry, <see cref="T:FlexRule.Core.Model.RuleSet"/> and the address to model
+            </summary>
+            <param name="registry"></param>
+            <param name="ruleSet"></param>
+            <param name="ruleSetQuery"></param>
+        </member>
+        <member name="P:FlexRule.Validation.Validator.Name">
+            <summary>
+            Validator name
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Validator.Enabled">
+            <summary>
+            If the validator is not enabled, the engine throws and exception during execution
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Validator.Descriptions">
+            <summary>
+            Provides an interface to discover the validator descriptions
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.Rules.BooleanLogic">
+            <summary>
+            Defines a reusable boolean logic structure
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.Rules.Logic">
+            <summary>
+            Base validation logic that chains conditions and handles notification and parameters
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.Rules.Aggregate.#ctor(FlexRule.ActiveElement,FlexRule.Core.Model.IElementModel)">
+            <summary>
+            
+            </summary>
+            <param name="parent"></param>
+            <param name="node"></param>
+        </member>
+        <member name="M:FlexRule.Validation.Rules.Aggregate.FirstRule">
+            <summary>
+            Gets first rule to be validated
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.Aggregate.Rules">
+            <summary>
+            List of rules
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.Aggregate.RulesLength">
+            <summary>
+            Numbers if available rule to be validated
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.Rules.Logic.#ctor(FlexRule.ActiveElement,FlexRule.Core.Model.IElementModel)">
+            <summary>
+            
+            </summary>
+            <param name="parent"></param>
+            <param name="node"></param>
+            <exception cref="T:FlexRule.Validation.ValidationConsistencyException"></exception>
+        </member>
+        <member name="M:FlexRule.Validation.Rules.Logic.SetLogicName(System.String)">
+            <summary>
+            Set or override a logic name
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.Logic.HasVariableDeclaration">
+            <summary>
+            True when the logic defines variable using Declaration command
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.Logic.LogicType">
+            <summary>
+            Type that logic is for
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.Logic.Enabled">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.Logic.Name">
+            <summary>
+            Name of the logic
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.Logic.HasVariable">
+            <summary>
+            Returns true if the logic requires input variable parameter
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.Rules.IBooleanLogic">
+            <summary>
+            Validation logic that holds all the conditions
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.Rules.IBooleanLogic.ExecuteActions(FlexRule.IActiveElementExecutor,FlexRule.Validation.LogicCallerInfo)">
+            <summary>
+            Executes all actions for this logic
+            </summary>
+            <param name="executor"></param>
+            <param name="callerInfo">Caller info for executing actions</param>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.IBooleanLogic.Name">
+            <summary>
+            Name of the current logic
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.IBooleanLogic.Actions">
+            <summary>
+            'Then' part of the logic 
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.Rules.BooleanLogic.#ctor(FlexRule.ActiveElement,FlexRule.Core.Model.IElementModel)">
+            <summary>
+            
+            </summary>
+            <param name="parent"></param>
+            <param name="node"></param>
+        </member>
+        <member name="M:FlexRule.Validation.Rules.BooleanLogic.GetResult(FlexRule.IActiveElementExecutor,FlexRule.Validation.LogicCallerInfo)">
+            <summary>
+            </summary>
+            <param name="executor"></param>
+            <param name="callerInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Validation.Rules.IAliasInfo">
+            <summary>
+            This interface provides alias register for the declaration section
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.IAliasInfo.Reference">
+            <summary>
+            Reference to the define variable of the logic
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.IAliasInfo.Name">
+            <summary>
+            Name of the alias that the logic uses 
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.IAliasInfo.Method">
+            <summary>
+            Method name that the executor delegates the execution to it
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.IAliasInfo.Logic">
+            <summary>
+            Logic name that the executor delegates the execution to it 
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.Rules.ILoopContextualParameter">
+            <summary>
+            Provides $loop contextual local parameters in the collection
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.ILoopContextualParameter.Element">
+            <summary>
+            Access to the current element of the loop
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.ILoopContextualParameter.Length">
+            <summary>
+            Size of the collection
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.ILoopContextualParameter.Index">
+            <summary>
+            Index number of the item in the collection
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.ILoopContextualParameter.Passed">
+            <summary>
+            Total numbers of passed condition in the loop
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.ILoopContextualParameter.Failed">
+            <summary>
+            Total numbers of failed condition in the loop
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.ILoopContextualParameter.Total">
+            <summary>
+            Summation result of a property of an item
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.NoticeEvent">
+            <summary>
+            Logic writes <see cref="T:FlexRule.Notifications.Notice"/> to <see cref="T:FlexRule.Notifications.Notification"/> if the result is matched with these results.
+            </summary>
+        </member>
+        <member name="F:FlexRule.Validation.NoticeEvent.Success">
+            <summary>
+            When validation result is NOT considered as failed outcome
+            </summary>
+        </member>
+        <member name="F:FlexRule.Validation.NoticeEvent.Failure">
+            <summary>
+            When validation result is considered as failed outcome
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.Rules.Properties.IAttachedProperty">
+            <summary>
+            This property defines a behaviour that can be shared between different rule commands
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.Rules.Properties.ProcessAllProperty">
+            <summary>
+            Property to define processAll behaviour of rule commands
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.Rules.Properties.ProcessAllProperty.#ctor(FlexRule.Validation.Rules.ValidationBase)">
+            <summary>
+            The attached property for processAll setting of rule commands
+            </summary>
+            <param name="propertyOwner">The rule command that is the property owner</param>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.Properties.ProcessAllProperty.ProcessAll">
+            <summary>
+            If the value is true the process of the rule command continues
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.LogicCallerInfo">
+            <summary>
+            Then logic is called by other validation commands, they have to pass their information
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.LogicCallerInfo.#ctor(System.Object,System.String)">
+            <summary>
+            </summary>
+            <param name="valueResult">Value to be validated</param>
+            <param name="valueExpression">NaturalExpression corresponding to value</param>
+        </member>
+        <member name="P:FlexRule.Validation.LogicCallerInfo.Expression">
+            <summary>
+            Value string that is causing this logic execution
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.LogicCallerInfo.Result">
+            <summary>
+            Result of the <see cref="P:FlexRule.Validation.LogicCallerInfo.Expression"/> that is causing this logic execution
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.LogicCallerInfo.Arguments">
+            <summary>
+            Provides input arguments to the logic
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.LogicInput">
+            <summary>
+            Logic input when is called for validation
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.LogicInput.#ctor">
+            <summary>
+            A null logic which the default (first) logic will be picked
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.LogicInput.#ctor(System.String)">
+            <summary>
+            Logic with a name
+            </summary>
+            <param name="logicName"></param>
+        </member>
+        <member name="M:FlexRule.Validation.LogicInput.#ctor(System.String,System.Object[])">
+            <summary>
+            Logic with name and input parameters
+            </summary>
+            <param name="logicName"></param>
+            <param name="inputParameters"></param>
+        </member>
+        <member name="M:FlexRule.Validation.LogicInput.#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logic with name and input parameters
+            </summary>
+            <param name="logicName"></param>
+            <param name="inputParameters"></param>
+        </member>
+        <member name="P:FlexRule.Validation.LogicInput.Arguments">
+            <summary>
+            Array of arguments
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.LogicInput.DictionaryArguments">
+            <summary>
+            NAme-value dictionary of arguments
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.LogicInput.Name">
+            <summary>
+            Name of logic
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.Rules.ValidatorExecutionException">
+            <summary>
+            Processing container for validation exceptions
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.ValidatorExecutionException.Stack">
+            <summary>
+            Stack of calling logic in the context
+            </summary>
+        </member>
+        <member name="P:FlexRule.Validation.Rules.ValidatorExecutionException.LogicName">
+            <summary>
+            Current logic that exception has occurred 
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.ValidationBehaviour">
+            <summary>
+            Behaviour of validation engine
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.ValidationBuilder">
+            <summary>
+            Validation logic builder
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.SetMessage(System.String)">
+            <summary>
+            Set message attribute of a node
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.SetEnable(System.Boolean)">
+            <summary>
+            Set enable attribute of a node
+            </summary>
+            <param name="enabled"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.SetTag(System.String)">
+            <summary>
+            Set tag attribute of a node
+            </summary>
+            <param name="tag"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.SetNotice(FlexRule.Notifications.NoticeType)">
+            <summary>
+            Set notice type of a node
+            </summary>
+            <param name="notice"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.SetNoticeProperty(System.String,System.String)">
+            <summary>
+            Set notice type of a node
+            </summary>
+            <param name="name">name of a property</param>
+            <param name="expression">value of the property</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.SetPriority(System.Int32)">
+            <summary>
+            Set priority attribute of a node
+            </summary>
+            <param name="priority"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.SetName(System.String)">
+            <summary>
+            Set name attribute of a node
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.SetVariable(System.String)">
+            <summary>
+            Set variable attribute of a logic node
+            </summary>
+            <param name="variableName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.SetNegate(System.Boolean)">
+            <summary>
+            Set negate attribute of a node
+            </summary>
+            <param name="negate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.SetProcessAll(System.Boolean)">
+            <summary>
+            Set processAll attribute of a node
+            </summary>
+            <param name="processAll"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.LogicStart">
+            <summary>
+            Begins a Logic node
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.ThenStart">
+            <summary>
+            Begins a Then node
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.DeclarationStart">
+            <summary>
+            Begins a declaration node
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.ForEachStart(System.String)">
+            <summary>
+            Begins a ForEach node
+            </summary>
+            <param name="childName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.UniqueConstraint(System.String[])">
+            <summary>
+            Begins a UniqueConstraint node
+            </summary>
+            <param name="properties"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.Define(System.String,FlexRule.Validation.ValidationBuilder.Direction,System.String,System.String)">
+            <summary>
+            Declare a parameter
+            </summary>
+            <param name="parameterName"></param>
+            <param name="direction"></param>
+            <param name="value"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.Using(System.String,System.String,System.String)">
+            <summary>
+            Declare a Using
+            </summary>
+            <param name="path"></param>
+            <param name="name"></param>
+            <param name="assembly"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.Alias(System.String,System.String,System.String)">
+            <summary>
+            Declare an Alias
+            </summary>
+            <param name="name"></param>
+            <param name="parameterName"></param>
+            <param name="methodname"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.Custom(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Declare a custom node with attributes
+            </summary>
+            <param name="name"></param>
+            <param name="attributes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.Custom(System.String)">
+            <summary>
+            Declare a custom node with no attributes
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.GroupStart">
+            <summary>
+            Begins a Group node
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.AndStart">
+            <summary>
+            Begins an And node
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.End">
+            <summary>
+            Ends the mode closest node that has started
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.NotStart">
+            <summary>
+            Begins a Not node
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.WhenStart">
+            <summary>
+            Begins a When node
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.TrueStart">
+            <summary>
+            Begins a True node
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.FalseStart">
+            <summary>
+            Begins a False node
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.True">
+            <summary>
+            True node
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.False">
+            <summary>
+            False node
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.OrStart">
+            <summary>
+            Begins an Or node
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.NorStart">
+            <summary>
+            Begins a Nor node
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.XorStart">
+            <summary>
+            Begins an Xor node
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.XnorStart">
+            <summary>
+            Begins an Xnor node
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.Null(System.String)">
+            <summary>
+            Appends a Null check
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.Empty(System.String)">
+            <summary>
+            Appends an Empty check
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.Contains(System.String)">
+            <summary>
+            Appends a Contains check
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.Check(System.String)">
+            <summary>
+            Appends a Check node
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.Var(System.String,System.String)">
+            <summary>
+            Appends a Var node
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.Regex(System.String,System.String)">
+            <summary>
+            Appends a Regex check
+            </summary>
+            <param name="pattern"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidationBuilder.Validate(System.String,System.String)">
+            <summary>
+            Appends a Validate node
+            </summary>
+            <param name="logic"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Validation.Rules.IsNull">
+            <summary>
+            Has no value
+            negate = is not null = Has any value
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.Rules.IsNullOrEmpty">
+            <summary>
+            is noll or empty
+            negate = is not null = Has any value
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.LogicFactory.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.ValidatorActiveElement.RunConcept(FlexRule.IActiveElementExecutor,FlexRule.Validation.ValidatorActiveElement.ValidatorEx)">
+            <summary>
+            In running the Concept validation, we collect the values for the Validator in New mode and create the Engine in Shared mode.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Validation.ValidatorEngine">
+            <summary>
+            Execution engine for RuleProcedure object
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.ValidatorEngine.#ctor(FlexRule.Validation.Validator)">
+            <summary>
+            This constructor creates a <see cref="T:FlexRule.Validation.ValidatorExecutionContext"/> by default
+            </summary>
+            <param name="validator"></param>
+        </member>
+        <member name="M:FlexRule.Validation.ValidatorEngine.#ctor(FlexRule.Validation.Validator,System.Boolean)">
+            <summary>
+            This constructor creates a <see cref="T:FlexRule.Validation.ValidatorExecutionContext"/> by default
+            </summary>
+            <param name="validator"></param>
+            <param name="enableTrace"></param>
+        </member>
+        <member name="P:FlexRule.Validation.ValidatorEngine.Agenda">
+            <summary>
+            Agenda of the decision
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.ValidatorEngineExtensions">
+            <summary>
+            Extension class to build validator engine
+            </summary>
+        </member>
+        <member name="M:FlexRule.Validation.ValidatorEngineExtensions.GetConclusionLog(FlexRule.IActiveElementEngine)">
+            <summary>
+            Creates a log that why and how engine has come to a conclusion
+            </summary>
+            <param name="engine"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Validation.ValidatorEngineExtensions.CreateValidatorEngine(FlexRule.IActiveElementExecutor,FlexRule.ActiveElement,System.Boolean,FlexRule.Validation.Validator,System.Func{FlexRule.Validation.ValidatorExecutionContext,FlexRule.Validation.Validator,FlexRule.Validation.ValidatorEngine})">
+            <summary>
+            Creates a validator engine based on current executor
+            </summary>
+            <param name="executor"></param>
+            <param name="current">Current <see cref="T:FlexRule.ActiveElement"/> that creates an engine</param>
+            <param name="newContext"></param>
+            <param name="validator">Execution plan for validator engine</param>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Validation.ValidatorExecutionContext">
+            <summary>
+            Execution context for validation engine
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.ValidatorExecutor">
+            <summary>
+            Validator executor 
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.ValidatorExecutorSetupInformation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:FlexRule.Validation.ValidatorFactory">
+            <summary>
+            Factory for CallValidator or Validator
+            </summary>
+        </member>
+    </members>
+</doc>

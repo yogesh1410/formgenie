@@ -1,0 +1,19 @@
+﻿{
+  "RodentsFliesOtherPestControl": {
+    "C1": {
+      "RodentMonitoring": false
+    },
+    "C2": {
+      "RodentActivitySwitch": false
+    },
+    "C3": {
+      "FliesMonitoring": false
+    },
+    "C4": {
+      "FliesActivity": false
+    },
+    "C5": {
+      "DebrisRemoval": false
+    }
+  }
+}

@@ -1,0 +1,25 @@
+﻿{
+  "Biosecurity": 
+    {
+    "B1": 
+      {
+        "VisitorLimits": true
+    },
+    "B2": 
+      {
+        "CrossContaminitation": false
+    },
+    "B3": 
+      {
+        "StrayPoultrySwitch": false
+    },
+    "B4": 
+      {
+        "BirdsAtHome": false
+    },
+      "CommentSection": 
+        {
+          "BiosecurityComments": "ab"
+      }
+  }
+}

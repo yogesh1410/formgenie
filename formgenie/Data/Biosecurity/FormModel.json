@@ -1,0 +1,66 @@
+﻿{
+  "title": "Biosecurity",
+  "formgroups": [
+    {
+      "text": "B1",
+      "displayorder": "1",
+      "components": [
+        {
+          "id": "visitorLimitsSwitch",
+          "path": "Biosecurity.B1.VisitorLimits",
+          "type": "YesNoSwitchView",
+          "text": "Are there limits on visitors on the farm and in the poultry houses?"
+        }
+      ]
+    },
+    {
+      "text": "B2",
+      "displayorder": "1",
+      "components": [
+        {
+          "id": "crossContaminitationSwitch",
+          "Path": "Biosecurity.B2.CrossContaminitation",
+          "type": "YesNoSwitchView",
+          "text": "Are there established practices that will protect against cross contamination when equipment and personnel are moved among poultry houses?"
+        }
+      ]
+    },
+    {
+      "text": "B3",
+      "displayorder": "1",
+      "components": [
+        {
+          "id": "strayPoultrySwitch",
+          "Path": "Biosecurity.B3.StrayPoultrySwitch",
+          "type": "YesNoSwitchView",
+          "text": "Are there adequate measures preventing stray poultry, wild birds, cats, and other animals from entering poultry houses?"
+        }
+      ]
+    },
+    {
+      "text": "B4",
+      "displayorder": "1",
+      "components": [
+        {
+          "id": "birdsAtHomeSwitch",
+          "path": "Biosecurity.B4.BirdsAtHome",
+          "type": "YesNoSwitchView",
+          "text": "Are employees prevented from keeping birds at home?"
+        }
+      ]
+    },
+    {
+      "text": "Comment Section",
+      "displayorder": "1",
+      "components": [
+        {
+          "id": "BiosecurityComments",
+          "path": "Biosecurity.CommentSection.BiosecurityComments",
+          "type": "LabelEditorView",
+          "text": "Comments"
+        }
+      ]
+    }
+
+  ]
+}

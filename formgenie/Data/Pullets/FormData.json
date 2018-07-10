@@ -1,0 +1,19 @@
+﻿{
+  "Pullets": {
+    "A1": {
+      "ChicksProcured": false
+    },
+    "A2": {
+      "PulletEnvt": false
+    },
+    "A3": {
+      "Testing": false
+    },
+    "A4": {
+      "EggsTesting": false
+    },
+    "A5": {
+      "EnvtCleaned": false
+    }
+  }
+}

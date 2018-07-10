@@ -1,0 +1,29 @@
+﻿{
+  "title": "CleaningAndDisinfectionProducts",
+  "formgroups": [
+    {
+      "text": "D1",
+      "displayorder": "1",
+      "components": [
+        {
+          "id": "cdProceduresSwitch",
+          "path": "CleaningAndDisinfectionProducts.D1.cdProceduresSwitch",
+          "type": "YesNoSwitchView",
+          "text": "Were the proper cleaning and disinfection procedures followed  before new laying hens are added to the house or if environment or egg test was positive at any point during the life of a flock?"
+        },
+        {
+          "id": "cdProceduresComments",
+          "path": "CleaningAndDisinfectionProducts.D1.cdProceduresComments",
+          "type": "LabelEditorView",
+          "text": "Comments"
+        },
+        {
+          "id": "cdCamera",
+          "path": "CleaningAndDisinfectionProducts.D1.cdCamera",
+          "type": "CameraView",
+          "text": "Take Photo"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+﻿{
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "Biosecurity": {
+      "$id": "/properties/Biosecurity",
+      "type": "object",
+      "properties": {
+        "B1": {
+          "$id": "/properties/Biosecurity/properties/B1",
+          "type": "object",
+          "properties": {
+            "VisitorLimits": {
+              "$id": "/properties/Biosecurity/properties/B1/properties/VisitorLimits",
+              "type": "boolean",
+              "title": "The Visitorlimits Schema ",
+              "default": false,
+              "examples": [
+                true
+              ]
+            }
+          }
+        },
+        "B2": {
+          "$id": "/properties/Biosecurity/properties/B2",
+          "type": "object",
+          "properties": {
+            "CrossContaminitation": {
+              "$id": "/properties/Biosecurity/properties/B2/properties/CrossContaminitation",
+              "type": "boolean",
+              "title": "The Crosscontaminitation Schema ",
+              "default": false,
+              "examples": [
+                false
+              ],
+              "required": [ "CommentSection" ]
+            }
+          }
+        },
+        "B3": {
+          "$id": "/properties/Biosecurity/properties/B3",
+          "type": "object",
+          "properties": {
+            "StrayPoultrySwitch": {
+              "$id": "/properties/Biosecurity/properties/B3/properties/StrayPoultrySwitch",
+              "type": "boolean",
+              "title": "The Straypoultryswitch Schema ",
+              "default": false,
+              "examples": [
+                false
+              ]
+            }
+          }
+        },
+        "B4": {
+          "$id": "/properties/Biosecurity/properties/B4",
+          "type": "object",
+          "properties": {
+            "BirdsAtHome": {
+              "$id": "/properties/Biosecurity/properties/B4/properties/BirdsAtHome",
+              "type": "boolean",
+              "title": "The Birdsathome Schema ",
+              "default": false,
+              "examples": [
+                false
+              ]
+            }
+          }
+        },
+        "CommentSection": {
+          "$id": "/properties/Biosecurity/properties/CommentSection",
+          "type": "object",
+          "properties": {
+            "BiosecurityComments": {
+              "$id": "/properties/Biosecurity/properties/CommentSection/properties/BiosecurityComments",
+              "type": "string",
+              "title": "The Biosecuritycomments Schema ",
+              "default": "",
+              "examples": [
+                "default comment"
+              ],
+              "minLength": 5
+            }
+          }
+        }
+      }
+    }
+  }
+}

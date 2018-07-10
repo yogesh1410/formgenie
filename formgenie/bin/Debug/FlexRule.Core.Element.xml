@@ -1,0 +1,3026 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FlexRule.Core.Element</name>
+    </assembly>
+    <members>
+        <member name="E:FlexRule.IActiveElementEngine.ExecutionPausing">
+            <summary>
+            When engine is about to pause the execution
+            </summary>
+        </member>
+        <member name="E:FlexRule.IActiveElementEngine.ActiveElementExecuting">
+            <summary>
+            When element is executing
+            </summary>
+        </member>
+        <member name="E:FlexRule.IActiveElementEngine.ActiveElementExecuted">
+            <summary>
+            When element execution is finished
+            </summary>
+        </member>
+        <member name="E:FlexRule.IActiveElementEngine.ActiveElementItemOutOfScope">
+            <summary>
+            When executor passes an element
+            </summary>
+        </member>
+        <member name="E:FlexRule.IActiveElementEngine.ActiveElementItemTracing">
+            <summary>
+            When element is reached
+            </summary>
+        </member>
+        <member name="E:FlexRule.IActiveElementEngine.ActiveElementEngineCreated">
+            <summary>
+            When element creates an engine to process the execution
+            </summary>
+        </member>
+        <member name="E:FlexRule.IActiveElementEngine.ActiveElementCallback">
+            <summary>
+            When a call back happens
+            </summary>
+        </member>
+        <member name="E:FlexRule.IActiveElementEngine.Executing">
+            <summary>
+            When engine is about to execute a model
+            </summary>
+        </member>
+        <member name="E:FlexRule.IActiveElementEngine.ExecutionCanceled">
+            <summary>
+            When engine execution is canceled
+            </summary>
+        </member>
+        <member name="E:FlexRule.IActiveElementEngine.ExecutionCompleted">
+            <summary>
+            When executing a model is completed
+            </summary>
+        </member>
+        <member name="P:FlexRule.IActiveElementEngine.ExecutorSetup">
+            <summary>
+            Setup information of executor
+            </summary>
+        </member>
+        <member name="P:FlexRule.IActiveElementEngine.Context">
+            <summary>
+            Provides access to the context of running engine 
+            </summary>
+        </member>
+        <member name="T:FlexRule.ActiveElementEngine">
+            <summary>Base engine that processes a request</summary>
+            <remarks>
+            Every execution engine based on active elements needs to be derived from this 
+            class, it provides the base functionality for controlling the execution process.
+            This base class implements
+            <list type="bullet">
+            <item><term>Input parameters assignment</term></item>
+            <item><term>Pre-condition execution validation</term></item>
+            <item><term>Event propagation</term></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:FlexRule.ActiveElementEngine.Reset">
+            <summary>
+            Brings back the engine in the state of before initialization and execution
+            </summary>
+        </member>
+        <member name="M:FlexRule.ActiveElementEngine.OnRunning(System.Object[])">
+            <summary>
+            Prepare and validates the input parameters of an engine
+            </summary>
+            <param name="inputParameters">Required input parameters all as an array of objects</param>
+        </member>
+        <member name="M:FlexRule.ActiveElementEngine.OnRunning(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Prepare and validates the input parameters of an engine
+            </summary>
+            <param name="inputParameters">Required input parameters as a name/value dictionary. Name must match the model input parameter</param>
+        </member>
+        <member name="M:FlexRule.ActiveElementEngine.AssignEngineInputs(FlexRule.Signature.ISignatureVariableInfo[],System.Object[],System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Assigns the input variables to the running context. One of <paramref name="collectionValues" /> or <paramref name="namedValues"/> must be used. The other one must be null.
+            </summary>
+        </member>
+        <member name="M:FlexRule.ActiveElementEngine.Cancel(System.String)">
+            <summary>
+            Cancels the running engine execution
+            </summary>
+        </member>
+        <member name="M:FlexRule.ActiveElementEngine.Run(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Runs the provided model
+            </summary>
+        </member>
+        <member name="M:FlexRule.ActiveElementEngine.Run(System.Object[])">
+            <summary>
+            Run the engine
+            </summary>
+            <param name="inputParameters"></param>
+        </member>
+        <member name="M:FlexRule.ActiveElementEngine.Next">
+            <summary>
+            Next element to execute
+            </summary>
+        </member>
+        <member name="P:FlexRule.ActiveElementEngine.Elapsed">
+            <summary>
+            Execution elapsed amount
+            </summary>
+        </member>
+        <member name="P:FlexRule.ActiveElementEngine.Notifications">
+            <summary>
+            The notification of the engine to store all the notices 
+            </summary>
+        </member>
+        <member name="P:FlexRule.ActiveElementEngine.ControlledMode">
+            <summary>
+            When set to true, executor waits on each element and <see cref="M:FlexRule.ActiveElementEngine.Next"/> must be called
+            </summary>
+        </member>
+        <member name="P:FlexRule.ActiveElementEngine.IsRunning">
+            <summary>
+            If engine still is running true, otherwise false.
+            </summary>
+        </member>
+        <member name="T:FlexRule.ExecutionPausingEventArgs">
+            <summary>
+            <see cref="T:FlexRule.ActiveElementEngine"/> is pausing execition
+            </summary>
+        </member>
+        <member name="T:FlexRule.ActiveElementExecutionContext">
+            <summary>Base execution context for each engine request</summary>
+            <remarks>
+            Variable context for execution and exception handling of execution. This is a main base context definition that is passed to engine for each execution request.
+            Any request to engine will have its own context that manages the information related to that particular request.
+            </remarks>
+        </member>
+        <member name="T:FlexRule.IActiveElementExecutionContext">
+            <summary>
+            An engine that executes active elements inside a context with this interface
+            </summary>
+        </member>
+        <member name="T:FlexRule.IActiveElementActivationContext">
+            <summary>
+            To transform a model (<see cref="!:IElementModel"/>) to an <see cref="T:FlexRule.ActiveElement"/> this interface will give engine access to populated registry for activation process.
+            </summary>
+        </member>
+        <member name="P:FlexRule.IActiveElementActivationContext.ActivatorRegistry">
+            <summary>
+            Access the main registry in the activation context
+            </summary>
+        </member>
+        <member name="M:FlexRule.IActiveElementExecutionContext.Reset">
+            <summary>
+            Resets the execution context
+            </summary>
+        </member>
+        <member name="P:FlexRule.IActiveElementExecutionContext.CorrelationId">
+            <summary>
+            A correlation identifier across multiple different logic
+            </summary>
+        </member>
+        <member name="P:FlexRule.IActiveElementExecutionContext.Notifications">
+            <summary>
+            Notification of the running context
+            </summary>
+        </member>
+        <member name="P:FlexRule.IActiveElementExecutionContext.VariableContainer">
+            <summary>
+            Gives access to available variables container
+            </summary>
+        </member>
+        <member name="P:FlexRule.IActiveElementExecutionContext.Output">
+            <summary>
+            Gives access to available output
+            </summary>
+        </member>
+        <member name="P:FlexRule.IActiveElementExecutionContext.Exception">
+            <summary>
+            Stores the unhandled exception if any occurred in the model execution
+            </summary>
+        </member>
+        <member name="T:FlexRule.IIntActiveElementExecutionContext">
+            <summary>
+            That is designed for internal use
+            </summary>
+        </member>
+        <member name="M:FlexRule.ActiveElementExecutionContext.RegisterVariablesAndTypes(FlexRule.Signature.ISignatureVariableInfo[],FlexRule.Signature.ISignatureTypeInfo[],FlexRule.ExecutorSetupInformation)">
+            <summary>
+            Registers variables and types in the running context
+            </summary>
+            <param name="variables">Variables to be registered</param>
+            <param name="types">Types to be registered</param>
+            <param name="setup">Setup information that prepares context for execution</param>
+        </member>
+        <member name="M:FlexRule.ActiveElementExecutionContext.RegisterVariable(FlexRule.Signature.ISignatureVariableInfo,FlexRule.ExecutorSetupInformation)">
+            <summary>
+            Registers variables
+            </summary>
+            <param name="var">Variable information to be prepare context for execution</param>
+            <param name="setup">Setup information to prepare context for execution</param>
+        </member>
+        <member name="M:FlexRule.ActiveElementExecutionContext.RegisterType(FlexRule.Signature.ISignatureTypeInfo,FlexRule.ExecutorSetupInformation)">
+            <summary>
+            Registers types
+            </summary>
+            /// <param name="type">External type information to prepare context for execution</param>
+            <param name="setup">Setup information to prepare context for execution</param>
+        </member>
+        <member name="M:FlexRule.ActiveElementExecutionContext.Reset">
+            <summary>
+            Resets the execution exceptions and clear all variables
+            </summary>
+        </member>
+        <member name="M:FlexRule.ActiveElementExecutionContext.GetVariableContainer(FlexRule.ActiveElement)">
+            <summary>
+            Returns variable container of an element
+            </summary>
+        </member>
+        <member name="E:FlexRule.ActiveElementExecutionContext.ValueChanged">
+            <summary>
+            Notify the host when variable value is changed
+            </summary>
+        </member>
+        <member name="P:FlexRule.ActiveElementExecutionContext.Notifications">
+            <summary>
+            The provider that manages this context
+            </summary>
+        </member>
+        <member name="P:FlexRule.ActiveElementExecutionContext.Output">
+            <summary>
+            Output provide for the context. If running model requires to write information on an output this will be used.
+            </summary>
+        </member>
+        <member name="P:FlexRule.ActiveElementExecutionContext.ActivatorRegistry">
+            <summary>
+            Returns the activator that is used to create ActiveElements of the model
+            </summary>
+        </member>
+        <member name="P:FlexRule.ActiveElementExecutionContext.VariableContainer">
+            <summary>
+            Variable container of the context
+            </summary>
+        </member>
+        <member name="P:FlexRule.ActiveElementExecutionContext.Exception">
+            <summary>
+            Will be set if an exception happens during execution of a model
+            </summary>
+        </member>
+        <member name="T:FlexRule.ActiveElementException">
+            <summary>
+            This provides information regarding the runtime exception that has happened during either execution plan creation or logic execution.
+            <remarks>
+            This implements <see cref="T:FlexRule.ISourceInfo"/> which provides the details information on where the source of problem is.
+            </remarks>
+            </summary>
+        </member>
+        <member name="T:FlexRule.ActiveElementExecutor">
+            <summary>
+            This is a abstract base class for executors that require tracing information to be captured.
+            </summary>
+        </member>
+        <member name="T:FlexRule.ActiveElementExecutorBase">
+            <summary>
+            A default base class for engine executors. It does provide the version basic functions for different executors.
+            </summary>
+            <remarks>
+            This abstract class is responsible for implementing behaviors such as:
+            <list type="bullet">
+            <item><term>Cleanup routines</term></item>
+            <item><term>Callback mechanisms</term></item>
+            <item><term>Event propagations</term></item>
+            <item><term>Cancellation condition</term></item>
+            <item><term>Setup information as <see cref="T:FlexRule.ExecutorSetupInformation"/></term></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="T:FlexRule.IActiveElementExecutor">
+            <summary>
+            Executor module of an active element engine
+            </summary>
+        </member>
+        <member name="T:FlexRule.IClientCallback">
+            <summary>
+            Provides mechanisms when an <see cref="T:FlexRule.ActiveElement"/> can communicate back to the host. e.g. application is running the engine.
+            </summary>
+        </member>
+        <member name="M:FlexRule.IClientCallback.CallbackHost(System.Object,FlexRule.CallbackEventArgs)">
+            <summary>
+            Method that triggers the call-back 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:FlexRule.IClientCallback.Calling">
+            <summary>
+            Event that clients/host may handle for a call-back
+            </summary>
+        </member>
+        <member name="M:FlexRule.IActiveElementExecutor.RegisterCleanup(FlexRule.ActiveElement)">
+            <summary>
+            Registers a cleanup routine
+            </summary>
+        </member>
+        <member name="M:FlexRule.IActiveElementExecutor.ExecuteAllChilds(FlexRule.ActiveElement)">
+            <summary>
+            Traverse and executes all internal children
+            </summary>
+        </member>
+        <member name="M:FlexRule.IActiveElementExecutor.ChangeInnerAllChildsExecutionMode(FlexRule.ActiveElement,FlexRule.ExecutionBehaviourMode,FlexRule.ActiveElement[])">
+            <summary>
+            Change state of all internal children to a specific mode while considers an exception
+            </summary>
+            <param name="mode">Sets execution behaviour for <paramref name="item"/></param>
+            <param name="but">Exception to not change these elements</param>
+            <param name="item"></param>
+        </member>
+        <member name="M:FlexRule.IActiveElementExecutor.ChangeInnerSibilingExecutionMode(FlexRule.ActiveElement,FlexRule.ExecutionBehaviourMode,FlexRule.ActiveElement[])">
+            <summary>
+            Change state of all sibling to a specific mode while considers an exception
+            </summary>
+            <param name="mode">Sets execution behaviour for <paramref name="item"/></param>
+            <param name="but">Exception to not change these elements</param>
+            <param name="item"></param>
+        </member>
+        <member name="M:FlexRule.IActiveElementExecutor.OnExecuting(FlexRule.ActiveElement)">
+            <summary>
+            Signals to raise <see cref="E:FlexRule.IActiveElementExecutor.Executing"/> event
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:FlexRule.IActiveElementExecutor.OnExecuted(FlexRule.ActiveElement)">
+            <summary>
+            Signals to raise <see cref="E:FlexRule.IActiveElementExecutor.Executed"/> event
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:FlexRule.IActiveElementExecutor.OnItemTracing(FlexRule.ActiveElement)">
+            <summary>
+            Signals to raise <see cref="E:FlexRule.IActiveElementExecutor.ItemTracing"/> event
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:FlexRule.IActiveElementExecutor.OnItemOutOfScope(FlexRule.ActiveElement)">
+            <summary>
+            Signals to raise <see cref="E:FlexRule.IActiveElementExecutor.ItemOutOfScope"/> event
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:FlexRule.IActiveElementExecutor.OnEngineCreated(FlexRule.ActiveElementEngine,FlexRule.ActiveElement,FlexRule.IActiveElementExecutionContextProvider)">
+            <summary>
+            Signals the executor that new engine has created during execution under this executor
+            </summary>
+            <param name="engine"></param>
+            <param name="item">Active element that causes new engine creation</param>
+            <param name="contextProvider">context provider of parent executor i.e. <paramref name="item"/></param>
+        </member>
+        <member name="P:FlexRule.IActiveElementExecutor.ContextProvider">
+            <summary>
+            Provides access to execution context
+            </summary>
+        </member>
+        <member name="P:FlexRule.IActiveElementExecutor.Cancel">
+            <summary>
+            True to cancel the executor, otherwise is false as default
+            </summary>
+        </member>
+        <member name="P:FlexRule.IActiveElementExecutor.CancelReason">
+            <summary>
+            Reason for canceling the engine
+            </summary>
+        </member>
+        <member name="P:FlexRule.IActiveElementExecutor.Setup">
+            <summary>
+            Executor setup information
+            </summary>
+        </member>
+        <member name="E:FlexRule.IActiveElementExecutor.Executing">
+            <summary>
+            Before executing 
+            </summary>
+        </member>
+        <member name="E:FlexRule.IActiveElementExecutor.Executed">
+            <summary>
+            When execution has finished
+            </summary>
+        </member>
+        <member name="E:FlexRule.IActiveElementExecutor.ItemOutOfScope">
+            <summary>
+            When execution path goes out of an element
+            </summary>
+        </member>
+        <member name="E:FlexRule.IActiveElementExecutor.ItemTracing">
+            <summary>
+            Happens for all active elements during the execution
+            </summary>
+        </member>
+        <member name="E:FlexRule.IActiveElementExecutor.EngineCreated">
+            <summary>
+            When a new engine is created during execution of an <see cref="T:FlexRule.ActiveElement"/> 
+            </summary>
+        </member>
+        <member name="T:FlexRule.ILifeCycleManager">
+            <summary>
+            This manages lifecycle of <see cref="T:FlexRule.ActiveElement"/>s.
+            </summary>
+        </member>
+        <member name="M:FlexRule.ILifeCycleManager.RegisterCleanup(FlexRule.ActiveElement)">
+            <summary>
+            Registers a cleanup routine
+            </summary>
+        </member>
+        <member name="M:FlexRule.ILifeCycleManager.CallCleanups">
+            <summary>
+            Calls all the registered cleanup routines
+            </summary>
+        </member>
+        <member name="M:FlexRule.ActiveElementExecutorBase.ExecuteAllChilds(FlexRule.ActiveElement)">
+            <summary>
+            Execute the active element item
+            </summary>
+            <returns>Execution of an element can return value if required</returns>
+        </member>
+        <member name="M:FlexRule.ActiveElementExecutorBase.ChangeInnerAllChildsExecutionMode(FlexRule.ActiveElement,FlexRule.ExecutionBehaviourMode,FlexRule.ActiveElement[])">
+            <summary>
+            Changes all the child hierarchy execution behaviour mode.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:FlexRule.ActiveElementExecutorBase.ChangeInnerSibilingExecutionMode(FlexRule.ActiveElement,FlexRule.ExecutionBehaviourMode,FlexRule.ActiveElement[])" -->
+        <member name="T:FlexRule.ActiveElementUtility">
+            <summary>
+            Helper class to read values from an <see cref="T:FlexRule.ActiveElement"/>
+            Sometimes value provided in the parameter of a model element has to be considered as a reference and sometimes it is the value itself.
+            This class helps to resolve this situation.
+            </summary>
+        </member>
+        <member name="M:FlexRule.ActiveElementUtility.HasActiveElement(FlexRule.ActiveElement,System.Type)">
+            <summary>
+            Check if there is a child active element of a specific type
+            </summary>
+        </member>
+        <member name="M:FlexRule.ActiveElementUtility.FindFirstActiveElement(FlexRule.ActiveElement,System.String)">
+            <summary>
+            Finds the first active element child that has the provided command name
+            </summary>
+            <param name="element"></param>
+            <param name="commandName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.ActiveElementUtility.GetValueOfAttributeOrVariable(FlexRule.ActiveElement,System.String,FlexRule.IVariableContainer)">
+            <summary>
+            Get the value from model`s parameters. If that value is a name of variable if the provided container it resolve the result with the container.
+            </summary>
+        </member>
+        <member name="M:FlexRule.ActiveElementUtility.GetValueOfAttributeOrRef(FlexRule.ActiveElement,System.String,FlexRule.Core.Model.IElementModelParameterCollection,FlexRule.IVariableContainer)">
+            <summary>
+            Get the value from model`s parameters. If that value is a name of variable if the provided container it resolve the result with the container. Also it checks the container for '-ref' post fix of the attribute name.
+            </summary>
+        </member>
+        <member name="M:FlexRule.ActiveElementUtility.GetValueOfAttributeOrRef(FlexRule.ActiveElement,System.String,FlexRule.Core.Model.IElementModelParameterCollection,FlexRule.IVariableContainer,System.Boolean,System.Boolean)">
+            <summary>
+            Get the value from model`s parameters. If that value is a name of variable if the provided container it resolve the result with the container. Also it checks the container for '-ref' post fix of the attribute name.
+            </summary>
+        </member>
+        <member name="M:FlexRule.ActiveElementUtility.GetValueOfAttributeOrRef(FlexRule.ActiveElement,System.String,System.String,FlexRule.Core.Model.IElementModelParameterCollection,FlexRule.IVariableContainer,System.Boolean,System.Boolean)">
+            <summary>
+            Get the value from model`s parameters. If that value is a name of variable if the provided container it resolve the result with the container. Also it checks the container for '-ref' post fix of the attribute name.
+            </summary>
+        </member>
+        <member name="T:FlexRule.IContextSession">
+            <summary>
+            This is a session interface that allows <see cref="T:FlexRule.ActiveElement"/>s share information with other during execution.
+            </summary>
+        </member>
+        <member name="M:FlexRule.IContextSession.GetKeys">
+            <summary>
+            Returns list of sessions` key
+            </summary>
+        </member>
+        <member name="M:FlexRule.IContextSession.GetValue(System.Object)">
+            <summary>
+            Retrieves a value of a key
+            </summary>
+        </member>
+        <member name="M:FlexRule.IContextSession.Exists(System.Object)">
+            <summary>
+            If key exists returns true, otherwise false
+            </summary>
+        </member>
+        <member name="M:FlexRule.IContextSession.Remove(System.Object)">
+            <summary>
+            Removes a session using key
+            </summary>
+        </member>
+        <member name="M:FlexRule.IContextSession.Clear">
+            <summary>
+            Clears all keys in the current session 
+            </summary>
+        </member>
+        <member name="P:FlexRule.IContextSession.Count">
+            <summary>
+            Total numbers of stored session
+            </summary>
+        </member>
+        <member name="P:FlexRule.IContextSession.Item(System.Object)">
+            <summary>
+            Returns value of a key
+            </summary>
+        </member>
+        <member name="T:FlexRule.ElementModelUtility">
+            <summary>
+            Provides utilities for the logic model
+            </summary>
+        </member>
+        <member name="M:FlexRule.ElementModelUtility.GetParameterValue``1(FlexRule.Core.Model.IElementModel,System.String,System.String,``0)">
+            <summary>
+            Reads the parameter's value based on a specific expected type
+            </summary>
+            <typeparam name="TExpectedType"></typeparam>
+            <param name="model"></param>
+            <param name="parameterName"></param>
+            <param name="firstChildLookupName"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.ElementModelUtility.IsInHierarchy(FlexRule.Core.Model.IElementModel,System.String)">
+            <summary>
+            Checks if the model happens inside the command name
+            </summary>
+            <param name="model">The model that is inside the command</param>
+            <param name="parentCommandName">Parent name to check</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.ElementModelUtility.GetRoot(FlexRule.Core.Model.IElementModel)">
+            <summary>
+            Find Root element of a model
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.ElementModelUtility.GetIndex(FlexRule.Core.Model.IElementModel)">
+            <summary>
+            Gets the index of this model on the parent. When parent is null, returns -1
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.ElementModelUtility.GetLogic(FlexRule.Core.Model.IElementModel)">
+            <summary>
+            When Validation document, it find Logic element of a model. Otherwise null.
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.ElementModelUtility.HasChildOf(FlexRule.Core.Model.IElementModel,System.String)">
+            <summary>
+            Checks if the model has any child name as <paramref name="childCommandName"/>
+            </summary>
+            <param name="model">Parent to check for the child name</param>
+            <param name="childCommandName">Child name command to be checked inside the parent</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.ElementModelUtility.IndexOf(FlexRule.Core.Model.IElementModel,System.String)">
+            <summary>
+            Checks if the model has any child name as <paramref name="childCommandName"/>
+            </summary>
+            <param name="model">Parent to check for the child name</param>
+            <param name="childCommandName">Child name command to be checked inside the parent</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.ElementModelUtility.SameAs(FlexRule.Core.Model.IElementModel,FlexRule.Core.Model.IElementModel)">
+            <summary>
+            Checks if both provided model are the same
+            </summary>
+            <param name="model1"></param>
+            <param name="model2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.ElementModelUtility.GetValueOfAttributeOrVariable(FlexRule.Core.Model.IElementModel,System.String,FlexRule.IVariableContainer)">
+            <summary>
+            Find the value from model`s parameters. If that value is a name of variable if the provided container it resolve the result with the container.
+            </summary>
+        </member>
+        <member name="M:FlexRule.ElementModelUtility.ToXml(FlexRule.Core.Model.IElementModel,System.Boolean,System.Boolean)">
+            <summary>
+            Transform <see cref="T:FlexRule.Core.Model.IElementModel"/> to its XML presentation
+            </summary>
+            <param name="node"></param>
+            <param name="formatXml"></param>
+            <param name="addLineNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.ExecutionBehaviourMode">
+            <summary>
+            The behaviour of element during execution process
+            </summary>
+        </member>
+        <member name="T:FlexRule.ExecutionContextInfo">
+            <summary>
+            Provides information related to the context at runtime
+            </summary>
+            <remarks>
+            An instance of this object is available on logic execution by referring $context in expressions
+            </remarks>
+        </member>
+        <member name="P:FlexRule.ExecutionContextInfo.History">
+            <summary>
+            History of Flow execution
+            </summary>
+        </member>
+        <member name="P:FlexRule.ExecutionContextInfo.VariableContainer">
+            <summary>
+            Holds current <see cref="T:FlexRule.IVariableContainer"/> on the execution context
+            </summary>
+        </member>
+        <member name="P:FlexRule.ExecutionContextInfo.DecisionName">
+            <summary>
+            Refers to the document name which is defined at the top level of each document
+            </summary>
+        </member>
+        <member name="P:FlexRule.ExecutionContextInfo.DocumentName">
+            <summary>
+            Refers to the document name which is defined at the top level of each document
+            </summary>
+        </member>
+        <member name="P:FlexRule.ExecutionContextInfo.LogicName">
+            <summary>
+            Refers to the logic (rule) name while executing Decision Table, Natural Language or Validation logic
+            </summary>
+        </member>
+        <member name="P:FlexRule.ExecutionContextInfo.Exception">
+            <summary>
+            Holds the execution exception on flow execution
+            </summary>
+        </member>
+        <member name="P:FlexRule.ExecutionContextInfo.NotificationManager">
+            <summary>
+            Holds current <see cref="T:FlexRule.Notifications.INotificationSetManager"/> on the execution context
+            </summary>
+        </member>
+        <member name="P:FlexRule.ExecutionContextInfo.WorkflowInstanceId">
+            <summary>
+            Workflow instance id that represents a record in a durable storage
+            </summary>
+        </member>
+        <member name="P:FlexRule.ExecutionContextInfo.Outcome">
+            <summary>
+            The outcome of a completed task
+            </summary>
+        </member>
+        <member name="T:FlexRule.ExecutionContextProviderDefault">
+            <summary>
+            Default implementation of execution context provider.
+            </summary>
+        </member>
+        <member name="T:FlexRule.IActiveElementExecutionContextProvider">
+            <summary>
+            It provides an access to execution related information for read and write data related to processing each individual request to the engine.
+            </summary>
+        </member>
+        <member name="T:FlexRule.IActiveElementExecutionBehaviourSession">
+            <summary>
+            Each <see cref="T:FlexRule.ActiveElement"/> if it is an executable item <see cref="T:FlexRule.IElementExecutableItem"/> , behaviour setting will be managed by this interface during execution.
+            </summary>
+        </member>
+        <member name="M:FlexRule.IActiveElementExecutionBehaviourSession.SetExecutionBehaviour(FlexRule.IElementExecutableItem,FlexRule.ExecutionBehaviourMode)">
+            <summary>
+            Set execution mode for an executable item
+            </summary>
+        </member>
+        <member name="M:FlexRule.IActiveElementExecutionBehaviourSession.GetExecutionBehaviour(FlexRule.IElementExecutableItem)">
+            <summary>
+            Find execution mode for an executable item
+            </summary>
+        </member>
+        <member name="P:FlexRule.IActiveElementExecutionContextProvider.Notifications">
+            <summary>
+            Notification collection manager
+            </summary>
+        </member>
+        <member name="P:FlexRule.IActiveElementExecutionContextProvider.Context">
+            <summary>
+            Execution context for <see cref="T:FlexRule.ActiveElement"/>s
+            </summary>
+        </member>
+        <member name="P:FlexRule.IActiveElementExecutionContextProvider.Session">
+            <summary>
+            CorrelationId for information sharing between <see cref="T:FlexRule.ActiveElement"/>s
+            </summary>
+        </member>
+        <member name="P:FlexRule.ExecutionContextProviderDefault.Notifications">
+            <summary>
+            Returns manager for notification set 
+            </summary>
+        </member>
+        <member name="T:FlexRule.ExecutorSetupInformation">
+            <summary>
+            Configuration information for an engine's executor
+            </summary>
+        </member>
+        <member name="M:FlexRule.ExecutorSetupInformation.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:FlexRule.ExecutorSetupInformation.AddAssemblyPrivateLocation(System.String)">
+            <summary>
+            Adds a path to list of directories that are probed for private assemblies.
+            </summary>
+            <remarks>
+            When an assembly is being loaded, if it cannot be found in the current directory this list is used.
+            </remarks>
+            <param name="path"></param>
+        </member>
+        <member name="P:FlexRule.ExecutorSetupInformation.TypeSafe">
+            <summary>
+            Checks for the type of input and output parameters.
+            </summary>
+        </member>
+        <member name="P:FlexRule.ExecutorSetupInformation.MultilingualMessages">
+            <summary>
+            Repository that stores message templates for different languages and will be used for translation of messages during execution
+            </summary>
+        </member>
+        <member name="P:FlexRule.ExecutorSetupInformation.TypeIdRegistry">
+            <summary>
+            TypeId registry to define identifier for types
+            </summary>
+            <remarks>
+            When a typeId is registered for a type, in runtime rules can use simplified typeId instead of full type name.
+            </remarks>
+        </member>
+        <member name="P:FlexRule.ExecutorSetupInformation.ReferenceRules">
+            <summary>
+            Reference RuleSet in the current executor and engine
+            </summary>
+        </member>
+        <member name="P:FlexRule.ExecutorSetupInformation.RootFolder">
+            <summary>
+            Base location to be used to root location to load models
+            </summary>
+        </member>
+        <member name="P:FlexRule.ExecutorSetupInformation.PrivateBinPaths">
+            <summary>
+            List of directories that are probed for private assemblies.
+            </summary>
+        </member>
+        <member name="P:FlexRule.ExecutorSetupInformation.EvalCacheContextName">
+            <summary>
+            Name that is used for caching the compiled expression (<seealso cref="T:FlexRule.DynamicEvaluation.ICompiledExpression"/>)
+            </summary>
+        </member>
+        <member name="P:FlexRule.ExecutorSetupInformation.RetainLocalParameters">
+            <summary>
+            By default all the local parameters will be removed from context, you can manage this behaviour by this
+            </summary>
+        </member>
+        <member name="P:FlexRule.ExecutorSetupInformation.CompileExpression">
+            <summary>
+            True to Cache the expression otherwise false
+            </summary>
+        </member>
+        <member name="T:FlexRule.IActiveElementCleanup">
+            <summary>
+            Cleanup will be called after execution is finished by engine
+            </summary>
+        </member>
+        <member name="T:FlexRule.IActiveElementLifecycle">
+            <summary>
+            Provides lifecycle definition to <see cref="T:FlexRule.ActiveElement"/>s
+            </summary>
+        </member>
+        <member name="M:FlexRule.IActiveElementCleanup.Cleanup(FlexRule.IActiveElementExecutionContextProvider)">
+            <summary>
+            Performs a cleanup routine
+            </summary>
+            <param name="contextProvider"></param>
+        </member>
+        <member name="P:FlexRule.IActiveElementCleanup.HasCleanup">
+            <summary>
+            True if the active element provide a cleanup routine
+            </summary>
+        </member>
+        <member name="T:FlexRule.IChildNavigator`1">
+            <summary>
+            Navigator manager that allows to navigate on nodes
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:FlexRule.IChildNavigator`1.Parent">
+            <summary>
+            Parent of active element
+            </summary>
+        </member>
+        <member name="P:FlexRule.IChildNavigator`1.HasChildren">
+            <summary>
+            True if there is any child, otherwise false.
+            </summary>
+        </member>
+        <member name="P:FlexRule.IChildNavigator`1.FirstChild">
+            <summary>
+            Returns the first child
+            </summary>
+        </member>
+        <member name="P:FlexRule.IChildNavigator`1.NextSibling">
+            <summary>
+            Returns the next sibling 
+            </summary>
+        </member>
+        <member name="P:FlexRule.IChildNavigator`1.PrevSibling">
+            <summary>
+            Returns previous sibling
+            </summary>
+        </member>
+        <member name="P:FlexRule.IChildNavigator`1.LastChild">
+            <summary>
+            Returns last child
+            </summary>
+        </member>
+        <member name="P:FlexRule.IChildNavigator`1.HasParent">
+            <summary>
+            True if has parent, otherwise false
+            </summary>
+        </member>
+        <member name="T:FlexRule.IRootActiveElement">
+            <summary>
+            Defines the root hierarchy of <see cref="T:FlexRule.ActiveElement"/>s that they are participating in execution of a logic.
+            The root usually need to prepare context or reset existing context
+            </summary>
+        </member>
+        <member name="M:FlexRule.IRootActiveElement.Prepare(FlexRule.IActiveElementExecutionContextProvider,FlexRule.ExecutorSetupInformation)">
+            <summary>
+            Any pre- execution routines can be implemented here
+            </summary>
+        </member>
+        <member name="M:FlexRule.IRootActiveElement.Reset(FlexRule.IActiveElementExecutionContextProvider)">
+            <summary>
+            Resets the active element to its initial state
+            </summary>
+        </member>
+        <member name="T:FlexRule.ITypeIdentifierRegistry">
+            <summary>
+            Registers a type to be addressed by a TypeId as an identifier
+            </summary>
+        </member>
+        <member name="M:FlexRule.ITypeIdentifierRegistry.Register(System.String,System.Type)">
+            <summary>
+            Register a Type 
+            </summary>
+            <param name="typeId"></param>
+            <param name="type"></param>
+        </member>
+        <member name="M:FlexRule.ITypeIdentifierRegistry.Register(System.String,System.String,System.String)">
+            <summary>
+            Register a TypeAddress
+            </summary>
+            <param name="typeId"></param>
+            <param name="assemblyName"></param>
+            <param name="typeName"></param>
+        </member>
+        <member name="M:FlexRule.ITypeIdentifierRegistry.Register(System.String,FlexRule.TypeLoader.ITypeAddress)">
+            <summary>
+            Register a Type 
+            </summary>
+            <param name="typeId"></param>
+            <param name="typeAddress"></param>
+        </member>
+        <member name="M:FlexRule.ITypeIdentifierRegistry.GetType(System.String)">
+            <summary>
+            Retrieves the type from typeId
+            </summary>
+            <param name="typeId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.ITypeIdentifierRegistryManager">
+            <summary>
+            Retrieves the type id manager
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.FolderRuleSetAdapter.CalculateRelative(System.String)">
+            <summary>
+            converts d:\a\b\c\d\ to /c/d when base is d:\a\b\
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Core.Model.RuleSetFactory">
+            <summary>
+            Creates RuleSet based on different input type
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.RuleSetFactory.FromRuleFiles(System.IO.DirectoryInfo)">
+            <summary>
+            Creates a RuleSet with relative path and filename based addressing
+            </summary>
+            <param name="di"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.RuleSetFactory.FromRuleFiles(System.Collections.Generic.IEnumerable{FlexRule.Core.Model.RuleSetFactory.RuleFile})">
+            <summary>
+            Creates a RuleSet with relative path and filename based addressing
+            </summary>
+            <param name="files"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.RuleSetFactory.FromZipPackage(System.IO.Stream)">
+            <summary>
+            Creates a <see cref="T:FlexRule.Core.Model.IRuleSet"/> from a zip package content
+            </summary>
+            <param name="streamPackage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.RuleSetFactory.FromDirectory(System.IO.DirectoryInfo,System.Boolean)">
+            <summary>
+            Creates a <see cref="T:FlexRule.Core.Model.IRuleSet"/> from a folder structure
+            </summary>
+            <param name="directory"></param>
+            <param name="includeRoot">When true, the provided <paramref name="directory"/> will not be a root of <see cref="T:FlexRule.Core.Model.IRuleSet"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.RuleSetFactory.FromDirectory(System.IO.DirectoryInfo,System.Func{System.IO.FileInfo,System.Boolean},System.Boolean)">
+            <summary>
+            Creates a <see cref="T:FlexRule.Core.Model.IRuleSet"/> from a folder structure
+            </summary>
+            <param name="directory"></param>
+            <param name="exclusionFunc">Logic to determine if a file is excluded from <see cref="T:FlexRule.Core.Model.IRuleSet"/></param>
+            <param name="includeRoot">When true, the provided <paramref name="directory"/> will not be a root of <see cref="T:FlexRule.Core.Model.IRuleSet"/></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Core.Model.RuleSetFactory.RuleFile">
+            <summary>
+            Presents a logic file that is part of a ruleset
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.RuleSetFactory.RuleFile.Path">
+            <summary>
+            Relative path of a file
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.RuleSetFactory.RuleFile.Content">
+            <summary>
+            Binary content of a file
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.RuleSetFactory.RuleFile.Title">
+            <summary>
+            title i.e. name of a file 
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.RuleSetFactory.RuleFile.Extension">
+            <summary>
+            Extension of the file
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.Query.ISectionNode">
+            <summary>
+            Section on each <see cref="T:FlexRule.Core.Model.Query.NestedQueryableSetBase"/>
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.Query.ISectionNode.Models">
+            <summary>
+            Modes on the node section
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.Query.ISectionNode.Parent">
+            <summary>
+            Parent of section that holds all the children
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.Query.ISectionNode.Name">
+            <summary>
+            Name of node
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.Query.ISectionNode.Childs">
+            <summary>
+            Children of node
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.Query.NestedQueryableSetBase">
+            <summary>
+            Base implementation of queryable set that provides addition and query functionality of an array of <see cref="T:FlexRule.Core.Model.IElementModel"/>
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.Query.IQueryableSet">
+            <summary>
+            A set or element to that can be queried
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.Query.IQueryableSet.Select(System.String)">
+            <summary>
+            Selects an element by query
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Core.Model.Query.IQueryableSetManager">
+            <summary>
+            MAnager to add a set of queryable
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.Query.IQueryableSetManager.Add(System.String,FlexRule.Core.Model.IModelAccess)">
+            <summary>
+            Adds a model container as part of the match query
+            </summary>
+            <param name="query">Query can be a section name or nested addressing for internal hierarchy of other containers</param>
+            <param name="models"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.Query.NestedQueryableSetBase.Add(System.String,FlexRule.Core.Model.IModelAccess)">
+            <summary>
+            Adds a model container to a specific parent container found by query
+            </summary>
+            <param name="query">Query has this format: root/node1/node2/nodeN</param>
+            <param name="models"></param>
+        </member>
+        <member name="T:FlexRule.Core.Model.IModelContainer">
+            <summary>
+            Model Container that stores models and groups them in logical sections
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.IModelAccess">
+            <summary>
+            <see cref="T:FlexRule.Core.Model.ModelContainer"/> implements this interface in order to provide access to its stored models
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.IModelAccess.GetSectionName(System.Int32)">
+            <summary>
+            Returns name of section by its index
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.IModelAccess.GetSections">
+            <summary>
+            Find package section list
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.IModelAccess.GetElementModels(System.String)">
+            <summary>
+            Retrieve all IElementModel of package by section name
+            </summary>
+            <param name="sectionName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.IModelAccess.GetElementModels(System.Int32)">
+            <summary>
+            Retrieves all IElementModel by section index 
+            </summary>
+            <param name="sectionIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.IModelAccess.GetElementModels">
+            <summary>
+            Retrieves all the IElementModel regardless of section grouping
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.Core.Model.IModelAccess.Count">
+            <summary>
+            Number of sections
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.IModelContainer.AddSection(System.String)">
+            <summary>
+            Adds a section to container
+            </summary>
+            <param name="sectionName"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.IModelContainer.Exist(System.String)">
+            <summary>
+            Checks the existence of a section
+            </summary>
+            <param name="sectionName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.IModelContainer.AddModel(FlexRule.Core.Model.IElementModel)">
+            <summary>
+            Adds a model to default section
+            </summary>
+            <param name="model"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.IModelContainer.AddModel(System.String,FlexRule.Core.Model.IElementModel)">
+            <summary>
+            Adds a model to a specific section
+            </summary>
+            <param name="section"></param>
+            <param name="model"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.IModelContainer.AddModel(System.String,System.Collections.Generic.IEnumerable{FlexRule.Core.Model.IElementModel})">
+            <summary>
+            Adds models to a specific section
+            </summary>
+            <param name="section"></param>
+            <param name="models"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.IModelContainer.RemoveAll">
+            <summary>
+            Clears all sections
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.IModelContainer.RemoveModel(System.String,System.Int32)">
+            <summary>
+            Remove a specific item from a section
+            </summary>
+            <param name="sectionName"></param>
+            <param name="index"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.IModelContainer.ClearSection(System.String)">
+            <summary>
+            Clears models on a section
+            </summary>
+            <param name="sectionName"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.IModelContainer.RemoveSection(System.String)">
+            <summary>
+            Deletes a section
+            </summary>
+            <param name="sectionName"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.IModelContainer.Rename(System.String,System.String)">
+            <summary>
+            Renames a section
+            </summary>
+            <param name="sectionName"></param>
+            <param name="newName"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.IModelContainer.CountModels(System.Int32)">
+            <summary>
+            Counts elements of a specific section
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.IModelContainer.CountModels(System.String)">
+            <summary>
+            Counts elements of a specific section
+            </summary>
+            <param name="sectionName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Core.Model.SourceConnections.FtpSourceConnection">
+            <summary>
+            Reads data from ftp address.
+            <example>http://www.flexrule.com/samples/rules/getage.xml</example>
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.SourceConnections.ISourceConnection">
+            <summary>
+            An interface to a stream of data source is required to read a model.
+            This interface would give the functionality to access to a source of a model
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.SourceConnections.ISourceConnection.Open">
+            <summary>
+            Opens a link to a physical location
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.SourceConnections.ISourceConnection.ReadSource">
+            <summary>
+            Retrieve a stream to read a model
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.SourceConnections.ISourceConnection.Close">
+            <summary>
+            Close the stream and cleans up the resources
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.SourceConnections.WebSourceConnection">
+            <summary>
+            Reads data from web address.
+            <example>http://www.flexrule.com/samples/rules/getage.xml</example>
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.ElementModelBuilder">
+            <summary>
+            Base class to implement model builder. To create an <see cref="T:FlexRule.Core.Model.IElementModel"/> instance programmatically this builder needs to be derived with your specific command builder.
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.ElementModelBuilder.Parameter(System.String,System.String)">
+            <summary>
+            Adds parameter with a name and value
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.ElementModelBuilder.CreateParameterCollection">
+            <summary>
+            Creates the parameters as a dictionary
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.ElementModelBuilder.AppendBuilder(FlexRule.Core.Model.ElementModelBuilder)">
+            <summary>
+            Appends another builder into current one when a hierarchy of commands is required
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.ElementModelBuilder.AppendBuilder``1(FlexRule.Core.Model.ElementModelBuilder)">
+            <summary>
+            Appends a typed builder <seealso cref="M:FlexRule.Core.Model.ElementModelBuilder.AppendBuilder(FlexRule.Core.Model.ElementModelBuilder)"/>
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.ElementModelBuilder.Build">
+            <summary>
+            Creates an array of <see cref="T:FlexRule.Core.Model.IElementModel"/>
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.ElementModelBuilder.CommandName">
+            <summary>
+            Main command name of the builder
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.IElementModel">
+            <summary>
+            IElementModel is a source for active elements.
+            Combination of this interface would model the required logic and rule. This type is the fundamental part of modeling rules and logic of the system.
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.IElementModel.CreateSelector">
+            <summary>
+            Creates a model selector to look into the current element model
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.IElementModel.SourceInfo">
+            <summary>
+            Line information for this element
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.IElementModel.Name">
+            <summary>
+            Name of the element model that always exists
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.IElementModel.Text">
+            <summary>
+            Text of the element model that may not exist
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.IElementModel.Childs">
+            <summary>
+            All children of the element
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.IElementModel.Parameters">
+            <summary>
+            All parameters of a element
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.IElementModel.Navigator">
+            <summary>
+            Provides navigator for detail navigation inside the element
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.IElementModelSelector">
+            <summary>
+            This provides the functionality to select a particular element in a model to bring searching mechanisms to model
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.IElementModelSelector.ClearSelect">
+            <summary>
+            Clears all the found items
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.IElementModelSelector.SelectAllChilds(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Returns an array of elements by name and criteria 
+            </summary>
+            <param name="name">Name of the element to select</param>
+            <param name="parameters">Parameters of element to be matched</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.IElementModelSelector.SelectAllChilds(System.String)">
+            <summary>
+            Returns an array of element based on name
+            </summary>
+            <param name="name">Name of element to select</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.IElementModelSelector.SelectFirstChild(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Select first element matching with criteria
+            </summary>
+            <param name="parameters">Element`s parameters to be matched</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.IElementModelSelector.SelectFirstChild(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Selects first element name and by criteria
+            </summary>
+            <param name="name">Name of element</param>
+            <param name="parameters">Element`s parameters to be matched</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.IElementModelSelector.SelectFirstChild(System.String)">
+            <summary>
+            Selects first element by name
+            </summary>
+            <param name="name">Name of element</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.IElementModelSelector.SelectNextChild(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Select next element by criteria
+            </summary>
+            <param name="parameters">Element`s parameters to be matched</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.IElementModelSelector.SelectNextChild(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Selects next element by name and criteria
+            </summary>
+            <param name="name">Name of element</param>
+            <param name="parameters">Element`s parameters to be matched</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.IElementModelSelector.SelectNextChild(System.String)">
+            <summary>
+            Selects next element by name
+            </summary>
+            <param name="name">Name of element</param>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.Core.Model.IElementModelSelector.Selected">
+            <summary>
+            Select item based on SelectXXX method
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.LoadAdapterUtility">
+            <summary>
+            This utility class simplifies reading the rule and creating the model from provided source
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.LoadAdapterUtility.LoadModel(System.String)">
+            <summary>
+            Loads a related model from a file address
+            </summary>
+            <param name="ruleUri"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.LoadAdapterUtility.LoadModel(System.Byte[])">
+            <summary>
+            Loads a related model from a content
+            </summary>
+            <param name="ruleContent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.LoadAdapterUtility.LoadNavigableSource(System.String,System.String,System.String,System.String)">
+            <summary>
+            Creates a model from a navigable source (e.g. Xml or S-Expression)
+            </summary>
+            <param name="ruleUri">File system path, http or ftp address</param>
+            <param name="sectionName">When not provided default section will be used. i.e. SECTION0</param>
+            <param name="user"></param>
+            <param name="userPassword"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.LoadAdapterUtility.FillNavigableSource(FlexRule.Core.Model.ModelContainer,System.String,System.String,System.String,System.String)">
+            <summary>
+            Creates a model from a navigable source (e.g. Xml or S-Expression) and loads it into a container
+            </summary>
+            <param name="container">The model container to load the model into</param>
+            <param name="ruleUri">File system path, http or ftp address</param>
+            <param name="sectionName">When not provided default section will be used. i.e. SECTION0</param>
+            <param name="user"></param>
+            <param name="userPassword"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.LoadAdapterUtility.LoadNavigableSource(System.Byte[],System.String)">
+            <summary>
+            Creates a model from a navigable source (e.g. Xml or S-Expression) loaded into an array of bytes
+            </summary>
+            <param name="ruleContent"></param>
+            <param name="sectionName">When not provided default section will be used. i.e. SECTION0</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.LoadAdapterUtility.FillNavigableSource(FlexRule.Core.Model.ModelContainer,System.Byte[],System.String)">
+            <summary>
+            Creates a model from a binary of navigable source (e.g. Xml or S-Expression) and loads it into a container
+            </summary>
+            <param name="modelContainer"></param>
+            <param name="ruleContent"></param>
+            <param name="sectionName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Core.Model.LoadAdapter">
+            <summary>
+            Base class a every loader
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.LoadAdapter.Load(FlexRule.Core.Model.ModelContainer)">
+            <summary>
+            Loads models into default section of a container
+            </summary>
+            <param name="mc"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.LoadAdapter.Load(FlexRule.Core.Model.ModelContainer,System.String)">
+            <summary>
+            Loads model into a section of a container
+            </summary>
+            <param name="mc"></param>
+            <param name="section"></param>
+        </member>
+        <member name="T:FlexRule.Core.Model.ISourceNavigatorProvider">
+            <summary>
+            Provides a ISourceNavigator
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Languages.Xml.XmlSourceProvider">
+            <summary>
+            Source adapter with two undefined data access to source of the model and its certificate
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.SourceNavigatorProvider">
+            <summary>
+            The base adapter that connects engine to a source
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.SourceNavigatorProvider.GetNavigator">
+            <summary>
+            Returns source navigator
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:FlexRule.Core.Languages.Xml.XmlSourceProvider.XmlFileExtension">
+            <summary>
+            Default file extension
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Languages.Xml.XmlSourceProvider.#ctor(FlexRule.Core.Model.SourceConnections.ISourceConnection,System.String)">
+            <summary>
+            Creates a XML navigator source provider
+            </summary>
+            <param name="connection"></param>
+            <param name="sourceUri">Source address reference that the <paramref name="connection"/> is created from.</param>
+        </member>
+        <member name="M:FlexRule.Core.Languages.Xml.XmlSourceProvider.#ctor(FlexRule.Core.Model.SourceConnections.ISourceConnection,FlexRule.Core.Model.ISourceNavigator)">
+            <summary>
+            Creates a navigable source provider
+            </summary>
+            <param name="connection"></param>
+            <param name="navigator">DSL custom source navigator</param>
+        </member>
+        <member name="T:FlexRule.Core.Model.SourceConnections.LocalFileSourceConnection">
+            <summary>
+            Reads data from local file
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.SourceConnections.InMemorySourceConnection">
+            <summary>
+            Reads data from memory
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.SourceConnections.SourceConnectionBuilderRegistry">
+            <summary>
+            Protocol registry for providing different <see cref="T:FlexRule.Core.Model.SourceConnections.ISourceConnection"/>s
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.SourceConnections.SourceConnectionBuilderRegistry.RegisterProtocol(System.String,System.Type)">
+            <summary>
+            Registers a protocol for an ISourceConnection
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.SourceConnections.SourceConnectionBuilderRegistry.ListProtocols">
+            <summary>
+            Lists all the available protocols
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Core.Model.SourceConnections.ConnectionToken">
+            <summary>
+            Token to instantiate a connection 
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.SourceConnections.ConnectionToken.#ctor(System.Uri)">
+            <summary>
+            Creates connection token using a url
+            </summary>
+            <param name="url"></param>
+        </member>
+        <member name="P:FlexRule.Core.Model.SourceConnections.ConnectionToken.Address">
+            <summary>
+            Address of the source
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.SourceConnections.SourceConnectionBuilder">
+            <summary>
+            Source connection builder that creates the ISourceConnection creation process
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.SourceConnections.SourceConnectionBuilder.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.SourceConnections.SourceConnectionBuilder.#ctor(System.Uri)">
+            <summary>
+            
+            </summary>
+            <param name="baseUri"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.SourceConnections.SourceConnectionBuilder.AddNetworkCredential(System.String,System.String)">
+            <summary>
+            Add network credential to access the physical rule definition
+            </summary>
+            <param name="user"></param>
+            <param name="pw"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.SourceConnections.SourceConnectionBuilder.Build(System.String)">
+            <summary>
+            Creates an ISourceConnection
+            </summary>
+            <param name="sourceAddress">can be address to http, ftp or local file</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.SourceConnections.SourceConnectionBuilder.Build(System.Uri)">
+            <summary>
+            Creates an ISourceConnection
+            </summary>
+            <param name="sourceUri">can be http, ftp or file protocol</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.SourceConnections.SourceConnectionBuilder.Build(System.Byte[])">
+            <summary>
+            Creates an ISourceConnection
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.SourceConnections.SourceConnectionBuilder.BuildLocalFile(System.String)">
+            <summary>
+            Creates connection for a local file
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.SourceConnections.SourceConnectionBuilder.BuildMemory(System.Byte[])">
+            <summary>
+            Creates connection for memory address
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Core.Model.SourceConnections.SourceConnectionReader">
+            <summary>
+            Reads a source connection as a byte array
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.SourceConnections.SourceConnectionReader.#ctor(FlexRule.Core.Model.SourceConnections.ISourceConnection)">
+            <summary>
+            
+            </summary>
+            <param name="cnn"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.SourceConnections.SourceConnectionReader.ReadAllBytes">
+            <summary>
+            Reads all the stream and returns the content as a byte array
+            </summary>
+            <returns>null if exception happens</returns>
+        </member>
+        <member name="T:FlexRule.Core.Model.IElementModelParameter">
+            <summary>
+            Parameter of a <see cref="T:FlexRule.Core.Model.IElementModel"/>
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.IElementModelParameter.Name">
+            <summary>
+            Name of parameter
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.IElementModelParameter.Value">
+            <summary>
+            Value of parameter
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.ISourceNavigatorWithPosition">
+            <summary>
+            A navigator that has the positioning information
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.ISourceNavigator">
+            <summary>
+            Every model must implement this interface that allows the model to be loaded as IElemenetModel
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.ISourceNavigator.CreateNavigator">
+            <summary>
+            Creates a new navigator from the current state
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.ISourceNavigator.MoveToFirstParameter">
+            <summary>
+            Set the current position to read the first parameter
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.ISourceNavigator.MoveToNextParameter">
+            <summary>
+            MAke the current position to read the next parameters
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.ISourceNavigator.MoveToRootElement">
+            <summary>
+            Set the current node to the top
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.ISourceNavigator.MoveToFirstChild">
+            <summary>
+            Set the pointer to read the first child element
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.ISourceNavigator.MoveToNextSibiling">
+            <summary>
+            Set pointer to read the next sibiling element in the hierarchy
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.ISourceNavigator.IsElement">
+            <summary>
+            true if the current position is at element
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.Core.Model.ISourceNavigator.HasChildren">
+            <summary>
+            If the current position still has any child
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.ISourceNavigator.Name">
+            <summary>
+            Name of the current position
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.ISourceNavigator.Value">
+            <summary>
+            Value of the current position
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.ISourceNavigator.Text">
+            <summary>
+            Text of the current position
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.IRuleSet">
+            <summary>
+            A rule set is a collection of queryable models
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.IRuleSet.AddModel(System.String,FlexRule.Core.Model.IModelAccess)">
+            <summary>
+            Adds a model into a <see cref="T:FlexRule.Core.Model.IRuleSet"/>
+            </summary>
+            <param name="query">Depends on type of RuleSet this can be nested addressing operated by '/'</param>
+            <param name="access"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.IRuleSet.IsValidQuery(System.String)">
+            <summary>
+            Validates if query is in a valid format
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.IRuleSet.SelectFirst(System.String)">
+            <summary>
+            Selects the first model based on match on query
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Core.Model.ModelContainer">
+            <summary>
+            This container is a place that all the IElementModel will be placed here.
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.ElementSectionCollection">
+            <summary>
+            Collection of <see cref="T:FlexRule.Core.Model.ElementSection"/>
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.ElementSectionCollection.OnAdded(FlexRule.Core.Model.ElementSection)">
+            <summary>
+            Will be called after adding an <see cref="T:FlexRule.Core.Model.ElementSection"/>
+            </summary>
+            <param name="section"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.ElementSectionCollection.OnRemoved(FlexRule.Core.Model.ElementSection)">
+            <summary>
+            Will be called after removing an <see cref="T:FlexRule.Core.Model.ElementSection"/>
+            </summary>
+            <param name="section"></param>
+        </member>
+        <member name="P:FlexRule.Core.Model.ElementSectionCollection.Sections">
+            <summary>
+            All sections in this collection
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.ElementSectionCollection.Item(System.String)">
+            <summary>
+            Returns <see cref="T:FlexRule.Core.Model.ElementSection"/> by its name
+            </summary>
+            <param name="sectionName"></param>
+            <returns></returns>
+        </member>
+        <member name="F:FlexRule.Core.Model.ModelContainer.DefaultSection">
+            <summary>
+            Default section name
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.ElementSection">
+            <summary>
+            Sections of each <see cref="T:FlexRule.Core.Model.ModelContainer"/> which contains array of <see cref="T:FlexRule.Core.Model.IElementModel"/>
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.ElementSection.Name">
+            <summary>
+            Name of a section
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.ElementSection.Models">
+            <summary>
+            List of elements in the section
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Languages.Xml.XmlSourceNavigator">
+            <summary>
+            Xml based models use this model to create a navigator to b used in <see cref="T:FlexRule.Core.Model.LoadAdapter"/> during model loading stage.
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.RuleSetExtensions.AddModel(FlexRule.Core.Model.IRuleSet,System.String,FlexRule.Core.Model.IElementModel[])">
+            <summary>
+            Allows adding individual models as part of a ruleset
+            </summary>
+            <param name="rs">RuleSet to append the loaded models to in specific location as <paramref name="query"/></param>
+            <param name="query">Address of a model. Can be nested by / i.e. rules/flows/purchase</param>
+            <param name="models">List of models to be added into the <paramref name="query"/> section</param>
+        </member>
+        <member name="T:FlexRule.Core.Model.RuleSet">
+            <summary>
+            Default implementation of a <see cref="T:FlexRule.Core.Model.IRuleSet"/>
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.RuleSet.#ctor">
+            <summary>
+            Default constructor of RuleSet
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.RuleSet.SetSourceAdapter(FlexRule.Core.Model.Query.IQueryableSet)">
+            <summary>
+            To inject custom IQueryableSet adapter
+            </summary>
+            <param name="adapter"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.RuleSet.AddModel(System.String,FlexRule.Core.Model.IModelAccess)">
+            <summary>
+            Adds a model access <see cref="T:FlexRule.Core.Model.ModelContainer"/>  to a section of <see cref="T:FlexRule.Core.Model.RuleSet"/>
+            </summary>
+            <param name="query">Name of the model access</param>
+            <param name="access">The model access reference e.g. <see cref="T:FlexRule.Core.Model.ModelContainer"/></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.RuleSet.SelectFirst(System.String)">
+            <summary>
+            Retrieves the first available result of the query
+            </summary>
+            <param name="query">Query to a model</param>
+            <returns><see cref="T:FlexRule.Core.Model.IElementModel"/> that is result of the query</returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.RuleSet.Select(System.String)">
+            <summary>
+            Selects multiple <see cref="T:FlexRule.Core.Model.IElementModel"/>
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.RuleSet.IsValidQuery(System.String)">
+            <summary>
+            Checks if the query is in a valid format
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.RuleSet.HierarchicalRuleSet">
+            <summary>
+            This <see cref="T:FlexRule.Core.Model.IRuleSet"/> instance can handle hierarchical structure on <see cref="T:FlexRule.Core.Model.IModelContainer"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.RuleSet.SimpleRuleSet">
+            <summary>
+            This <see cref="T:FlexRule.Core.Model.IRuleSet"/> instance can handle multiple flat <see cref="T:FlexRule.Core.Model.IModelContainer"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.Core.Model.RuleSet.ReadOnly">
+            <summary>
+            true, if RuleSet can be modified 
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.Query.QueryableSetBase">
+            <summary>
+            Base implementation of queryable set that provides addition and query functionality of an array of <see cref="T:FlexRule.Core.Model.IElementModel"/>
+            </summary>
+        </member>
+        <member name="T:FlexRule.Deployment.Module">
+            <summary>
+            Module is a collection of logic documents i.e. <see cref="T:FlexRule.Core.Model.IRuleSet"/> working together to accomplish a task.
+            <remarks>
+            A module encapsulate all the document dependencies according to a version information and some other metadata information i.e. Description.
+            </remarks>
+            </summary>
+        </member>
+        <member name="P:FlexRule.Deployment.Module.Name">
+            <summary>
+            Name of module that is used as an identifier of a module
+            </summary>
+        </member>
+        <member name="P:FlexRule.Deployment.Module.Entry">
+            <summary>
+            Entry of module that can be a ruleset address or relative address to a logic document
+            </summary>
+        </member>
+        <member name="P:FlexRule.Deployment.Module.RuleSet">
+            <summary>
+            Collection of logic documents
+            </summary>
+        </member>
+        <member name="P:FlexRule.Deployment.Module.DisplayName">
+            <summary>
+            Display name of a module 
+            </summary>
+        </member>
+        <member name="P:FlexRule.Deployment.Module.Description">
+            <summary>
+            Description of a module
+            </summary>
+        </member>
+        <member name="P:FlexRule.Deployment.Module.Version">
+            <summary>
+            Version number or string of a module
+            </summary>
+        </member>
+        <member name="T:FlexRule.TraverserStyleExecutor">
+            <summary>
+            This base class has implemented the execution behavior in a recursive way. 
+            It can be used as a fundamental ready to use base class of engines executors. 
+            </summary>
+        </member>
+        <member name="T:FlexRule.Deployment.ModuleBuilder">
+            <summary>
+            Builds a Module from binary of each logic
+            </summary>
+        </member>
+        <member name="M:FlexRule.Deployment.ModuleBuilder.#ctor(System.String,System.Boolean)">
+            <summary>
+            Decision Module builder
+            </summary>
+            <param name="name">Module name, which is the module identifier</param>
+            <param name="useFolderStructure">Builds a decision package from folder structure, rather than manually specify logic documents and organize them in groups.</param>
+        </member>
+        <member name="M:FlexRule.Deployment.ModuleBuilder.Add(System.String,System.Byte[])">
+            <summary>
+            Adds a logic document to a module to build the underlaying <see cref="P:FlexRule.Deployment.Module.RuleSet"/>
+            </summary>
+            <param name="fullPath"></param>
+            <param name="content"></param>
+        </member>
+        <member name="M:FlexRule.Deployment.ModuleBuilder.Build(System.String,System.String,System.String,System.String)">
+            <summary>
+            Builds a <see cref="T:FlexRule.Deployment.Module"/> and its underlaying ruleset
+            </summary>
+            <param name="entry">Entry of the ruleset</param>
+            <param name="displayName"><see cref="P:FlexRule.Deployment.Module.DisplayName"/> of a module</param>
+            <param name="description"><see cref="P:FlexRule.Deployment.Module.Description"/> of a module</param>
+            <param name="moduleVersion"><see cref="P:FlexRule.Deployment.Module.Version"/> information of a module</param>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.Deployment.ModuleBuilder.UseFolderStructure">
+            <summary>
+            When the underlaying ruleset is based on folder and file structure addressing set to true, otherwise ruleset:// protocol for addressing is used (false).
+            </summary>
+        </member>
+        <member name="T:FlexRule.Deployment.ModulePackageException">
+            <summary>
+            Exceptions related to modules
+            </summary>
+        </member>
+        <member name="T:FlexRule.Deployment.DeploymentPackageException">
+            <summary>
+            Happens when an exception is occurred during load or creating a package
+            </summary>
+        </member>
+        <member name="T:FlexRule.Deployment.PackageDetails">
+            <summary>
+            Details of a package containing a <see cref="T:FlexRule.Deployment.Module"/>
+            <remarks>
+            Package can be created using FlexRule Designer and can be stored as a file structure or a single file.
+            </remarks>
+            </summary>
+        </member>
+        <member name="P:FlexRule.Deployment.PackageDetails.Creator">
+            <summary>
+            The individual or entity that created the package and its content.
+            </summary>
+        </member>
+        <member name="P:FlexRule.Deployment.PackageDetails.Title">
+            <summary>
+            The name given to the package and its content.
+            </summary>
+        </member>
+        <member name="P:FlexRule.Deployment.PackageDetails.Description">
+            <summary>
+            A description of the content contained in the package.
+            </summary>
+        </member>
+        <member name="P:FlexRule.Deployment.PackageDetails.Revision">
+            <summary>
+            The revision number of the package.
+            </summary>
+        </member>
+        <member name="P:FlexRule.Deployment.PackageDetails.Category">
+            <summary>
+            The category of the content that is contained in the package.
+            </summary>
+        </member>
+        <member name="P:FlexRule.Deployment.PackageDetails.Identifier">
+            <summary>
+            A value that unambiguously identifies the package and its content.
+            </summary>
+        </member>
+        <member name="P:FlexRule.Deployment.PackageDetails.Version">
+            <summary>
+            The version number of the package.
+            </summary>
+        </member>
+        <member name="T:FlexRule.Deployment.PackageSignature">
+            <summary>
+            Extra package metadata information
+            </summary>
+        </member>
+        <member name="T:FlexRule.Deployment.PackageLoader">
+            <summary>
+            Allows loading a built package using FlexRule Designer. A package contains <see cref="T:FlexRule.Deployment.Module"/> and related <see cref="T:FlexRule.Deployment.PackageDetails"/> metadata information. Also a package can hold referenced <see cref="P:FlexRule.Deployment.PackageLoader.Assemblies"/> that are required for execution.
+            </summary>
+        </member>
+        <member name="M:FlexRule.Deployment.PackageLoader.GetContents(System.String)">
+            <summary>
+            Retrieves all logic documents of a module within a package.
+            </summary>
+            <remarks>
+            This method then can be used to create a <see cref="T:FlexRule.Deployment.Module"/> using <see cref="M:FlexRule.Deployment.ModuleBuilder.Add(System.String,System.Byte[])"/> method.
+            </remarks>
+            <param name="moduleName">name of a module</param>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.Deployment.PackageLoader.UseFolderStructure">
+            <summary>
+            true if the builder supports folder structure addressing
+            </summary>
+        </member>
+        <member name="P:FlexRule.Deployment.PackageLoader.Modules">
+            <summary>
+            List of available <see cref="T:FlexRule.Deployment.Module"/>s in a package
+            </summary>
+        </member>
+        <member name="P:FlexRule.Deployment.PackageLoader.Assemblies">
+            <summary>
+            List of available assemblies in a package
+            </summary>
+        </member>
+        <member name="P:FlexRule.Deployment.PackageLoader.Details">
+            <summary>
+            Package metadata information
+            </summary>
+        </member>
+        <member name="P:FlexRule.Deployment.PackageLoader.ModuleNames">
+            <summary>
+            Names of modules available in the package
+            </summary>
+        </member>
+        <member name="P:FlexRule.Deployment.PackageLoader.PackageName">
+            <summary>
+            Name of the package
+            </summary>
+        </member>
+        <member name="T:FlexRule.Diagnostics.ActiveElementExecutorTrace">
+            <summary>
+            This class would provide tracing mechanisms to <see cref="T:FlexRule.ActiveElement"/>s.
+            </summary>
+        </member>
+        <member name="T:FlexRule.Diagnostics.IActiveElementExecutorTrace">
+            <summary>
+            Interface to build and write a trace for <see cref="T:FlexRule.ActiveElement"/>
+            </summary>
+        </member>
+        <member name="T:FlexRule.Diagnostics.IActiveElementExecutorTraceFormatter">
+            <summary>
+            Interface for format an output trace of an <see cref="T:FlexRule.ActiveElement"/>
+            </summary>
+        </member>
+        <member name="T:FlexRule.Diagnostics.ICurrentDebuggingState">
+            <summary>
+            Information on the current element that has debug="true" parameter
+            </summary>
+        </member>
+        <member name="P:FlexRule.Diagnostics.ICurrentDebuggingState.ActiveElement">
+            <summary>
+            The current element that is about to run
+            </summary>
+        </member>
+        <member name="P:FlexRule.Diagnostics.ICurrentDebuggingState.Engine">
+            <summary>
+            The current logic that is running
+            </summary>
+        </member>
+        <member name="P:FlexRule.Diagnostics.ICurrentDebuggingState.Context">
+            <summary>
+            The current execution context
+            </summary>
+        </member>
+        <member name="P:FlexRule.Diagnostics.ICurrentDebuggingState.Values">
+            <summary>
+            The current parameters values
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Expressions.Expression">
+            <summary>
+            Base expression to represent a node in the DSL model hierarchy
+            </summary>
+        </member>
+        <member name="M:FlexRule.DSL.Expressions.Expression.#ctor">
+            <summary>
+            No name and parent
+            </summary>
+        </member>
+        <member name="M:FlexRule.DSL.Expressions.Expression.#ctor(System.String)">
+            <summary>
+            Name only expression
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:FlexRule.DSL.Expressions.Expression.#ctor(FlexRule.DSL.Expressions.Expression,System.String)">
+            <summary>
+            Name and parent expression
+            </summary>
+            <param name="parent"></param>
+            <param name="name"></param>
+        </member>
+        <member name="P:FlexRule.DSL.Expressions.Expression.Attributes">
+            <summary>
+            List of attributes of expression
+            </summary>
+        </member>
+        <member name="P:FlexRule.DSL.Expressions.Expression.Name">
+            <summary>
+            Name of current expression
+            </summary>
+        </member>
+        <member name="P:FlexRule.DSL.Expressions.Expression.Parent">
+            <summary>
+            Parent of current expression
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Expressions.ExpressionContainer`1">
+            <summary>
+            When the child is unique by index and requires to be cached when is create, this base class manages the caching behaviour
+            </summary>
+            <typeparam name="TChildExpression">Type of child node</typeparam>
+        </member>
+        <member name="T:FlexRule.DSL.Expressions.IChildExpressionContainer">
+            <summary>
+            Container that holds to child expression
+            </summary>
+        </member>
+        <member name="M:FlexRule.DSL.Expressions.IChildExpressionContainer.GetItem(System.Int32)">
+            <summary>
+            Reads the child expression by an index
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.DSL.Expressions.IChildExpressionContainer.Parent">
+            <summary>
+            Parent of the current expression
+            </summary>
+        </member>
+        <member name="P:FlexRule.DSL.Expressions.IChildExpressionContainer.ChildCount">
+            <summary>
+            Numbers of child expressions
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Expressions.ExpressionContainer">
+            <summary>
+            Generic container for expressions
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.ExpressionHierarchyNavigator">
+            <summary>
+            This base class implements generic behaviour of a Domain Specific Language to be modeled
+            To implement your own DSL inherit from this type and override the required methods
+            </summary>
+        </member>
+        <member name="F:FlexRule.DSL.ExpressionHierarchyNavigator._document">
+            <summary>
+            Current expression document
+            </summary>
+        </member>
+        <member name="F:FlexRule.DSL.ExpressionHierarchyNavigator._current">
+            <summary>
+            Current processing expression node
+            </summary>
+        </member>
+        <member name="P:FlexRule.DSL.ExpressionHierarchyNavigator.Text">
+            <summary>
+            Text value in the element expression
+            </summary>
+        </member>
+        <member name="T:FlexRule.ElementActivatorResgitry">
+            <summary>
+            This registers and holds to necessary factories that are required for model activation process
+            </summary>
+        </member>
+        <member name="T:FlexRule.ServiceTypeRegistry`1">
+            <summary>
+            This is base class to register types 
+            </summary>
+            <typeparam name="TService">Type of service</typeparam>
+        </member>
+        <member name="T:FlexRule.IServiceTypeRegistry`1">
+            <summary>
+            This provides access to any type registry
+            </summary>
+        </member>
+        <member name="M:FlexRule.IServiceTypeRegistry`1.IsRegistered(System.Type)">
+            <summary>
+            If type is registered returns true, otherwise false
+            </summary>
+            <param name="aType">This has to be an abstract factory type</param>
+        </member>
+        <member name="M:FlexRule.IServiceTypeRegistry`1.LoadAndRegister(System.String,System.String)">
+            <summary>
+            Loads the factory from loading context and registers it into the activator registry
+            </summary>
+            <param name="assemblyName">Name of assembly that has the handler type</param>
+            <param name="handlerName">Full name of the type</param>
+        </member>
+        <member name="M:FlexRule.IServiceTypeRegistry`1.GetService(System.String,System.String)">
+            <summary>
+            Returns the registered service. If it is not registered yet it throws exception
+            </summary>
+            <param name="assemblyName"></param>
+            <param name="handlerName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.IElementActivatorRegistry">
+            <summary>
+            Each model element of an active element needs to provide an activator to be registered in
+            an activator registry which exposes the following interface through IActiveElementExecutionContext
+            </summary>
+        </member>
+        <member name="M:FlexRule.IElementActivatorRegistry.RegisterFactory(FlexRule.AbstractElementActivatorFactory)">
+            <summary>
+            Registers all the elements for the factory into the activator registry
+            </summary>
+        </member>
+        <member name="M:FlexRule.IElementActivatorRegistry.RegisterElement(System.String,FlexRule.AbstractElementActivatorFactory)">
+            <summary>
+            Registers an element and corresponding factory
+            </summary>
+        </member>
+        <member name="M:FlexRule.IElementActivatorRegistry.GetFactories(System.String)">
+            <summary>
+            Returns all the corresponding factories for a node
+            </summary>
+            <param name="nodeName">The node to retrieve all the factories</param>
+        </member>
+        <member name="M:FlexRule.ElementActivatorResgitry.FindActivators(System.Reflection.Assembly)">
+            <summary>
+            Finds and caches all the activators for an assembly i.e. all concrete and public implementations of factories.
+            </summary>
+            <param name="assembly"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.AbstractElementActivatorFactory">
+            <summary>
+            Base class for active element activators registry. 
+            </summary>
+            <remarks>
+            Any <see cref="T:FlexRule.Core.Model.IElementModel"/>s in the model that require activation 
+            during loading the execution plan need to be handled using an activator factory. The activator factory will then find the 
+            element name from its registry and activates the element. After activating an element it becomes an <see cref="T:FlexRule.ActiveElement"/>.
+            </remarks>
+        </member>
+        <member name="M:FlexRule.AbstractElementActivatorFactory.#ctor">
+            <summary>
+            Default constructor for the factory
+            </summary>
+        </member>
+        <member name="M:FlexRule.AbstractElementActivatorFactory.RegisterElements(System.String[])">
+            <summary>
+            Associate element`s name with a factory. Then this factory will be used to activate those elements on the model.
+            </summary>
+            <param name="elements">Name of elements to be registered</param>
+        </member>
+        <member name="M:FlexRule.AbstractElementActivatorFactory.Create(FlexRule.ActiveElement,FlexRule.Core.Model.IElementModel)">
+            <summary>
+            This method will be called during activation process of an element.
+            </summary>
+            <param name="parent">The parent <see cref="T:FlexRule.ActiveElement"/> of the one is being created/</param>
+            <param name="source">The source of the element model</param>
+        </member>
+        <member name="M:FlexRule.AbstractElementActivatorFactory.Create(FlexRule.ActiveElement,FlexRule.Core.Model.IElementModel,System.Object[])">
+            <summary>
+            This method will be called during activation process of an element.
+            </summary>
+            <param name="parent">The parent <see cref="T:FlexRule.ActiveElement"/> of the one is being created/</param>
+            <param name="source">The source of the element model</param>
+            <param name="arguments">Initializer arguments for construction of element</param>
+            <returns>This method must return corresponding <see cref="T:FlexRule.ActiveElement"/> of <paramref name="source"/> parameter.</returns>
+        </member>
+        <member name="P:FlexRule.AbstractElementActivatorFactory.Registry">
+            <summary>
+            Reference to the registry 
+            </summary>
+        </member>
+        <member name="P:FlexRule.AbstractElementActivatorFactory.Elements">
+            <summary>
+            Returns all the mode elements name that this factory is registered
+            </summary>
+        </member>
+        <member name="T:FlexRule.CallbackEventArgs">
+            <summary>
+            EventArgs for an active element call back to the client
+            </summary>
+        </member>
+        <member name="T:FlexRule.IChildManager`1">
+            <summary>
+            Interface to child manager for a collection
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:FlexRule.IChildManager`1.Add(`0)">
+            <summary>
+            Add an item to children collection
+            </summary>
+        </member>
+        <member name="M:FlexRule.IChildManager`1.Remove(`0)">
+            <summary>
+            Remove an item from children collection
+            </summary>
+        </member>
+        <member name="P:FlexRule.IChildManager`1.Count">
+            <summary>
+            Returns total number of available children
+            </summary>
+        </member>
+        <member name="P:FlexRule.IChildManager`1.Item(System.Int32)">
+            <summary>
+            Returns the child using the provided index
+            </summary>
+        </member>
+        <member name="T:FlexRule.IElementExecutableItem">
+            <summary>
+            Each element wants to control the execution process needs to implement this interface
+            </summary>
+        </member>
+        <member name="M:FlexRule.IElementExecutableItem.Execute(FlexRule.IActiveElementExecutor)">
+            <summary>
+            Execute a specific routine on the active element
+            </summary>
+        </member>
+        <member name="M:FlexRule.IElementExecutableItem.Finialize(FlexRule.IActiveElementExecutor)">
+            <summary>
+            Finalize the execution of the active element routine
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.NavigableSourceLoadAdapter">
+            <summary>
+            Loads a source as a <see cref="T:FlexRule.Core.Model.IElementModel"/> when the source model is a navigable format e.g. Xml, S-Expression...
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.NavigableSourceLoadAdapter.#ctor(FlexRule.Core.Model.ISourceNavigator)">
+            <summary>
+            
+            </summary>
+            <param name="navigator"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.NavigableSourceLoadAdapter.#ctor(FlexRule.Core.Model.ISourceNavigator,FlexRule.Core.Model.NavigableSourceLoadAdapter.LoadOption)">
+            <summary>
+            
+            </summary>
+            <param name="navigator"></param>
+            <param name="option"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.NavigableSourceLoadAdapter.#ctor(FlexRule.Core.Model.ISourceNavigatorProvider)">
+            <summary>
+            
+            </summary>
+            <param name="adapter"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.NavigableSourceLoadAdapter.#ctor(FlexRule.Core.Model.ISourceNavigatorProvider,FlexRule.Core.Model.NavigableSourceLoadAdapter.LoadOption)">
+            <summary>
+            
+            </summary>
+            <param name="adapter"></param>
+            <param name="option"></param>
+        </member>
+        <member name="M:FlexRule.Core.Model.NavigableSourceLoadAdapter.LoadModelByNavigator(FlexRule.Core.Model.ISourceNavigator,FlexRule.Core.Model.NavigableSourceLoadAdapter.LoadOption)">
+            <summary>
+            Load elements by navigator 
+            </summary>
+            <param name="nav"></param>
+            <param name="option"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Core.Model.NavigableSourceLoadAdapter.LoadOption">
+            <summary>
+            Different loading options during loading a model
+            </summary>
+        </member>
+        <member name="F:FlexRule.Core.Model.NavigableSourceLoadAdapter.LoadOption.ToLower">
+            <summary>
+            Converts text to lower case
+            </summary>
+        </member>
+        <member name="F:FlexRule.Core.Model.NavigableSourceLoadAdapter.LoadOption.ToUpper">
+            <summary>
+            Converts text to upper case
+            </summary>
+        </member>
+        <member name="F:FlexRule.Core.Model.NavigableSourceLoadAdapter.LoadOption.Normal">
+            <summary>
+            Leave the texts as they are
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.IElementModelCollection">
+            <summary>
+            Collection for IElementModel 
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.IElementModelCollection.ToArray">
+            <summary>
+            Creates new array containing all the elements of the collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.Core.Model.IElementModelCollection.Item(System.Int32)">
+            <summary>
+            Gets an element by its index in the collection
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Core.Model.IElementModelParameterCollection">
+            <summary>
+            Each <see cref="T:FlexRule.Core.Model.IElementModel"/> is able to have parameters which can be stored via this interface
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.IElementModelParameterCollection.Exists(System.String)">
+            <summary>
+            True if parameter exists otherwise false
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.IElementModelParameterCollection.Exists(System.String,System.Boolean)">
+            <summary>
+            True if parameter exists otherwise false
+            </summary>
+            <param name="name"></param>
+            <param name="ignoreCase">True to ignore the name case otherwise false</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.IElementModelParameterCollection.GetOrdinal(System.String,System.Boolean)">
+            <summary>
+            Returns the index of a specific parameter in the collection
+            </summary>
+            <param name="name"></param>
+            <param name="ignoreCase">True to ignore the name case otherwise false</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.IElementModelParameterCollection.GetName(System.Int32)">
+            <summary>
+            Returns name of a parameter by its index
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.Core.Model.IElementModelParameterCollection.Item(System.Int32)">
+            <summary>
+            Returns value of a parameter by its index
+            </summary>
+            <param name="index">Index of parameter in the collection</param>
+            <returns>Value of parameter</returns>
+        </member>
+        <member name="P:FlexRule.Core.Model.IElementModelParameterCollection.Item(System.String)">
+            <summary>
+            Returns value of a parameter by its name
+            </summary>
+            <param name="name">Name of parameter</param>
+            <returns>Value of parameter</returns>
+        </member>
+        <member name="T:FlexRule.Core.Model.ElementModelCollection">
+            <summary>
+            Collection of <see cref="T:FlexRule.Core.Model.IElementModel"/>
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.ElementModelParameterCollection">
+            <summary>
+            Collection of parameters of <see cref="T:FlexRule.Core.Model.IElementModel"/>
+            </summary>
+        </member>
+        <member name="T:FlexRule.ValueFactory">
+            <summary>
+            Creates a value of a specific type by determining the value type.
+            </summary>
+        </member>
+        <member name="M:FlexRule.ValueFactory.GetObjectByValue(System.String,System.String)">
+            <summary>
+            Creates a value from input string <paramref name="value"/></summary>
+            <param name="typeName">Expected type of the value</param>
+            <param name="value">value as a string</param>
+            <returns>Value in the provided type <paramref name="typeName"/></returns>
+        </member>
+        <member name="T:FlexRule.ActiveElement">
+            <summary>
+            An active element is an element which is able to perform an action in a predefined context.
+            This is a fundamental block of execution plan for any engine.
+            </summary>
+            <remarks>
+            It is important to design the active element of models in the way they can be shared between multiple engine and execution requests.
+            This bring the scalability and performance benefit to the execution platform.
+            </remarks>
+        </member>
+        <member name="M:FlexRule.ActiveElement.AddExceptionCommand(System.String)">
+            <summary>
+            During activation commands listed as exception will not be activated
+            </summary>
+        </member>
+        <member name="M:FlexRule.ActiveElement.#ctor(FlexRule.IElementActivatorRegistry,FlexRule.Core.Model.IElementModel)">
+            <summary>
+            This constructor is used when the element is the root
+            </summary>
+        </member>
+        <member name="M:FlexRule.ActiveElement.#ctor(FlexRule.ActiveElement,FlexRule.Core.Model.IElementModel)">
+            <summary>
+            This constructor is used when the element is NOT the root
+            </summary>
+        </member>
+        <member name="M:FlexRule.ActiveElement.CreateActiveElement(FlexRule.Core.Model.IElementModel)">
+            <summary>
+            Creates active element using provided model as the source and the parent is the current ActiveElement
+            </summary>
+        </member>
+        <member name="M:FlexRule.ActiveElement.CreateActiveElement(FlexRule.ActiveElement,FlexRule.Core.Model.IElementModel)">
+            <summary>
+            Creates active element using <paramref name="element"/> as source and provided parent
+            </summary>
+        </member>
+        <member name="M:FlexRule.ActiveElement.ActivateInnerElements(FlexRule.ActiveElement)">
+            <summary>
+            Activates all the child elements of the provided node
+            </summary>
+            <param name="item">Node to activate all its child elements</param>
+        </member>
+        <member name="M:FlexRule.ActiveElement.ActivateElement(FlexRule.Core.Model.IElementModel)">
+            <summary>
+            Creates active element for the provided model
+            </summary>
+        </member>
+        <member name="M:FlexRule.ActiveElement.HasActiveElement(System.Type)">
+            <summary>
+            Check if there is a child active element of a specific type
+            </summary>
+        </member>
+        <member name="T:FlexRule.ElementActivatorResgitryFactory">
+            <summary>
+            This is the factory that creates <see cref="T:FlexRule.IElementActivatorRegistry"/> for each <see cref="T:FlexRule.ActiveElement"/>
+            </summary>
+        </member>
+        <member name="M:FlexRule.ElementActivatorResgitryFactory.Create(System.String)">
+            <summary>
+            Creates registry for by context name
+            </summary>
+        </member>
+        <member name="M:FlexRule.ElementActivatorResgitryFactory.Create(FlexRule.Core.Model.IElementModel)">
+            <summary>
+            Creates the registry by the value of parameter`s name of the provided model
+            </summary>
+        </member>
+        <member name="M:FlexRule.ElementActivatorResgitryFactory.Create(FlexRule.Core.Model.IRuleSet,System.String)">
+            <summary>
+            Create the registry using <see cref="!:RuleSet"/>
+            </summary>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="ruleSet"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="ruleSetQuery"/> is <c>null</c> or <c>empty</c>.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="ruleSetQuery"/> is not valid using <c>null</c> or <c>empty</c>.</exception>
+        </member>
+        <member name="T:FlexRule.Core.Model.ModelLoader">
+            <summary>
+            Loads an external model using variable container information
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Model.ModelLoader.ResolveSourceElementModel(FlexRule.ActiveElement,System.String)">
+            <summary>
+            Validates the <paramref name="ae"/> that must hold a source address element model 
+            </summary>
+            <param name="ae"></param>
+            <param name="uriElementName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.ModelLoader.Load(FlexRule.IVariableContainer,FlexRule.Core.Model.IRuleSet,FlexRule.ActiveElement)">
+            <summary>
+            Load IElementModel from external or RuleSet by the first find of the Source element
+            </summary>
+            <param name="container">Running context`s container</param>
+            <param name="referenceRule">Loaded RuleSet in the executor setup information</param>
+            <param name="owner">ActiveElement that owns model loading process</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.ModelLoader.Load(FlexRule.Core.Model.IElementModel,FlexRule.IVariableContainer,FlexRule.Core.Model.IRuleSet,FlexRule.ActiveElement)">
+            <summary>
+            Load IElementModel from external or RuleSet by the provided Source element
+            </summary>
+            <param name="sourceModel">Element that contains uri address attribute</param>
+            <param name="container">Running context`s container</param>
+            <param name="referenceRule">Loaded RuleSet in the executor setup information</param>
+            <param name="activeElement">Owner of the loading process, if null, means the load is not coming from an ActiveElement</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Core.Model.ModelLoader.GetUri(System.String,FlexRule.Core.Model.IElementModel,FlexRule.IVariableContainer,FlexRule.ActiveElement)">
+            <summary>
+            Resolve a uri to load a model
+            </summary>
+            <param name="parameterName"></param>
+            <param name="sourceModel"></param>
+            <param name="continer"></param>
+            <param name="activeElement"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Events.EventNames">
+            <summary>
+            List of events that will be raised during execution of logic documents
+            </summary>
+        </member>
+        <member name="F:FlexRule.Events.EventNames.CriteriaEvaluated">
+            <summary>
+            The logic of a rule is evaluated
+            </summary>
+        </member>
+        <member name="F:FlexRule.Events.EventNames.RanActions">
+            <summary>
+            The Action of a rule is executed because the criteria are met
+            </summary>
+        </member>
+        <member name="F:FlexRule.Events.EventNames.RanAlternateActions">
+            <summary>
+            The Action of a rule is executed because the criteria are not met
+            </summary>
+        </member>
+        <member name="F:FlexRule.Events.EventNames.ConditionEvaluated">
+            <summary>
+            Condition of a rule is evaluated
+            </summary>
+        </member>
+        <member name="F:FlexRule.Events.EventNames.RunningReferencedLogic">
+            <summary>
+            Referenced logic of higher level is about to run
+            </summary>
+        </member>
+        <member name="F:FlexRule.Events.EventNames.RanReferencedLogic">
+            <summary>
+            Logic document run has finished
+            </summary>
+        </member>
+        <member name="F:FlexRule.Events.EventNames.CriteriaEvaluating">
+            <summary>
+            Before criteria of a rule is being evaluated
+            </summary>
+        </member>
+        <member name="F:FlexRule.Events.EventNames.LogicRunBegins">
+            <summary>
+            Before Run method of an engine is called
+            </summary>
+        </member>
+        <member name="F:FlexRule.Events.EventNames.LogicRunFinished">
+            <summary>
+            After Run method of logic is called and process is finished.
+            </summary>
+        </member>
+        <member name="F:FlexRule.Events.EventNames.NodeExecuting">
+            <summary>
+            When a node in Flow is being executed
+            </summary>
+        </member>
+        <member name="F:FlexRule.Events.EventNames.NodeExecuted">
+            <summary>
+            When a node execution in a flow has completed
+            </summary>
+        </member>
+        <member name="F:FlexRule.Events.EventNames.All">
+            <summary>
+            All events
+            </summary>
+        </member>
+        <member name="M:FlexRule.Events.EventReportsExtensions.GetReasons(System.Collections.Generic.IEnumerable{FlexRule.Events.EventArgs})">
+            <summary>
+            Generates list report with all rules failures 
+            </summary>
+            <param name="events"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Events.EventReportsExtensions.BuildEventsHierarchy(System.Collections.Generic.IEnumerable{FlexRule.Events.EventArgs},System.Boolean)">
+            <summary>
+            Creates a hierarchy of events based on the list
+            </summary>
+            <param name="events"></param>
+            <param name="onlyRoots">When true, the result is only the root of hierarchy, otherwise all the graphs nodes</param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Events.EventScope">
+            <summary>
+            Defines a scope to capture execution events
+            </summary>
+        </member>
+        <member name="T:FlexRule.Events.LogBuilderExtensions">
+            <summary>
+            Builds log output based on events
+            </summary>
+        </member>
+        <member name="M:FlexRule.Events.LogBuilderExtensions.BuildLog(System.Collections.Generic.IEnumerable{FlexRule.Events.EventArgs})">
+            <summary>
+            Builds a log text output based on execution events
+            </summary>
+            <param name="events"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Glossaries.Glossary">
+            <summary>
+            Provides a dictionary to manage business glossary
+            </summary>
+        </member>
+        <member name="M:FlexRule.Glossaries.Glossary.RegisterFormula(System.String,System.String,FlexRule.DynamicEvaluation.FormulaType)">
+            <summary>
+            Register a formula in glossary
+            </summary>
+            <param name="name"></param>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Glossaries.Glossary.FindFormula(System.String,System.Boolean)">
+            <summary>
+            Register a formula in glossary
+            </summary>
+            <param name="name"></param>
+            <param name="throwIfNotfound"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Glossaries.Glossary.RegisterTerm(System.String,System.String,FlexRule.Glossaries.Domain,System.Boolean)">
+            <summary>
+            Register a new term in glossary.
+            </summary>
+            <param name="name"></param>
+            <param name="expression"></param>
+            <param name="domain"></param>
+            <param name="mandatory">Does this term value requires in decision making</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Glossaries.Glossary.LookupTerm(System.String,System.Boolean)">
+            <summary>
+            Lookups a term in glossary. Throws exception if term name is not found.
+            </summary>
+            <param name="termName"></param>
+            <param name="ignoreCase"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Glossaries.Glossary.FindTerm(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Find a <see cref="T:FlexRule.Glossaries.Term"/> by its defined name. Resolves from synonyms when required.
+            </summary>
+            <param name="name"></param>
+            <param name="ignoreCase"></param>
+            <param name="throwIfNotfound"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Glossaries.Glossary.LoadTerms(FlexRule.Core.Model.IRuleSet,System.String[])">
+            <summary>
+            Loads a glossary from a ruleset address
+            </summary>
+            <param name="rs">The <see cref="T:FlexRule.Core.Model.IRuleSet"/> that holds all the glossaries</param>
+            <param name="queries">The ruleset address to a glossary</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Glossaries.Glossary.LoadTerms(FlexRule.Core.Model.IElementModel,FlexRule.Core.Model.IRuleSet,System.String)">
+            <summary>
+            Loads a glossary from an element.
+            </summary>
+            <param name="element">This can be a direct glossary element or its parent</param>
+            <param name="rs"></param>
+            <param name="baseFolder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Glossaries.Glossary.LoadFormulas(FlexRule.Core.Model.IRuleSet,System.String[])">
+            <summary>
+            Loads a glossary from a ruleset address
+            </summary>
+            <param name="rs">The <see cref="T:FlexRule.Core.Model.IRuleSet"/> that holds all the glossaries</param>
+            <param name="queries">The ruleset address to a glossary</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Glossaries.Glossary.LoadFormulas(FlexRule.Core.Model.IElementModel,FlexRule.Core.Model.IRuleSet,System.String)">
+            <summary>
+            Loads a glossary from an element.
+            </summary>
+            <param name="element">This can be a direct glossary element or its parent</param>
+            <param name="rs"></param>
+            <param name="baseFolder"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Glossaries.Domain">
+            <summary>
+            Type of a term
+            </summary>
+        </member>
+        <member name="P:FlexRule.Glossaries.GlossaryEntry.Name">
+            <summary>
+            Name of glossary entry
+            </summary>
+        </member>
+        <member name="P:FlexRule.Glossaries.GlossaryEntry.Expression">
+            <summary>
+            Expression of entry
+            </summary>
+        </member>
+        <member name="T:FlexRule.Glossaries.OptionValue">
+            <summary>
+            Provides value for list of options as well as synonyms and translation of value in different locale.
+            </summary>
+        </member>
+        <member name="T:FlexRule.Glossaries.Term">
+            <summary>
+            Represents the business term in a scope of a <see cref="T:FlexRule.Glossaries.Glossary"/>. A term also allows to specify synonyms and translation for multiple locale.
+            </summary>
+        </member>
+        <member name="P:FlexRule.Glossaries.Term.Mandatory">
+            <summary>
+            Is the value mandatory in the decision making
+            </summary>
+        </member>
+        <member name="P:FlexRule.Glossaries.Term.Domain">
+            <summary>
+            Type of term
+            </summary>
+        </member>
+        <member name="P:FlexRule.Glossaries.Term.Synonyms">
+            <summary>
+            Synonyms of this term
+            </summary>
+        </member>
+        <member name="P:FlexRule.Glossaries.Term.Options">
+            <summary>
+            When type of term is option, then list of available options provided by this list
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Languages.SExpression.SExpressionException">
+            <summary>
+            SExpression exception
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Languages.SExpression.ISExpressionParser">
+            <summary>
+            Base interface to parse a stream of sexpression
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Languages.SExpression.ISExpressionParser.Parse(System.IO.StreamReader)">
+            <summary>
+            Parse a stream
+            </summary>
+        </member>
+        <member name="M:FlexRule.Core.Languages.SExpression.ISExpressionParser.Parse(System.String)">
+            <summary>
+            Parse available loaded data
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Core.Languages.SExpression.SExpressionParser">
+            <summary>
+            Default implementation of <see cref="T:FlexRule.Core.Languages.SExpression.ISExpressionParser"/>
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Languages.SExpression.SExpressionValidator">
+            <summary>
+            Validates the S-Expression document
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.Query.HostType">
+            <summary>
+            Type of host for querying a set
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.Query.QueryException">
+            <summary>
+            When model could not be found by a ruleset query
+            </summary>
+        </member>
+        <member name="P:FlexRule.Core.Model.Query.QueryException.Query">
+            <summary>
+            Query that has a problem
+            </summary>
+        </member>
+        <member name="T:FlexRule.ServiceTypeRegistryException">
+            <summary>
+            If a type can not be created or loaded this exception would happen
+            </summary>
+        </member>
+        <member name="T:FlexRule.IExecutionPlan">
+            <summary>
+            Execution plan of a model
+            </summary>
+        </member>
+        <member name="T:FlexRule.Signature.ISignatureDescriptionProvider">
+            <summary>
+            Provides signature description
+            </summary>
+        </member>
+        <member name="P:FlexRule.Signature.ISignatureDescriptionProvider.Descriptions">
+            <summary>
+            Signature descriptions of the execution plan
+            </summary>
+        </member>
+        <member name="P:FlexRule.IExecutionPlan.ReferenceRules">
+            <summary>
+            Ruleset source that execution plan is built with
+            </summary>
+        </member>
+        <member name="P:FlexRule.IExecutionPlan.Name">
+            <summary>
+            Name of the execution plan from model
+            </summary>
+        </member>
+        <member name="P:FlexRule.IExecutionPlan.Model">
+            <summary>
+            Model of execution plan
+            </summary>
+        </member>
+        <member name="P:FlexRule.IExecutionPlan.Glossary">
+            <summary>
+            Glossary references of a model, this includes all terms as well as formulas
+            </summary>
+        </member>
+        <member name="T:FlexRule.ExecutionPlan`1">
+            <summary>
+            Execution plan for model of a logic 
+            </summary>
+            <typeparam name="TDescription"></typeparam>
+        </member>
+        <member name="T:FlexRule.Signature.ISignatureDescriptionProvider`1">
+            <summary>
+            Provides a descriptions of the signature
+            </summary>
+            <typeparam name="TDescription"></typeparam>
+        </member>
+        <member name="P:FlexRule.Signature.ISignatureDescriptionProvider`1.Descriptions">
+            <summary>
+            Signature descriptions
+            </summary>
+        </member>
+        <member name="T:FlexRule.Signature.ISignatureTypeDescriptions">
+            <summary>
+            This interface collects the type information of a logic signature
+            </summary>
+        </member>
+        <member name="T:FlexRule.Signature.ISignatureDescriptions">
+            <summary>
+            Describes the signature of the execution plan
+            </summary>
+        </member>
+        <member name="T:FlexRule.Signature.ISignatureVariableDescriptions">
+            <summary>
+            Defines signature for input/output variables (logic parameters)
+            </summary>
+        </member>
+        <member name="M:FlexRule.Signature.ISignatureVariableDescriptions.ReadInVariables">
+            <summary>
+            Lists all input variables
+            </summary>
+        </member>
+        <member name="M:FlexRule.Signature.ISignatureVariableDescriptions.ReadOutVariables">
+            <summary>
+            Reads all output variables
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Signature.ISignatureVariableDescriptions.ListOutVariableName">
+            <summary>
+            Lists all output variables name
+            </summary>
+        </member>
+        <member name="M:FlexRule.Signature.ISignatureVariableDescriptions.ListInVariableName">
+            <summary>
+            Lists all input variables name
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Signature.ISignatureVariableDescriptions.ListLocalVariableName">
+            <summary>
+            Lists all local variables name
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.Signature.ISignatureDescriptions.Parameters">
+            <summary>
+            All logic variable parameters
+            </summary>
+        </member>
+        <member name="P:FlexRule.Signature.ISignatureDescriptions.Types">
+            <summary>
+            All logic type parameters
+            </summary>
+        </member>
+        <member name="T:FlexRule.Signature.ISignatureTypeInfo">
+            <summary>
+            A type information of a signature 
+            </summary>
+        </member>
+        <member name="T:FlexRule.Signature.VariableDirection">
+            <summary>
+            Variables or parameters of a model have different access provider that can be set using directions
+            </summary>
+        </member>
+        <member name="T:FlexRule.TypeLoader.ITypeAddress">
+            <summary>
+            Every type has an address that will be provided with this interface
+            </summary>
+        </member>
+        <member name="M:FlexRule.TypeLoader.ITypeAddress.ResolveType(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Loads and resolves a type
+            </summary>
+            <param name="privateBinPaths"></param>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.TypeLoader.ITypeAddress.DllFileName">
+            <summary>
+            Assembly DLL file name that contains type definition
+            </summary>
+        </member>
+        <member name="P:FlexRule.TypeLoader.ITypeAddress.IsDllFileSpecified">
+            <summary>
+            Returns true if the <see cref="P:FlexRule.TypeLoader.ITypeAddress.DllFileName"/> is specified, otherwise false.
+            </summary>
+        </member>
+        <member name="P:FlexRule.TypeLoader.ITypeAddress.TypeName">
+            <summary>
+            Type name to be loaded. This is a full name containing namespace of the type.
+            </summary>
+        </member>
+        <member name="T:FlexRule.Core.Model.ElementModelBuilderException">
+            <summary>
+            IElementModel is a source for active elements.
+            Combination of this interface would model the required logic and rule. This type is the fundamental part of modeling rules and logic of the system.
+            </summary>
+        </member>
+        <member name="T:FlexRule.Signature.ISignatureVariableInfo">
+            <summary>
+            A variable information of a signature 
+            </summary>
+        </member>
+        <member name="T:FlexRule.TypeLoader.ITypeAddressBuilder">
+            <summary>
+            An interface builder that provides a contract to instantiate objects of specific type
+            </summary>
+        </member>
+        <member name="T:FlexRule.TypeLoader.TypeAddress">
+            <summary>
+            A default implementation of <see cref="T:FlexRule.TypeLoader.ITypeAddressBuilder"/>
+            </summary>
+        </member>
+        <member name="T:FlexRule.TypeLoader.TypeAddressCreator">
+            <summary>
+            Types address creator that also caches type resolve result 
+            </summary>
+        </member>
+        <member name="M:FlexRule.TypeLoader.TypeAddressCreator.CreateBuilder(FlexRule.Core.Model.IElementModel,FlexRule.ITypeIdentifierRegistry)">
+            <summary>
+            Creates  <see cref="T:FlexRule.TypeLoader.ITypeAddressBuilder"/> using model and <see cref="T:FlexRule.ITypeIdentifierRegistry"/>
+            </summary>
+            <param name="model"></param>
+            <param name="typeIdRegistry">If it is null then TypeId can not be resolved</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.TypeLoader.TypeAddressCreator.CreateBuilder(FlexRule.Core.Model.IElementModel)">
+            <summary>
+            Creates <see cref="T:FlexRule.TypeLoader.ITypeAddressBuilder"/> from a model
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.TypeLoader.TypeAddressCreator.CreateBuilder(System.String,System.String)">
+            <summary>
+            Creates <see cref="T:FlexRule.TypeLoader.ITypeAddressBuilder"/> from dll name and type
+            </summary>
+            <param name="assembly">This assembly name must include .dll extension</param>
+            <param name="fullTypeName">Type name must be full address. e.g. namespace.type</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.TypeLoader.TypeAddressCreator.CreateBuilder(System.Type)">
+            <summary>
+            Creates <see cref="T:FlexRule.TypeLoader.ITypeAddressBuilder"/> from an existing loaded type
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

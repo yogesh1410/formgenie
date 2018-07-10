@@ -1,0 +1,2870 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FlexRule.Core.Library</name>
+    </assembly>
+    <members>
+        <member name="T:FlexRule.CollectionBase`1">
+            <summary>
+            Base class collection
+            </summary>
+        </member>
+        <member name="T:FlexRule.IIterable">
+            <summary>
+            Iterable list that has item
+            </summary>
+        </member>
+        <member name="T:FlexRule.IArray">
+            <summary>
+            Gives access to an array
+            </summary>
+        </member>
+        <member name="M:FlexRule.IArray.GetItem(System.Int32)">
+            <summary>
+            Gets the item by index from array
+            </summary>
+        </member>
+        <member name="P:FlexRule.IArray.Count">
+            <summary>
+            Total numbers of item in the array
+            </summary>
+        </member>
+        <member name="P:FlexRule.IArray.Item(System.Int32)">
+            <summary>
+            Gets the item by index from array
+            </summary>
+        </member>
+        <member name="M:FlexRule.IIterable.GetIterator">
+            <summary>
+            Gets a new iterator
+            </summary>
+        </member>
+        <member name="T:FlexRule.IIterable`1">
+            <summary>
+            Iterable of generic list that has item
+            </summary>
+        </member>
+        <member name="T:FlexRule.IArray`1">
+            <summary>
+            Gives access to a generic array
+            </summary>
+        </member>
+        <member name="M:FlexRule.IArray`1.GetItem(System.Int32)">
+            <summary>
+            Gets the item by index from array
+            </summary>
+        </member>
+        <member name="P:FlexRule.IArray`1.Item(System.Int32)">
+            <summary>
+            Gets the item by index from array
+            </summary>
+        </member>
+        <member name="M:FlexRule.IIterable`1.GetIterator``1">
+            <summary>
+            Gets a new generic iterator
+            </summary>
+        </member>
+        <member name="M:FlexRule.CollectionBase`1.#ctor">
+            <summary>
+            Creates an empty list
+            </summary>
+        </member>
+        <member name="M:FlexRule.CollectionBase`1.#ctor(System.Int32)">
+            <summary>
+            Creates an empty list
+            </summary>
+        </member>
+        <member name="M:FlexRule.CollectionBase`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Creates an empty list and copies the collection 
+            </summary>
+        </member>
+        <member name="M:FlexRule.CollectionBase`1.#ctor(System.Collections.Generic.IList{`0})">
+            <summary>
+            References and wraps the existing list 
+            </summary>
+            <param name="list"></param>
+        </member>
+        <member name="M:FlexRule.CollectionBase`1.GetItem(System.Int32)">
+            <summary>
+            Gets an item by index
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.CollectionBase`1.RemoveAt(System.Int32)">
+            <summary>
+            Removes an item by its index
+            </summary>
+            <param name="index"></param>
+        </member>
+        <member name="M:FlexRule.CollectionBase`1.Add(`0)">
+            <summary>
+            Adds an item
+            </summary>
+        </member>
+        <member name="M:FlexRule.CollectionBase`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Adds a set of items
+            </summary>
+        </member>
+        <member name="M:FlexRule.CollectionBase`1.AddTop(`0)">
+            <summary>
+            Adds an item in top of list
+            </summary>
+        </member>
+        <member name="M:FlexRule.CollectionBase`1.Contains(`0)">
+            <summary>
+            Check if an item exists in the list
+            </summary>
+        </member>
+        <member name="M:FlexRule.CollectionBase`1.Clear">
+            <summary>
+            Clears the list
+            </summary>
+        </member>
+        <member name="M:FlexRule.CollectionBase`1.ToArray">
+            <summary>
+            Creates new array of items
+            </summary>
+        </member>
+        <member name="M:FlexRule.CollectionBase`1.Remove(`0)">
+            <summary>
+            Removes an item
+            </summary>
+        </member>
+        <member name="E:FlexRule.CollectionBase`1.ItemAdded">
+            <summary>
+            This will be raised when a new item has been added into the collection
+            </summary>
+        </member>
+        <member name="P:FlexRule.CollectionBase`1.Count">
+            <summary>
+            Total number of items
+            </summary>
+        </member>
+        <member name="P:FlexRule.CollectionBase`1.Item(System.Int32)">
+            <summary>
+            Gets an item by index number
+            </summary>
+        </member>
+        <member name="T:FlexRule.IIterator">
+            <summary>
+            Iterator of a list
+            </summary>
+        </member>
+        <member name="T:FlexRule.IIterator`1">
+            <summary>
+            Iterator of a generic list
+            </summary>
+        </member>
+        <member name="M:FlexRule.Graphs.Goals.GoalGraph`1.AddDependency(FlexRule.Graphs.Node{`0},FlexRule.Graphs.Node{`0})">
+            <summary>
+            a depends on b
+            </summary>
+            <param name="a">goal or rule</param>
+            <param name="b">goal or rule</param>
+        </member>
+        <member name="M:FlexRule.Graphs.Goals.GoalGraph`1.GatherInfo">
+            <summary>
+            Retrieve dependency information based on the nodes' numbers of incoming links
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.ISourceInfo">
+            <summary>
+            Provides information about the position of an element in the source
+            </summary>
+        </member>
+        <member name="P:FlexRule.ISourceInfo.SourceLine">
+            <summary>
+            Original line that represents the element model
+            </summary>
+        </member>
+        <member name="P:FlexRule.ISourceInfo.LineNumber">
+            <summary>
+            Line number in the actual source file/model
+            </summary>
+        </member>
+        <member name="P:FlexRule.ISourceInfo.LinePosition">
+            <summary>
+            Position in the line that starts the model element
+            </summary>
+        </member>
+        <member name="P:FlexRule.ISourceInfo.Tag">
+            <summary>
+            Extra information to be attached to the model element
+            </summary>
+        </member>
+        <member name="M:FlexRule.LinqExtensions.TakeLast``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Takes n last numbers of a source
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="n"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.MonadBuilders.MonadBuilder.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a monad builder for data operations
+            </summary>
+            <param name="name"></param>
+            <param name="parallel"></param>
+            <param name="localName">This can be null, empty string "" or a name of local parameter to monad operator. When <paramref name="localName"/> is provided, all the parameters also must provide expressions using the provided <paramref name="localName"/>. It can be empty ("") which means the builder assign a name automatically for LocalName property so the parameters must not contain the localName. It can be null, which means the monad does not need a local parameter</param>
+        </member>
+        <member name="T:FlexRule.FlexRuleException">
+            <summary>
+            Base exception class for all FlexRule runtime exceptions
+            </summary>
+        </member>
+        <member name="P:FlexRule.MonadBuilders.MonadParam.IsParam">
+            <summary>
+            Parameters are contributing in building view i.e. null|key(...)
+            Arguments are contributing to provide arguments for the monad only i.e. crossJoin(innerList, localOutter, locallInner...)
+            </summary>
+        </member>
+        <member name="T:FlexRule.Notifications.INotification">
+            <summary>
+            The base contract model on a notification. Notification is a collection messages with type of <see cref="T:FlexRule.Notifications.Notice"/>
+            </summary>
+        </member>
+        <member name="T:FlexRule.Notifications.INotificationManager">
+            <summary>
+            This interface would provide contract to manage a notification
+            </summary>
+        </member>
+        <member name="T:FlexRule.Notifications.INotificationSet">
+            <summary>
+            This interface provides contract to manage a set of notification and categorizing them in different groups.
+            </summary>
+        </member>
+        <member name="T:FlexRule.Notifications.INotificationSetManager">
+            <summary>
+            A manager for <see cref="T:FlexRule.Notifications.INotificationSet"/>
+            </summary>
+        </member>
+        <member name="T:FlexRule.Notifications.Notice">
+            <summary>
+            A notice is a message will be added to a <see cref="T:FlexRule.Notifications.Notification"/>
+            </summary>
+        </member>
+        <member name="M:FlexRule.Notifications.Notice.#ctor(System.String)">
+            <summary>
+            Creates a notice
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:FlexRule.Notifications.Notice.#ctor(FlexRule.Notifications.NoticeType,System.String,System.Object)">
+            <summary>
+            Creates a notice 
+            </summary>
+            <param name="type"></param>
+            <param name="message"></param>
+            <param name="tag"></param>
+        </member>
+        <member name="P:FlexRule.Notifications.Notice.Tag">
+            <summary>
+            Store any tag for model
+            </summary>
+        </member>
+        <member name="P:FlexRule.Notifications.Notice.Message">
+            <summary>
+            Failure message 
+            </summary>
+        </member>
+        <member name="P:FlexRule.Notifications.Notice.Type">
+            <summary>
+            Notice type: Error, warning...
+            </summary>
+        </member>
+        <member name="P:FlexRule.Notifications.Notice.Properties">
+            <summary>
+            All other properties that can be populated and carried as the result
+            </summary>
+        </member>
+        <member name="T:FlexRule.Notifications.NoticeType">
+            <summary>
+            Different types of notification
+            </summary>
+        </member>
+        <member name="T:FlexRule.Notifications.Notification">
+            <summary>
+            Base implementation of <see cref="T:FlexRule.Notifications.INotificationManager"/> that allows managing collection of <see cref="T:FlexRule.Notifications.Notice"/>s.
+            </summary>
+        </member>
+        <member name="T:FlexRule.Notifications.NotificationSet">
+            <summary>
+            A base implementation for <see cref="T:FlexRule.Notifications.INotificationSetManager"/>
+            </summary>
+        </member>
+        <member name="M:FlexRule.BuiltinEnumrableExtensions.ToCsv(FlexRule.DynamicEvaluation.Core.IDynamicEvaluationContext,System.Object,System.Object[])">
+            <summary>
+            Creates a CSV document using value of source
+            </summary>
+            <param name="context"></param>
+            <param name="source">source can be: string content or list of objects</param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Configurations.FlexRuleConfigurationSection">
+            <summary>
+            Configuration section definition
+            </summary>
+        </member>
+        <member name="T:FlexRule.Data.IMetaObject">
+            <summary>
+            Dynamic data defined in the data retrieval or access
+            </summary>
+        </member>
+        <member name="M:FlexRule.Data.IMetaObject.GetProperties">
+            <summary>
+            Returns names of columns are selected from database table
+            </summary>
+        </member>
+        <member name="M:FlexRule.Data.IMetaObject.GetValue(System.String)">
+            <summary>
+            Returns value of a column from current row
+            </summary>
+        </member>
+        <member name="P:FlexRule.Data.IMetaObject.Count">
+            <summary>
+            Numbers of properties in the model
+            </summary>
+        </member>
+        <member name="P:FlexRule.Data.IMetaObject.Item(System.String)">
+            <summary>
+            Returns value of a column from current row
+            </summary>
+        </member>
+        <member name="T:FlexRule.Data.INameValue">
+            <summary>
+            Dynamic objects value 
+            </summary>
+        </member>
+        <member name="P:FlexRule.Data.INameValue.Name">
+            <summary>
+            Name of property
+            </summary>
+        </member>
+        <member name="P:FlexRule.Data.INameValue.Value">
+            <summary>
+            Value of the property
+            </summary>
+        </member>
+        <member name="P:FlexRule.Data.INameValue.Type">
+            <summary>
+            Expected type of the property's value
+            </summary>
+        </member>
+        <member name="T:FlexRule.Data.Maps.IMap">
+            <summary>
+            Maps a name to a name while reading data from a source
+            </summary>
+        </member>
+        <member name="P:FlexRule.Data.Maps.IMap.Source">
+            <summary>
+            Source name
+            </summary>
+        </member>
+        <member name="P:FlexRule.Data.Maps.IMap.Target">
+            <summary>
+            Target name
+            </summary>
+        </member>
+        <member name="T:FlexRule.Data.Maps.IPropertyMap">
+            <summary>
+            Maps property of an object
+            </summary>
+        </member>
+        <member name="M:FlexRule.Data.Maps.IPropertyMap.FindSourceByTarget(System.String)">
+            <summary>
+            Finds source name of a property
+            </summary>
+        </member>
+        <member name="T:FlexRule.Data.Maps.ITypeMap">
+            <summary>
+            Maps type and all its properties
+            </summary>
+        </member>
+        <member name="M:FlexRule.Data.Maps.ITypeMap.ListProperties">
+            <summary>
+            List of all types properties
+            </summary>
+        </member>
+        <member name="P:FlexRule.Data.Maps.ITypeMap.Type">
+            <summary>
+            Type that is mapped
+            </summary>
+        </member>
+        <member name="T:FlexRule.Data.Maps.MapAttribute">
+            <summary>
+            Attribute based mapping 
+            </summary>
+        </member>
+        <member name="T:FlexRule.Data.Maps.TypeAutoMapAdapter`1">
+            <summary>
+            Automatically reads the type maps
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:FlexRule.Data.Maps.TypeMapReader">
+            <summary>
+            Reads all the mapping of a type
+            </summary>
+        </member>
+        <member name="T:FlexRule.Diagnostics.Configurations.TraceOptionElement">
+            <summary>
+                Configuration element for trace configuration
+            </summary>
+        </member>
+        <member name="T:FlexRule.Diagnostics.Configurations.TraceOptionsElementCollection">
+            <summary>
+                Collection of tracing elements
+            </summary>
+        </member>
+        <member name="T:FlexRule.Diagnostics.Configurations.TraceSection">
+            <summary>
+                Main tracing section of configuration
+            </summary>
+        </member>
+        <member name="T:FlexRule.Diagnostics.Configurations.ITraceOptions">
+            <summary>
+                Tracing option that changes the tracing behaviour
+            </summary>
+        </member>
+        <member name="T:FlexRule.ConvertHelper">
+            <summary>
+            Converts a value to another type using <see cref="T:System.ComponentModel.TypeConverter"/> or Parse method whenever possible
+            </summary>
+        </member>
+        <member name="M:FlexRule.ConvertHelper.ChangeType(System.Object,System.Type)">
+            <summary>
+            Changes a value to another type
+            </summary>
+            <param name="value"></param>
+            <param name="conversionType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.ConvertHelper.ToString(System.Object)">
+            <summary>
+            Changes an object value to string
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Diagnostics.Configurations.ExecutorEventTraceLevel">
+            <summary>
+                Tracing level for events of the executor and engine
+            </summary>
+        </member>
+        <member name="T:FlexRule.Diagnostics.ITrace">
+            <summary>
+                Interface for tracing purpose
+            </summary>
+        </member>
+        <member name="M:FlexRule.Diagnostics.ITrace.Write(System.String)">
+            <summary>
+            Writes a trace message 
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:FlexRule.Diagnostics.ITrace.WriteLine(System.String)">
+            <summary>
+            Writes a trace line
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:FlexRule.Diagnostics.FlexRuleTrace">
+            <summary>
+                Default tracing mechanism during the runtime execution and rule process
+            </summary>
+        </member>
+        <member name="M:FlexRule.Diagnostics.FlexRuleTrace.Write(System.String)">
+            <summary>
+            Writes a message to trace
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:FlexRule.Diagnostics.FlexRuleTrace.WriteLine(System.String)">
+            <summary>
+            Writes a line to trace
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:FlexRule.Diagnostics.FlexRuleTrace.IsModelFiltered(System.String)">
+            <summary>
+            true if trace is enabled and model is filtered
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Diagnostics.FlexRuleTrace.IsVariableFiltered(System.String)">
+            <summary>
+            true if trace is enabled and variable name is filtered
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Diagnostics.FlexRuleTrace.ShouldTraceVariable(FlexRule.Diagnostics.Configurations.ExecutorEventTraceLevel)">
+            <summary>
+            true if trace is enabled and variable container values are traced
+            </summary>
+            <param name="level"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Diagnostics.FlexRuleTrace.ShouldTraceModel(FlexRule.Diagnostics.Configurations.ExecutorEventTraceLevel)">
+            <summary>
+            true if trace is enabled and execution event is traced
+            </summary>
+            <param name="level"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Diagnostics.FlexRuleTrace.IsExcludedNamespace(System.String)">
+            <summary>
+            true if trace is enabled and namespace is excluded
+            </summary>
+            <param name="ns"></param>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.Diagnostics.FlexRuleTrace.Writer">
+            <summary>
+            Default trace writer
+            </summary>
+        </member>
+        <member name="P:FlexRule.Diagnostics.FlexRuleTrace.Options">
+            <summary>
+            Tracing options
+            </summary>
+        </member>
+        <member name="P:FlexRule.Diagnostics.FlexRuleTrace.Enabled">
+            <summary>
+            true when tracing is enabled
+            </summary>
+        </member>
+        <member name="P:FlexRule.Diagnostics.FlexRuleTrace.TraceLoadType">
+            <summary>
+            true when loading types is traced
+            </summary>
+        </member>
+        <member name="P:FlexRule.Diagnostics.FlexRuleTrace.TraceLoadAdapter">
+            <summary>
+            true when model load adapter is traced
+            </summary>
+        </member>
+        <member name="P:FlexRule.Diagnostics.FlexRuleTrace.TraceException">
+            <summary>
+            true when exceptions are traced
+            </summary>
+        </member>
+        <member name="P:FlexRule.Diagnostics.FlexRuleTrace.TraceParseTree">
+            <summary>
+            true when expression tree parser is traced
+            </summary>
+        </member>
+        <member name="P:FlexRule.Diagnostics.FlexRuleTrace.TraceCollections">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FlexRule.Diagnostics.FlexRuleTrace.TraceComplexTypes">
+            <summary>
+            true when complex types properties values will be dump during trace
+            </summary>
+        </member>
+        <member name="P:FlexRule.Diagnostics.FlexRuleTrace.ComplexTypeDepth">
+            <summary>
+            Numbers of nested properties to dump
+            </summary>
+        </member>
+        <member name="P:FlexRule.Diagnostics.FlexRuleTrace.TraceCollectionsMax">
+            <summary>
+            Maximum numbers of item in collection to be dump during trace
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.Detectors.QuotedStringDetector">
+            <summary>
+            Detects a quoted string. 
+            <example>consider the following sentence: "FlexRule is awesome!" and flexible! and this detector will return "FlexRule is awesome!"</example>
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.StandardTokenDetector">
+            <summary>
+            A standard token detector base class. Standard detectors have a DetectorType
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.ITokenDetector">
+            <summary>
+            Every token detector must implement this interface
+            </summary>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.ITokenDetector.Reset">
+            <summary>
+            If any state is stored in the matcher, this method should reset it before new process
+            </summary>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.ITokenDetector.CanActivateWith(FlexRule.DSL.Tokenizer.ISourceScanner,System.Char,System.Int32)">
+            <summary>
+            Checks if can be activated by first character 
+            </summary>
+            <param name="scanner"></param>
+            <param name="ch"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.ITokenDetector.Match(FlexRule.DSL.Tokenizer.ITokenDetectorContext,FlexRule.DSL.Tokenizer.ISourceScanner,System.Int32,System.Int32)">
+            <summary>
+            Match the stream against the detector
+            </summary>
+            <param name="context"></param>
+            <param name="stream"></param>
+            <param name="line"></param>
+            <param name="column"></param>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.DSL.Tokenizer.ITokenDetector.Alias">
+            <summary>
+            Name of detector
+            </summary>
+        </member>
+        <member name="P:FlexRule.DSL.Tokenizer.StandardTokenDetector.Type">
+            <summary>
+            Gets the detector type
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.Detectors.SingleQuotedStringDetector">
+            <summary>
+            Detects a quoted string. 
+            <example>consider the following sentence: 'Arash Aghlara' is a greate software architect! and this detector will retrun 'Arash Aghlara'</example>
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.Detectors.SplitterKeywordDetector">
+            <summary>
+            Detects a keyword inside a string
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.Detectors.KnwonWordDetector">
+            <summary>
+            Detects a word inside a string
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.PatternMatching.ICondition">
+            <summary>
+            Condition that will be chained to build <see cref="T:FlexRule.DSL.Tokenizer.PatternMatching.Pattern"/>
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.PatternMatching.Pattern">
+            <summary>
+            Builds a list of condition that a must be checked against stream of tokens
+            </summary>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.Pattern.Value(System.String)">
+            <summary>
+            Checks for value of a token
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.Pattern.Value(System.String,FlexRule.DSL.Tokenizer.PatternMatching.Repeat)">
+            <summary>
+            Checks for value of a token
+            </summary>
+            <param name="text"></param>
+            <param name="repeat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.Pattern.WhiteSpace">
+            <summary>
+            Checks token type is a whitespace
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.Pattern.WhiteSpace(FlexRule.DSL.Tokenizer.PatternMatching.Repeat)">
+            <summary>
+            Checks token type is a whitespace
+            </summary>
+            <param name="repeat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.Pattern.QuotedString">
+            <summary>
+            Checks token type is a quoted string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.Pattern.QuotedString(FlexRule.DSL.Tokenizer.PatternMatching.Repeat)">
+            <summary>
+            Checks token type is a quoted string
+            </summary>
+            <param name="repeat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.Pattern.Any">
+            <summary>
+            Checks any sequence of tokens until the next available condition in pattern is met
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.Pattern.EndOfLine">
+            <summary>
+            Checks token type is EOL
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.Pattern.EndOfLine(FlexRule.DSL.Tokenizer.PatternMatching.Repeat)">
+            <summary>
+            Checks token type is EOL
+            </summary>
+            <param name="repeat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.Pattern.TokenType(FlexRule.DSL.Tokenizer.Detectors.DetectorType)">
+            <summary>
+            Checks for a specific type of token
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.Pattern.TokenType(FlexRule.DSL.Tokenizer.Detectors.DetectorType,FlexRule.DSL.Tokenizer.PatternMatching.Repeat)">
+            <summary>
+            Checks for a specific type of token
+            </summary>
+            <param name="type"></param>
+            <param name="repeat"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.PatternMatching.PatternValidator">
+            <summary>
+            Validates a pattern based on a position and returns where the validation is failed
+            </summary>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.PatternValidator.#ctor(FlexRule.DSL.Tokenizer.PatternMatching.Pattern,FlexRule.IIterable{FlexRule.DSL.Tokenizer.StringToken})">
+            <summary>
+            Creates a pattern validator for a pattern and list of tokens
+            </summary>
+            <param name="pattern"></param>
+            <param name="tokens"></param>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.PatternValidator.Validate(System.Int32)">
+            <summary>
+            Executes the condition against tokens
+            </summary>
+            <param name="startIndex">Starting point in the token list that validation starts from</param>
+            <returns>true if all conditions are passed</returns>
+        </member>
+        <member name="P:FlexRule.DSL.Tokenizer.PatternMatching.PatternValidator.ConditionPosition">
+            <summary>
+            Position of last pattern condition that is checked
+            </summary>
+        </member>
+        <member name="P:FlexRule.DSL.Tokenizer.PatternMatching.PatternValidator.TokenPosition">
+            <summary>
+            Position of last token that is checked
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.PatternMatching.RepeatRules">
+            <summary>
+            Identifies the rule if <see cref="T:FlexRule.DSL.Tokenizer.PatternMatching.Repeat"/> based on its configurations
+            </summary>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.RepeatRules.ZeroOrMore(FlexRule.DSL.Tokenizer.PatternMatching.Repeat)">
+            <summary>
+            Zero or more repeat
+            </summary>
+            <param name="repeat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.RepeatRules.One(FlexRule.DSL.Tokenizer.PatternMatching.Repeat)">
+            <summary>
+            Must repeat and only one
+            </summary>
+            <param name="repeat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.RepeatRules.Zero(FlexRule.DSL.Tokenizer.PatternMatching.Repeat)">
+            <summary>
+            Must not repeat at all. Cannot exists in the tokens or invalid token.
+            </summary>
+            <param name="repeat"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.PatternMatching.Repeat">
+            <summary>
+            Repeating pattern of a token
+            </summary>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.Repeat.Zero">
+            <summary>
+            Zero repeat 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.Repeat.One">
+            <summary>
+            Repeat one
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.Repeat.ZeroOrOne">
+            <summary>
+            Zero or one
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.PatternMatching.Repeat.ZeroOrMore">
+            <summary>
+            Zero or more
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.DSL.Tokenizer.PatternMatching.Repeat.Minimum">
+            <summary>
+            Minimum times for repeating
+            </summary>
+        </member>
+        <member name="P:FlexRule.DSL.Tokenizer.PatternMatching.Repeat.Maximum">
+            <summary>
+            Maximum times for repeating
+            </summary>
+        </member>
+        <member name="P:FlexRule.DSL.Tokenizer.PatternMatching.Repeat.CheckMinimum">
+            <summary>
+            true if <see cref="P:FlexRule.DSL.Tokenizer.PatternMatching.Repeat.Minimum"/> range applies otherwise false
+            </summary>
+        </member>
+        <member name="P:FlexRule.DSL.Tokenizer.PatternMatching.Repeat.CheckMaximum">
+            <summary>
+            true if <see cref="P:FlexRule.DSL.Tokenizer.PatternMatching.Repeat.Maximum"/> range applies otherwise false
+            </summary>
+        </member>
+        <member name="T:FlexRule.DynamicEvaluation.Core.ExpressionNodeType">
+            <summary>
+            Types of nodes in the expression tree
+            </summary>
+        </member>
+        <member name="T:FlexRule.DynamicEvaluation.Core.IExpressionNode">
+            <summary>
+            Text nodes hierarchy int <see cref="T:FlexRule.DynamicEvaluation.ICompiledExpression"/>
+            </summary>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Core.IExpressionNode.Text">
+            <summary>
+            Text of the node
+            </summary>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Core.IExpressionNode.Expression">
+            <summary>
+            Text of node
+            </summary>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Core.IExpressionNode.Childs">
+            <summary>
+            Children of the code
+            </summary>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Core.IExpressionNode.Parent">
+            <summary>
+            Parent of the node
+            </summary>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Core.IExpressionNode.Type">
+            <summary>
+            Type of the node
+            </summary>
+        </member>
+        <member name="T:FlexRule.DynamicEvaluation.ExpressionEvalEvents">
+            <summary>
+            Raises events during expression Nodes evaluation
+            </summary>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.ExpressionEvalEvents.Clear">
+            <summary>
+            Removes all the handlers
+            </summary>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.ExpressionEvalEvents.Unregister(System.Action{FlexRule.DynamicEvaluation.EvalEventsArgs})">
+            <summary>
+            Unregister a handler
+            </summary>
+            <param name="handler"></param>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.ExpressionEvalEvents.Register(System.Action{FlexRule.DynamicEvaluation.EvalEventsArgs},FlexRule.DynamicEvaluation.Core.ExpressionNodeType)">
+            <summary>
+            Register a handler for an event
+            </summary>
+            <param name="handler"></param>
+            <param name="type"></param>
+        </member>
+        <member name="T:FlexRule.DynamicEvaluation.ExpressionEval">
+            <summary>
+                Bridges to default eval engine implementation and caches the <see cref="T:FlexRule.DynamicEvaluation.ICompiledExpression"/> based on expression string 
+            </summary>
+        </member>
+        <member name="T:FlexRule.DynamicEvaluation.IEvalEngine">
+            <summary>
+                Interface for expression eval engine that computes an expression
+            </summary>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.IEvalEngine.Compile(FlexRule.IVariableContainer,System.String)">
+            <summary>
+                Compiles a string expression to an computable expression
+            </summary>
+            <param name="variables">Variables that are used in the expression</param>
+            <param name="expression">String expression</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.IEvalEngine.Compute(FlexRule.IVariableContainer,System.String,System.Boolean)">
+            <summary>
+                Computes a string expression
+            </summary>
+            <param name="variables">Variables that are used in the expression</param>
+            <param name="expression">String expression</param>
+            <param name="shortCircuit">Always short circuit OR, AND operators</param>
+            <returns>Result of the expression</returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.IEvalEngine.Compute(FlexRule.IVariableContainer,FlexRule.DynamicEvaluation.ICompiledExpression,System.Boolean)">
+            <summary>
+                Computes an expression
+            </summary>
+            <param name="variables">Variables that are used in the expression</param>
+            <param name="expression">Compiled expression</param>
+            <param name="shortCircuit">Always short circuit OR, AND operators</param>
+            <returns>Result of the expression</returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.ExpressionEval.Compile(FlexRule.IVariableContainer,System.String)">
+            <summary>
+                Compiles an string expression that can be executed
+            </summary>
+            <param name="variables">Variables in the expression</param>
+            <param name="expression">Expression as a string</param>
+            <returns>Compiled executable expression</returns>
+            <exception cref="T:FlexRule.DynamicEvaluation.ParserException">When parsing of expression is failed due to any reason that can be identified by <see cref="T:FlexRule.DynamicEvaluation.Core.ParserError"/></exception>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.ExpressionEval.Compute(FlexRule.IVariableContainer,System.String,System.Boolean)">
+            <summary>
+                Compiles and executes string expression
+            </summary>
+            <param name="variables">Variables in the expression</param>
+            <param name="expression">String expression to be computed</param>
+            <param name="shortCircuit">Always short circuit OR, AND operators</param>
+            <returns>Result of the computed expression that can be in any type</returns>
+            <exception cref="T:FlexRule.DynamicEvaluation.ParserException">When parsing of expression is failed due to any reason that can be identified by <see cref="T:FlexRule.DynamicEvaluation.Core.ParserError"/></exception>
+            <exception cref="T:FlexRule.DynamicEvaluation.EvaluatorException">When evaluation of an expression fails that can be identifies by <see cref="T:FlexRule.DynamicEvaluation.EvaluationError"/></exception>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.ExpressionEval.Compute(FlexRule.IVariableContainer,FlexRule.DynamicEvaluation.ICompiledExpression,System.Boolean)">
+            <summary>
+                Computes and executes a compiled expression
+            </summary>
+            <param name="variables">Variables of the expression</param>
+            <param name="expression">Compiled expression</param>
+            <param name="shortCircuit">Always short circuit OR, AND operators</param>
+            <returns>Result of the computed expression that can be in any type</returns>
+            <exception cref="T:FlexRule.DynamicEvaluation.ParserException">When parsing of expression is failed due to any reason that can be identified by <see cref="T:FlexRule.DynamicEvaluation.Core.ParserError"/></exception>
+            <exception cref="T:FlexRule.DynamicEvaluation.EvaluatorException">When evaluation of an expression fails that can be identifies by <see cref="T:FlexRule.DynamicEvaluation.EvaluationError"/></exception>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.ExpressionEval.Default">
+            <summary>
+                Default binder of the eval engine
+            </summary>
+        </member>
+        <member name="T:FlexRule.DynamicEvaluation.ExpressionEvalImpl">
+            <summary>
+                Default expression eval engine that computes a complex expression
+            </summary>
+        </member>
+        <member name="T:FlexRule.DynamicEvaluation.Expressions.Operators.AdditiveOp">
+            <summary>
+                add double or string
+            </summary>
+        </member>
+        <member name="T:FlexRule.DynamicEvaluation.Reflection.Fast.CapsuleEmitter">
+            <summary>
+            Creates classes from specifications.
+            </summary>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.CapsuleEmitter.GetAssemblyBuilder">
+            <summary>
+            Gets the assembly builder.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.CapsuleEmitter.GetModuleBuilder">
+            <summary>
+            Gets the module builder.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.CapsuleEmitter.CreateCapsule(System.String,FlexRule.DynamicEvaluation.Reflection.Fast.CapsuleField[])">
+            <summary>
+            Creates the capsule.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="fields">The fields.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastBase.GetParameterTypes(System.Reflection.MethodInfo)">
+            <summary>
+            Gets the parameter types.
+            </summary>
+            <param name="method">The method.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastBase.EmitCastConversion(System.Reflection.Emit.ILGenerator,System.Type)">
+            <summary>
+            Emits the cast or conversion.
+            </summary>
+            <param name="il">The il.</param>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastBase.EmitLoadInt(System.Reflection.Emit.ILGenerator,System.Int32)">
+            <summary>
+            Emits the load int.
+            </summary>
+            <param name="il">The il.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="T:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass">
+            <summary>
+            Provides access to dynamic code reflection; resulting code reflection
+            will be faster than using reflection, but will result in code being
+            loaded into the current address space.  In other words, this class
+            builds a proxy around a class and generates MSIL specifically for
+            the purpose of exposing functionality.
+            </summary>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass._fastClassId">
+            <summary>
+            Static sequential id generation for classes
+            </summary>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass._id">
+            <summary>
+            Unique identifier assigned to each FastClass upon creation.
+            </summary>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass._targetType">
+            <summary>
+            Type that the FastClass is proxying.
+            </summary>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass._methodCache">
+            <summary>
+            Maps methods to FastMethods
+            </summary>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass._fieldCache">
+            <summary>
+            Maps fields to FastFields
+            </summary>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass._propertyCache">
+            <summary>
+            Maps fields to FastProperty
+            </summary>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass._ctorCache">
+            <summary>
+            Maps constructors to FastConstructors
+            </summary>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass._instanceLock">
+            <summary>
+            Internal lock
+            </summary>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass.FastClassCache">
+            <summary>
+            Maps types to their FastClass implementation.
+            </summary>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass.FastClassCacheLock">
+            <summary>
+            Static lock used for the fastClassCache
+            </summary>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass.#cctor">
+            <summary>
+            Initializes the <see cref="T:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass"/> class.
+            </summary>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass.Create(System.Type)">
+            <summary>
+            Creates a FastClass for the specified target type.
+            </summary>
+            <param name="targetType">Type of the target.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass.#ctor(System.Type,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass"/> class.
+            </summary>
+            <param name="targetType">Type of the target.</param>
+            <param name="id">The class id.</param>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass.NewInstance">
+            <summary>
+            News the instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass.GetDefaultConstructor">
+            <summary>
+            Gets the default constructor.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass.GetConstructor(System.Reflection.ConstructorInfo)">
+            <summary>
+            Gets a fast constructor implementation for the given
+            constructor.
+            </summary>
+            <param name="ctor">The constructor.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass.GetConstructor(System.Type[])">
+            <summary>
+            Gets the constructor.
+            </summary>
+            <param name="paramTypes">The param types.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass.CreateMethod(System.Reflection.MethodInfo)">
+            <summary>
+            Creates the method.
+            </summary>
+            <param name="method">The method.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass.GetMethod(System.Reflection.MethodInfo)">
+            <summary>
+            Gets a fast method implementation for the given
+            method.
+            </summary>
+            <param name="method">The method.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass.GetMethod(System.String)">
+            <summary>
+            Gets the method.
+            </summary>
+            <param name="name">The name.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass.GetMethod(System.String,System.Type[])">
+            <summary>
+            Gets the method.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="paramTypes">The param types.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass.GetField(System.Reflection.FieldInfo)">
+            <summary>
+            Gets a fast field implementation for the given
+            field.
+            </summary>
+            <param name="field">The field.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass.GetField(System.String)">
+            <summary>
+            Gets the field.
+            </summary>
+            <param name="name">The name.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass.GetProperty(System.Reflection.PropertyInfo)">
+            <summary>
+            Gets a fast property implementation for the given
+            property.
+            </summary>
+            <param name="property">The property.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass.GetProperty(System.String)">
+            <summary>
+            Gets the property.
+            </summary>
+            <param name="name">The name.</param>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass.TargetType">
+            <summary>
+            Gets the type the FastClass is proxying for.
+            </summary>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Reflection.Fast.FastClass.Id">
+            <summary>
+            Gets the unique internally assigned identifier.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastClassUtil.GetGetMethodForProperty(System.Type,System.String)">
+            <summary>
+            Finds a property with the given name.  Once found, extracts the Get method
+            and returns the method.  This method searches for non-public get methods
+            if one can not be found.  Eventually, this should get wrapped with a
+            FastMethod.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="propName">Name of the prop.</param>
+            <returns></returns>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastConstructor.fastClass">
+            <summary>
+            Class object that this constructor belongs to.
+            </summary>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastConstructor.targetConstructor">
+            <summary>
+            Method that is being proxied
+            </summary>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastConstructor.dynamicMethod">
+            <summary>
+            Dynamic method that is constructed for invocation.
+            </summary>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastConstructor.GetParameterTypes(System.Reflection.ConstructorInfo)">
+            <summary>
+            Gets the parameter types.
+            </summary>
+            <param name="constructor">The constructor.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastConstructor.#ctor(FlexRule.DynamicEvaluation.Reflection.Fast.FastClass,System.Reflection.ConstructorInfo)">
+            <summary>
+            Constructs a wrapper around the target constructor.
+            </summary>
+            <param name="_fastClass">The _fast class.</param>
+            <param name="constructor">The constructor.</param>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastConstructor.New(System.Object[])">
+            <summary>
+            Creates a new instance of the target using the parameters.
+            </summary>
+            <param name="paramList">The param list.</param>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Reflection.Fast.FastConstructor.Target">
+            <summary>
+            Gets the target constructor.
+            </summary>
+            <value>The target method.</value>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Reflection.Fast.FastConstructor.DeclaringType">
+            <summary>
+            Gets the type of the declaring.
+            </summary>
+            <value>The type of the declaring.</value>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Reflection.Fast.FastConstructor.ParameterCount">
+            <summary>
+            Gets the parameter count.
+            </summary>
+            <value>The parameter count.</value>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastField.fastClass">
+            <summary>
+            Class object that this method belongs to.
+            </summary>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastField.targetField">
+            <summary>
+            Field that is being proxied
+            </summary>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastField.dynamicGetMethod">
+            <summary>
+            Dynamic method that is constructed for invocation.
+            </summary>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastField.#ctor(FlexRule.DynamicEvaluation.Reflection.Fast.FastClass,System.Reflection.FieldInfo)">
+            <summary>
+            Constructs a wrapper around the target field.
+            </summary>
+            <param name="_fastClass">The _fast class.</param>
+            <param name="field">The field.</param>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastField.CreateDynamicGetMethod(System.Reflection.FieldInfo)">
+            <summary>
+            Creates the dynamic get method.
+            </summary>
+            <param name="field">The field.</param>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastField.CreateDynamicSetMethod(System.Reflection.FieldInfo)">
+            <summary>
+            Creates the dynamic set method.
+            </summary>
+            <param name="field">The field.</param>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastField.Get(System.Object)">
+            <summary>
+            Gets the value of the field
+            </summary>
+            <param name="target">The target.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastField.GetStatic">
+            <summary>
+            Gets the value of a static field
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastField.Set(System.Object,System.Object)">
+            <summary>
+            Sets the value of an instance field.
+            </summary>
+            <param name="target">The target.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastField.SetStatic(System.Object)">
+            <summary>
+            Sets the value of a static field.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Reflection.Fast.FastField.Target">
+            <summary>
+            Gets the target field.
+            </summary>
+            <value>The target field.</value>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Reflection.Fast.FastField.Name">
+            <summary>
+            Gets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Reflection.Fast.FastField.FieldType">
+            <summary>
+            Gets the field type.
+            </summary>
+            <value>The field type</value>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Reflection.Fast.FastField.DeclaringType">
+            <summary>
+            Gets the type of the declaring.
+            </summary>
+            <value>The type of the declaring.</value>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastMethod._fastClass">
+            <summary>
+            Class object that this method belongs to.
+            </summary>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastMethod._targetMethod">
+            <summary>
+            Method that is being proxied
+            </summary>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastMethod._dynamicMethod">
+            <summary>
+            Dynamic method that is constructed for invocation.
+            </summary>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastMethod.#ctor(FlexRule.DynamicEvaluation.Reflection.Fast.FastClass,System.Reflection.MethodInfo)">
+            <summary>
+            Constructs a wrapper around the target method.
+            </summary>
+            <param name="fastClass">The _fast class.</param>
+            <param name="method">The method.</param>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastMethod.Invoke(System.Object,System.Object[])">
+            <summary>
+            Invokes the method on the specified target.
+            </summary>
+            <param name="target">The target.</param>
+            <param name="paramList">The param list.</param>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastMethod.InvokeStatic(System.Object[])">
+            <summary>
+            Invokes the method on the specified target.
+            </summary>
+            <param name="paramList">The param list.</param>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Reflection.Fast.FastMethod.Target">
+            <summary>
+            Gets the target method.
+            </summary>
+            <value>The target method.</value>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Reflection.Fast.FastMethod.Name">
+            <summary>
+            Gets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Reflection.Fast.FastMethod.ReturnType">
+            <summary>
+            Gets the type of the return.
+            </summary>
+            <value>The type of the return.</value>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Reflection.Fast.FastMethod.DeclaringType">
+            <summary>
+            Gets the type of the declaring.
+            </summary>
+            <value>The type of the declaring.</value>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Reflection.Fast.FastMethod.ParameterCount">
+            <summary>
+            Gets the parameter count.
+            </summary>
+            <value>The parameter count.</value>
+        </member>
+        <member name="T:FlexRule.DynamicEvaluation.Reflection.Fast.FastProperty">
+            <summary>
+            Provides access to property information and creates dynamic method to access
+            properties rather than relying upon reflection.
+            </summary>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastProperty.fastClass">
+            <summary>
+            Class object that this method belongs to.
+            </summary>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastProperty.targetProperty">
+            <summary>
+            Property that is being proxied
+            </summary>
+        </member>
+        <member name="F:FlexRule.DynamicEvaluation.Reflection.Fast.FastProperty.dynamicGetMethod">
+            <summary>
+            Dynamic method that is constructed for invocation.
+            </summary>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastProperty.#ctor(FlexRule.DynamicEvaluation.Reflection.Fast.FastClass,System.Reflection.PropertyInfo)">
+            <summary>
+            Constructs a wrapper around the target property.
+            </summary>
+            <param name="_fastClass">The _fast class.</param>
+            <param name="property">The property.</param>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastProperty.CreateDynamicGetMethod(System.Reflection.PropertyInfo)">
+            <summary>
+            Creates the dynamic get method.
+            </summary>
+            <param name="property">The property.</param>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastProperty.CreateDynamicSetMethod(System.Reflection.PropertyInfo)">
+            <summary>
+            Creates the dynamic set method.
+            </summary>
+            <param name="property">The property.</param>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastProperty.Get(System.Object)">
+            <summary>
+            Gets the value of the property
+            </summary>
+            <param name="target">The target.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastProperty.GetStatic">
+            <summary>
+            Gets the value of a static property
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastProperty.Set(System.Object,System.Object)">
+            <summary>
+            Sets the value of an instance property.
+            </summary>
+            <param name="target">The target.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Reflection.Fast.FastProperty.SetStatic(System.Object)">
+            <summary>
+            Sets the value of a static property.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Reflection.Fast.FastProperty.Target">
+            <summary>
+            Gets the target property.
+            </summary>
+            <value>The target property.</value>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Reflection.Fast.FastProperty.Name">
+            <summary>
+            Gets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Reflection.Fast.FastProperty.PropertyType">
+            <summary>
+            Gets the property type.
+            </summary>
+            <value>The property type</value>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.Reflection.Fast.FastProperty.DeclaringType">
+            <summary>
+            Gets the type of the declaring.
+            </summary>
+            <value>The type of the declaring.</value>
+        </member>
+        <member name="T:FlexRule.DynamicEvaluation.Reflection.ReflectionUtility">
+            <summary>
+            All required reflection operations 
+            </summary>
+        </member>
+        <member name="T:FlexRule.DynamicEvaluation.ICompiledExpression">
+            <summary>
+                Result of <see cref="M:FlexRule.DynamicEvaluation.IEvalEngine.Compile(FlexRule.IVariableContainer,System.String)"/> method. This compile expression then can be evaluated.
+            </summary>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.ICompiledExpression.Text">
+            <summary>
+                Source of the string expression
+            </summary>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.ICompiledExpression.Node">
+            <summary>
+            Node of the expression tree
+            </summary>
+        </member>
+        <member name="T:FlexRule.DynamicEvaluation.CompiledExpressionExtensions">
+            <summary>
+            Extension class of IConpiledExpression
+            </summary>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.CompiledExpressionExtensions.ListNodes(FlexRule.DynamicEvaluation.ICompiledExpression)">
+            <summary>
+            Collects all <see cref="T:FlexRule.DynamicEvaluation.Core.IExpression"/>s
+            </summary>
+            <param name="expr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.CompiledExpressionExtensions.Print(FlexRule.DynamicEvaluation.ICompiledExpression,System.Int32)">
+            <summary>
+            Prints tree of expression
+            </summary>
+            <param name="expr"></param>
+            <param name="leftMargin">Left space margin on print</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.CompiledExpressionExtensions.Print(FlexRule.DynamicEvaluation.Core.IExpressionNode,System.Int32)">
+            <summary>
+            Prints an expression node
+            </summary>
+            <param name="node"></param>
+            <param name="leftMargin">left space margin on print</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.CompiledExpressionExtensions.Print(FlexRule.DynamicEvaluation.Core.IExpressionNode,System.IO.TextWriter)">
+            <summary>
+            Prints an expression node
+            </summary>
+            <param name="node"></param>
+            <param name="w"></param>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.CompiledExpressionExtensions.Print(FlexRule.DynamicEvaluation.ICompiledExpression,System.IO.TextWriter)">
+            <summary>
+            Prints tree of expression
+            </summary>
+            <param name="expr"></param>
+            <param name="w"></param>
+        </member>
+        <member name="T:FlexRule.DynamicEvaluation.Core.EvalEngine">
+            <summary>
+                Expression evaluation engine
+            </summary>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Core.EvalEngine.Compile(FlexRule.IVariableContainer,System.String)">
+            <summary>
+                Compiles an string expression that can be executed
+            </summary>
+            <param name="variables">Variables in the expression</param>
+            <param name="expression">Expression as a string</param>
+            <returns>Compiled executable expression</returns>
+            <exception cref="T:FlexRule.DynamicEvaluation.ParserException">When parsing of expression is failed due to any reason that can be identified by <see cref="T:FlexRule.DynamicEvaluation.Core.ParserError"/></exception>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Core.EvalEngine.Compute(FlexRule.IVariableContainer,System.String,System.Boolean)">
+            <summary>
+                Compiles and computes the expression considering the provided access list
+            </summary>
+            <param name="variables">Variables provider of the string expression</param>
+            <param name="expression">String expression to be computed</param>
+            <param name="shortCircuit">Always short circuit OR, AND operators</param>
+            <returns>Result of the computed expression that can be in any type</returns>
+            <exception cref="T:FlexRule.DynamicEvaluation.ParserException">When parsing of expression is failed due to any reason that can be identified by <see cref="T:FlexRule.DynamicEvaluation.Core.ParserError"/></exception>
+            <exception cref="T:FlexRule.DynamicEvaluation.EvaluatorException">When evaluation of an expression fails that can be identifies by <see cref="T:FlexRule.DynamicEvaluation.EvaluationError"/></exception>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Core.EvalEngine.Compute(FlexRule.IVariableContainer,FlexRule.DynamicEvaluation.ICompiledExpression,System.Boolean)">
+            <summary>
+                Computes and executes a compiled expression
+            </summary>
+            <param name="variables">Variables of the expression</param>
+            <param name="expression">Compiled expression</param>
+            <param name="shortCircuit">Always short circuit OR, AND operators</param>
+            <returns>Result of the computed expression that can be in any type</returns>
+            <exception cref="T:FlexRule.DynamicEvaluation.ParserException">When parsing of expression is failed due to any reason that can be identified by <see cref="T:FlexRule.DynamicEvaluation.Core.ParserError"/></exception>
+            <exception cref="T:FlexRule.DynamicEvaluation.EvaluatorException">When evaluation of an expression fails that can be identifies by <see cref="T:FlexRule.DynamicEvaluation.EvaluationError"/></exception>
+        </member>
+        <member name="T:FlexRule.DynamicEvaluation.EvaluatorException">
+            <summary>
+                Thrown when a variable does not exist
+            </summary>
+        </member>
+        <member name="T:FlexRule.DynamicEvaluation.Core.ParserError">
+            <summary>
+                Different errors type of <see cref="T:FlexRule.DynamicEvaluation.Core.Parser"/>
+            </summary>
+        </member>
+        <member name="T:FlexRule.MarshalByRefBase">
+            <summary>
+            Base class for runtime types
+            </summary>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Core.Parser.Parse(System.String)">
+            <summary>
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.Core.Parser.Parse(FlexRule.IVariableContainer,System.String)">
+            <summary>
+            </summary>
+            <param name="container"></param>
+            <param name="text"></param>
+        </member>
+        <member name="T:FlexRule.DynamicEvaluation.ParserException">
+            <summary>
+                Thrown if an exception occurs during expression parsing process
+            </summary>
+        </member>
+        <member name="T:FlexRule.ExceptionCenter">
+            <summary>
+            Manages the exception logging based on the set configuration
+            </summary>
+        </member>
+        <member name="T:FlexRule.FlexRuleEdition">
+            <summary>
+            Different editions of product
+            </summary>
+        </member>
+        <member name="T:FlexRule.Graphs.CircularReferenceException">
+            <summary>
+            Graph a circular exception.
+            </summary>
+        </member>
+        <member name="M:FlexRule.Graphs.TopologicalSort`1.SetDependencies(FlexRule.Graphs.Node{`0},System.Collections.Generic.IEnumerable{FlexRule.Graphs.Node{`0}})">
+            <summary>
+            Sets dependencies of given object.
+            This means <paramref name="mainNode"/> depends on these <paramref name="dependantNodes"/> to run.
+            Please make sure objects given in the <paramref name="mainNode"/> and <paramref name="dependantNodes"/> are added first.
+            </summary>
+        </member>
+        <member name="M:FlexRule.Graphs.TopologicalSort`1.Sort">
+            <summary>
+            Sorts objects based on this dependencies.
+            </summary>
+        </member>
+        <member name="M:FlexRule.Graphs.TopologicalSort`1.GetIndependentObject(FlexRule.Graphs.Node{`0}@)">
+            <summary>
+            Returns independent object or returns NULL if no independent object is found.
+            </summary>
+        </member>
+        <member name="M:FlexRule.Graphs.TopologicalSort`1.DeleteObject(FlexRule.Graphs.Node{`0})">
+            <summary>
+            Deletes given object from the matrix.
+            </summary>
+        </member>
+        <member name="T:FlexRule.IIntVariableContainer">
+            <summary>
+            Internal interface to the variable context
+            </summary>
+        </member>
+        <member name="M:FlexRule.IIntVariableContainer.GetVariableData(System.String,System.Boolean)">
+            <summary>
+            Gets the data associated with a variable name
+            </summary>
+            <param name="name">Name of variable</param>
+            <param name="nested">Lookup for nested containers</param>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.IIntVariableContainer.Key">
+            <summary>
+            Container key based on execution plans
+            </summary>
+        </member>
+        <member name="T:FlexRule.INestedContainerManager">
+            <summary>
+            Manages all the nested containers inside a <see cref="T:FlexRule.IVariableContainer"/>
+            </summary>
+        </member>
+        <member name="M:FlexRule.INestedContainerManager.GetNames">
+            <summary>
+            Lists all the nested container's name
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.INestedContainerManager.Remove(System.String)">
+            <summary>
+            Removes nested container
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.INestedContainerManager.RemoveAll">
+            <summary>
+            Removes all nested container
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.INestedContainerManager.Exists(System.String)">
+            <summary>
+            Checks nested container's name
+            </summary>
+            <param name="childName"></param>
+            <returns>true if exists otherwise false</returns>
+        </member>
+        <member name="M:FlexRule.INestedContainerManager.GetContainer(System.String,System.Type)">
+            <summary>
+            Creates a new nested container or return the existing one
+            </summary>
+            <param name="childName"></param>
+            <param name="parentType">Not null when nested underlaying container is related to properties of a type</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Period`1.Contains(`0)">
+            <summary>
+            Border values are considered inside.
+            </summary>
+        </member>
+        <member name="M:FlexRule.Period`1.ContainsExclusive(`0)">
+            <summary>
+            Border values are considered outside.
+            </summary>
+        </member>
+        <member name="M:FlexRule.Period`1.Intersects(FlexRule.Period{`0})">
+            <summary>
+            Whether two ranges intersect each other.
+            </summary>
+        </member>
+        <member name="M:FlexRule.Period`1.IntersectsExclusive(FlexRule.Period{`0})">
+            <summary>
+            Whether two ranges intersect each other.
+            </summary>
+        </member>
+        <member name="M:FlexRule.Period`1.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="M:FlexRule.Period`1.CompareTo(FlexRule.Period{`0})">
+            <summary>
+            Returns -1 if this range's From is less than the other, 1 if greater.
+            If both are equal, To is compared, 1 if greater, -1 if less.
+            0 if both ranges are equal.
+            </summary>
+            <param name="other">The other.</param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Pipes.Sort.CollectionSortExtensions">
+            <summary>
+            Sorts a collection of objects by property names.
+            </summary>
+            <remarks>
+            The sortExpression is similar to SQL order by clause. The format is:
+            <code>
+            Property1 [ASC|DESC][, Property2 [ASC|DESC], ...]
+            </code>
+            </remarks>
+        </member>
+        <member name="M:FlexRule.Pipes.Sort.CollectionSortExtensions.CompoundSort(System.Collections.Generic.IList{System.Object},FlexRule.IVariableContainer,FlexRule.Pipes.OrderedEnumerable.Key[],System.String)">
+            <summary>
+            Sorts an IList&lt;T&gt; by properties using the specified sort expression.
+            </summary>
+        </member>
+        <member name="T:FlexRule.Pipes.Sort.MergeSort">
+            <summary>
+            Implementation of the merge sort algorithm.
+            </summary>
+        </member>
+        <member name="M:FlexRule.Pipes.Sort.MergeSort.#ctor(System.Collections.Generic.IList{System.Object},System.Collections.Generic.IComparer{System.Object},System.ComponentModel.ListSortDirection)">
+            <summary>
+            Creates a new MergeSort class.
+            </summary>
+        </member>
+        <member name="M:FlexRule.Pipes.Sort.MergeSort.Sort(System.Collections.Generic.IList{System.Object},System.Collections.Generic.IComparer{System.Object},System.ComponentModel.ListSortDirection)">
+            <summary>
+            Sorts an IList using the specified comparer and the sort direction.
+            </summary>
+        </member>
+        <member name="T:FlexRule.Translation.IMessageTemplateProvider">
+            <summary>
+            Messages lookup and translation them based on different cultures is provided by this interface
+            </summary>
+        </member>
+        <member name="T:FlexRule.Translation.IMessageLookup">
+            <summary>
+            Looks up for a message template based on a key and culture
+            </summary>
+        </member>
+        <member name="M:FlexRule.Translation.IMessageLookup.Lookup(System.String,System.Globalization.CultureInfo)">
+            <summary>
+            Retrieve a message by its key from the repository
+            </summary>
+            <param name="key"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Translation.IMultilingualMessageRepository">
+            <summary>
+            Stores messages in a lookup with their translations
+            </summary>
+            <remarks>
+            Allows different translation of a message be registered and will be formatted and translated based on culture
+            </remarks>
+        </member>
+        <member name="M:FlexRule.Translation.IMultilingualMessageRepository.Register(FlexRule.Translation.IMessageTemplateProvider,System.Globalization.CultureInfo)">
+            <summary>
+            Registers a message lookup based on a culture
+            </summary>
+            <param name="provider"></param>
+            <param name="culture"></param>
+        </member>
+        <member name="M:FlexRule.Translation.IMultilingualMessageRepository.RegisterDefault(FlexRule.Translation.IMessageTemplateProvider)">
+            <summary>
+            Registers a default template provider
+            </summary>
+            <remarks>
+            If a culture does not have any specific provider, this default will be selected
+            </remarks>
+            <param name="provider"></param>
+        </member>
+        <member name="T:FlexRule.Translation.MultilingualMessageRepositoryExtension">
+            <summary>
+            An extension to simplifies registering message translations on <see cref="T:FlexRule.Translation.IMultilingualMessageRepository"/>
+            </summary>
+        </member>
+        <member name="M:FlexRule.Translation.MultilingualMessageRepositoryExtension.Register(FlexRule.Translation.IMultilingualMessageRepository,System.Resources.ResourceManager,System.Globalization.CultureInfo)">
+            <summary>
+            Registers a resource as a multilingual translation from a resource manager containing key (messageId) and translation
+            </summary>
+            <param name="repository"></param>
+            <param name="resource"></param>
+            <param name="culture">null if this is a default translation for all cultures</param>
+        </member>
+        <member name="M:FlexRule.Translation.MultilingualMessageRepositoryExtension.Register(FlexRule.Translation.IMultilingualMessageRepository,System.Collections.Generic.IDictionary{System.String,System.String},System.Globalization.CultureInfo)">
+            <summary>
+            Registers a resource as a multilingual translation from a dictionary containing key (messageId) and translation
+            </summary>
+            <param name="repository"></param>
+            <param name="dictionary"></param>
+            <param name="culture">null if this is a default translation for all cultures</param>
+        </member>
+        <member name="T:FlexRule.InlineMessageFormatter">
+            <summary>
+            Formats a message based on a variable container
+            </summary>
+            <remarks>
+            Message template can have some expression that should be decorated by { and }. 
+            <example>
+            User {user.UserName} is less than {user.Credit.Limit} credit limit.
+            </example>
+            </remarks>
+        </member>
+        <member name="M:FlexRule.InlineMessageFormatter.GetFormattedStringtValue(System.String,FlexRule.IVariableContainer)">
+            <summary>
+            Returns the formatted message
+            </summary>
+            <param name="messageTemplate">Template to be formatted or message</param>
+            <param name="container">Value holder that <paramref name="messageTemplate"/> will be formatted against</param>
+            <returns>If formatting is not required for <paramref name="messageTemplate"/> then original string will be returned</returns>
+        </member>
+        <member name="M:FlexRule.InlineMessageFormatter.CanHandle(System.String)">
+            <summary>
+            Checks if the message template requires any parameter value formatting
+            </summary>
+            <param name="messageTemplate"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.License.OSVersionInfo">
+            <summary>
+            Provides detailed information about the host operating system.
+            </summary>
+        </member>
+        <member name="P:FlexRule.License.OSVersionInfo.ProgramBits">
+            <summary>
+            Determines if the current application is 32 or 64-bit.
+            </summary>
+        </member>
+        <member name="P:FlexRule.License.OSVersionInfo.ProcessorBits">
+            <summary>
+            Determines if the current processor is 32 or 64-bit.
+            </summary>
+        </member>
+        <member name="P:FlexRule.License.OSVersionInfo.Edition">
+            <summary>
+            Gets the edition of the operating system running on this computer.
+            </summary>
+        </member>
+        <member name="P:FlexRule.License.OSVersionInfo.Name">
+            <summary>
+            Gets the name of the operating system running on this computer.
+            </summary>
+        </member>
+        <member name="P:FlexRule.License.OSVersionInfo.ServicePack">
+            <summary>
+            Gets the service pack information of the operating system running on this computer.
+            </summary>
+        </member>
+        <member name="P:FlexRule.License.OSVersionInfo.BuildVersion">
+            <summary>
+            Gets the build version number of the operating system running on this computer.
+            </summary>
+        </member>
+        <member name="P:FlexRule.License.OSVersionInfo.VersionString">
+            <summary>
+            Gets the full version string of the operating system running on this computer.
+            </summary>
+        </member>
+        <member name="P:FlexRule.License.OSVersionInfo.Version">
+            <summary>
+            Gets the full version of the operating system running on this computer.
+            </summary>
+        </member>
+        <member name="P:FlexRule.License.OSVersionInfo.MajorVersion">
+            <summary>
+            Gets the major version number of the operating system running on this computer.
+            </summary>
+        </member>
+        <member name="P:FlexRule.License.OSVersionInfo.MinorVersion">
+            <summary>
+            Gets the minor version number of the operating system running on this computer.
+            </summary>
+        </member>
+        <member name="P:FlexRule.License.OSVersionInfo.RevisionVersion">
+            <summary>
+            Gets the revision version number of the operating system running on this computer.
+            </summary>
+        </member>
+        <member name="T:FlexRule.License.LicenseProviderRegistry">
+            <summary>
+            Registers different assemblies under the running license
+            </summary>
+        </member>
+        <member name="T:FlexRule.License.UserLicense">
+            <summary>
+            This class initializes license information
+            that helps to have a faster startup
+            </summary>
+        </member>
+        <member name="M:FlexRule.License.UserLicense.Initialize">
+            <summary>
+            Initializes the license using the current assemblies location
+            </summary>
+        </member>
+        <member name="M:FlexRule.License.UserLicense.Initialize(FlexRule.License.ILicenseProvider)">
+            <summary>
+            Initializes the license using a provider
+            </summary>
+        </member>
+        <member name="M:FlexRule.License.UserLicense.Initialize(System.String)">
+            <summary>
+            Initializes the license using a configuration AppSettings name
+            </summary>
+        </member>
+        <member name="P:FlexRule.License.UserLicense.LicenseProviderRegistry">
+            <summary>
+            License registry
+            </summary>
+        </member>
+        <member name="T:FlexRule.Translation.MessageTemplateFactory">
+            <summary>
+            Creates a lookup from different sources
+            </summary>
+        </member>
+        <member name="M:FlexRule.Translation.MessageTemplateFactory.FromDictionary(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Lookup from a dictionary
+            </summary>
+            <param name="dic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.Translation.MessageTemplateFactory.FromResourceManager(System.Resources.ResourceManager)">
+            <summary>
+            Lookup from a resource manager
+            </summary>
+            <param name="resource"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.ObjectSerializer">
+            <summary>
+            Provides some methods to serialize or deserialize an object to and from binary format
+            </summary>
+        </member>
+        <member name="M:FlexRule.ObjectSerializer.Copy(System.Object)">
+            <summary>
+            Creates new instance of an existing object using serialization method
+            </summary>
+        </member>
+        <member name="M:FlexRule.ObjectSerializer.ToArray(System.Object)">
+            <summary>
+            Creates a byte array represented to an object
+            </summary>
+        </member>
+        <member name="M:FlexRule.ObjectSerializer.FromArray(System.Byte[])">
+            <summary>
+            Reconstruct an object from its byte array
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.IVariableContainer">
+            <summary>
+            An interface to a variable container. Defines mechanism to manipulate and register types and variables in evaluation context.
+            </summary>
+        </member>
+        <member name="M:FlexRule.IVariableContainer.RegisterVariable(System.String,System.Object)">
+            <summary>
+            Registers a variable with its value
+            </summary>
+            <param name="name">Name of variable</param>
+            <param name="value">Value of variable or a <see cref="T:FlexRule.DynamicEvaluation.VariableData"/> reference</param>
+        </member>
+        <member name="M:FlexRule.IVariableContainer.RemoveAll">
+            <summary>
+            Removes all the registered variables
+            </summary>
+        </member>
+        <member name="M:FlexRule.IVariableContainer.Remove(System.String)">
+            <summary>
+            Remove a variable by its name
+            </summary>
+        </member>
+        <member name="M:FlexRule.IVariableContainer.IsRegistered(System.String)">
+            <summary>
+            Check if a variable is registered on the container
+            </summary>
+        </member>
+        <member name="M:FlexRule.IVariableContainer.Exists(System.String)">
+            <summary>
+            Check if a variable exists, uses fallback container if it is set
+            </summary>
+        </member>
+        <member name="M:FlexRule.IVariableContainer.GetVariableList(System.Boolean,System.Boolean)">
+            <summary>
+            Lists the registered variables
+            </summary>
+        </member>
+        <member name="M:FlexRule.IVariableContainer.GetVariableType(System.String)">
+            <summary>
+            Returns type of a variable
+            </summary>
+        </member>
+        <member name="M:FlexRule.IVariableContainer.GetVariableValue(System.String,System.Boolean)">
+            <summary>
+            Returns value of a variable
+            </summary>
+        </member>
+        <member name="M:FlexRule.IVariableContainer.SetVariableValue(System.String,System.Object)">
+            <summary>
+            Sets variable value
+            </summary>
+            <param name="name">Variable name in the container</param>
+            <param name="value">value to be assigned</param>
+        </member>
+        <member name="M:FlexRule.IVariableContainer.SetVariableValue(System.String,System.String,System.Object)">
+            <summary>
+            Sets variable value
+            </summary>
+            <param name="name">Variable name in the container</param>
+            <param name="path">Property path to internal structure of variable</param>
+            <param name="value">value to be assigned</param>
+        </member>
+        <member name="P:FlexRule.IVariableContainer.ParentType">
+            <summary>
+            Parent type for all the defined variables
+            </summary>
+        </member>
+        <member name="P:FlexRule.IVariableContainer.NestedContainers">
+            <summary>
+            All child containers
+            </summary>
+        </member>
+        <member name="P:FlexRule.IVariableContainer.FallbackValueReader">
+            <summary>
+            Fallback reader strategy 
+            </summary>
+            <remarks>
+            When a value is read using <seealso cref="M:FlexRule.IVariableContainer.GetVariableValue(System.String,System.Boolean)"/> or checked for existence <see cref="M:FlexRule.IVariableContainer.Exists(System.String)"/> if they fail to access the variable they will use the fallback container.
+            </remarks>
+        </member>
+        <member name="P:FlexRule.IVariableContainer.Name">
+            <summary>
+            Name of the container. $ for root container.
+            </summary>
+        </member>
+        <member name="P:FlexRule.IVariableContainer.Count">
+            <summary>
+            total numbers of the registered variables
+            </summary>
+        </member>
+        <member name="P:FlexRule.IVariableContainer.Item(System.String,System.Boolean)">
+            <summary>
+            Returns the value of a variable
+            </summary>
+        </member>
+        <member name="E:FlexRule.IVariableContainer.ValueChanged">
+            <summary>
+            If value of a variable changes this will be raised
+            </summary>
+        </member>
+        <member name="T:FlexRule.IOutput">
+            <summary>
+            Interface to user output
+            </summary>
+        </member>
+        <member name="M:FlexRule.IOutput.WriteLine">
+            <summary>
+            Writes an empty line
+            </summary>
+        </member>
+        <member name="M:FlexRule.IOutput.WriteLine(System.String)">
+            <summary>
+            Writes a text and a new line feed character
+            </summary>
+        </member>
+        <member name="M:FlexRule.IOutput.Write(System.String)">
+            <summary>
+            Writes the text
+            </summary>
+        </member>
+        <member name="M:FlexRule.IOutput.Close">
+            <summary>
+            Closes the output stream
+            </summary>
+        </member>
+        <member name="T:FlexRule.OutputFactory">
+            <summary>
+            A factory to create different outputs
+            </summary>
+        </member>
+        <member name="M:FlexRule.OutputFactory.CreateConsole">
+            <summary>
+            Console output
+            </summary>
+        </member>
+        <member name="M:FlexRule.OutputFactory.CreateFile(System.String)">
+            <summary>
+            File output
+            </summary>
+        </member>
+        <member name="M:FlexRule.OutputFactory.CreateString(System.Text.StringBuilder)">
+            <summary>
+            String output
+            </summary>
+        </member>
+        <member name="T:FlexRule.License.ILicenseProvider">
+            <summary>
+            Interface to license data. By implementing this interface, FlexRule licensing system knows
+            how to access the usage license data to validate the license
+            </summary>
+        </member>
+        <member name="T:FlexRule.License.LicenseProviderAttribute">
+            <summary>
+            When an assembly has a license to use FlexRule library, it must use this attribute
+            on its assembly to specify the license
+            </summary>
+        </member>
+        <member name="M:FlexRule.License.LicenseProviderAttribute.#ctor(System.Type)">
+            <summary>
+            </summary>
+            <param name="provider">must implement ILicenseProvider</param>
+        </member>
+        <member name="T:FlexRule.License.FileBasedLicenseProvider">
+            <summary>
+            Filebased license provider
+            </summary>
+        </member>
+        <member name="T:FlexRule.License.LicensedLibraryAttribute">
+            <summary>
+            Each class having this attribute will be protected by licensing system
+            </summary>
+        </member>
+        <member name="T:FlexRule.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:FlexRule.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:FlexRule.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:FlexRule.Properties.Resources.DateTimePublicKey">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="T:FlexRule.Queues.IQueue`2">
+            <summary>
+            This interface provides queue functionality
+            </summary>
+            <typeparam name="TPriority">Type of priority</typeparam>
+            <typeparam name="TValue">Type of item in the queue</typeparam>
+        </member>
+        <member name="T:FlexRule.Queues.OrderedPriorityQueue`2">
+            <summary>
+            A priority queue that acts based on order. I.e. First in, First out (FIFO)
+            </summary>
+            <typeparam name="TPriority"></typeparam>
+            <typeparam name="TValue"></typeparam>
+        </member>
+        <member name="T:FlexRule.Queues.PriorityQueue`2">
+            <summary>
+            Priority queue that manages item in the queue based on their priority
+            </summary>
+            <typeparam name="TPriority"></typeparam>
+            <typeparam name="TValue"></typeparam>
+        </member>
+        <member name="T:FlexRule.Result">
+            <summary>
+            Boolean result that carries more information
+            </summary>
+        </member>
+        <member name="P:FlexRule.Result.Ignore">
+            <summary>
+            Ignored value of a result
+            </summary>
+        </member>
+        <member name="P:FlexRule.Result.Outcome">
+            <summary>
+            Boolean value of the result
+            </summary>
+        </member>
+        <member name="P:FlexRule.Result.Inconclusive">
+            <summary>
+            True if the result is ignored
+            </summary>
+        </member>
+        <member name="T:FlexRule.Security.SecurityKeyException">
+            <summary>
+            Thrown when a security exception happens
+            </summary>
+        </member>
+        <member name="T:FlexRule.Security.ISecurityKeyProvider">
+            <summary>
+            Interface for security key (private/public keys)
+            </summary>
+        </member>
+        <member name="P:FlexRule.Security.ISecurityKeyProvider.RSA">
+            <summary>
+            RSA service of key provider
+            </summary>
+        </member>
+        <member name="P:FlexRule.Security.ISecurityKeyProvider.HasPrivateKey">
+            <summary>
+            true if key has the private part otherwise false
+            </summary>
+        </member>
+        <member name="T:FlexRule.Security.SecurityExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:FlexRule.Security.SecurityKeyFactory">
+            <summary>
+            Creates ISecurityKeyProvider from a source
+            </summary>
+        </member>
+        <member name="T:FlexRule.Security.XmlDigitalSignature">
+            <summary>
+            This class provides functionalities to sign an xml document and validate the signature
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.StringTypePredictor">
+            <summary>
+            When there some string value this class can predict the type of the value based on the string format
+            </summary>
+            <example>for example the string value may be "true" that can be a Boolean type or may be "349" and it will return Integer type</example>
+            <exception cref="T:System.Exception">When it can not predict the type of string value</exception>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.CharsSequence">
+            <summary>
+            Provides a sequence of chars
+            </summary>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.CharsSequence.#ctor(System.Char[],System.Boolean)">
+            <summary>
+            Constructs the sequence
+            </summary>
+            <param name="chars"></param>
+            <param name="ignoreCase"></param>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.CharsSequence.#ctor(System.Boolean)">
+            <summary>
+            Construct the sequence
+            </summary>
+            <param name="ignoreCase"></param>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.CharsSequence.CompareChar(System.Char,System.Char,System.Boolean)">
+            <summary>
+            Compares two chars
+            </summary>
+            <param name="ch1"></param>
+            <param name="ch2"></param>
+            <param name="ignoreCase"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.CharsSequence.ToArray">
+            <summary>
+            Returns the sequence as an array
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.CharsSequence.AddRange(System.Char[])">
+            <summary>
+            Adds a range of chars to sequence
+            </summary>
+            <param name="chars"></param>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.CharsSequence.Add(System.Char)">
+            <summary>
+            Adds a char to sequence
+            </summary>
+            <param name="ch"></param>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.CharsSequence.Contains(System.Char)">
+            <summary>
+            Checks if the sequence contains a char
+            </summary>
+            <param name="ch"></param>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.DSL.Tokenizer.CharsSequence.Length">
+            <summary>
+            Length of sequence
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.Detectors.DetectorType">
+            <summary>
+            Standard detector types
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.Detectors.EndOfFileDetector">
+            <summary>
+            Detects end of string
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.Detectors.EndOfLineDetector">
+            <summary>
+            Detects end of line in a string such as '\r' or '\n'
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.Detectors.GeneralCharDetector">
+            <summary>
+            Detects every character
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.Detectors.CharsDetector">
+            <summary>
+            Detects a stream of chars
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.Detectors.KnwonStarterEndDetector">
+            <summary>
+            Detects a specific expression with a start and end specified
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.Detectors.LatinWordDetector">
+            <summary>
+            Detects a latin word
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.Detectors.NumberDetector">
+            <summary>
+            Detects a number such as 309 or 3.14
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.Detectors.DoubleQuotedStringDetector">
+            <summary>
+            Detects a quoted string. 
+            <example>consider the following sentence: "FlexRule is awesome!" and flexible! and this detector will return "FlexRule is awesome!"</example>
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.Detectors.SymbolDetector">
+            <summary>
+            Detects symbol charaters
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.Detectors.WhiteSpaceDetector">
+            <summary>
+            Detects white spaces such as Tab or Space chars
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.ISourceScanner">
+            <summary>
+            Interface to string source scanner
+            </summary>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.ISourceScanner.LookAt(System.Int32)">
+            <summary>
+            Looks ahead but do not consume
+            </summary>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="P:FlexRule.DSL.Tokenizer.ISourceScanner.Buffer">
+            <summary>
+            String input that is being scanned
+            </summary>
+        </member>
+        <member name="P:FlexRule.DSL.Tokenizer.ISourceScanner.Position">
+            <summary>
+            Gets the current position of the stream
+            </summary>
+        </member>
+        <member name="P:FlexRule.DSL.Tokenizer.ISourceScanner.Length">
+            <summary>
+            Length of the stream
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.ISourceReader">
+            <summary>
+            Interface to string source reader
+            </summary>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.ISourceReader.ReadOne">
+            <summary>
+            Consume a char
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.ISourceReader.Substring(System.Int32)">
+            <summary>
+            Creates a string from a position
+            </summary>
+            <param name="lastPos"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.ISourceReader.ResetPosition">
+            <summary>
+            Resets the stream to zero position
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.MatchResult">
+            <summary>
+            Every token detector will return a MatchResult if they find a match.
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.IStringTokenizer">
+            <summary>
+            Interface to string tokenizer
+            </summary>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.IStringTokenizer.Next">
+            <summary>
+            Gets the next available token
+            </summary>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.IStringTokenizer.Tokenize">
+            <summary>
+            Tokenize all the input and returns the token array
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.StringTokenizerBuilder">
+            <summary>
+            String tokenizer builder which builds a tokenizer with token detectors
+            </summary>
+        </member>
+        <member name="F:FlexRule.DSL.Tokenizer.StringTokenizerBuilder.Eof">
+            <summary>
+            End of file character
+            </summary>
+        </member>
+        <member name="F:FlexRule.DSL.Tokenizer.StringTokenizerBuilder.DefaultSymbolsString">
+            <summary>
+            Default symbols excluding space (32)
+            </summary>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.StringTokenizerBuilder.CreateSplitter(System.String,System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Creates a tokenizer for as a string splitter based on a keyword
+            </summary>
+            <param name="keyword"></param>
+            <param name="input"></param>
+            <param name="skipSpace"></param>
+            <param name="skipNewLine"></param>
+            <param name="caseSensitive"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.StringTokenizerBuilder.#ctor(System.String)">
+            <summary>
+            Constructs tokenizer builder using the data to be tokenized
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.StringTokenizerBuilder.AddTokenDetector(FlexRule.DSL.Tokenizer.ITokenDetector)">
+            <summary>
+            Adds detector to tokenizer
+            </summary>
+            <param name="detector"></param>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.StringTokenizerBuilder.AddTokenDetector(System.String,FlexRule.DSL.Tokenizer.ITokenDetector)">
+            <summary>
+            Adds detector to tokenizer
+            </summary>
+            <param name="alias"></param>
+            <param name="detector"></param>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.StringTokenizerBuilder.BuildTokenizer">
+            <summary>
+            Build tokenizer
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.StringTokenExtensions">
+            <summary>
+            Provides more function on the tokens
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.StringToken">
+            <summary>
+            String token that a tokenizer could detect it
+            </summary>
+        </member>
+        <member name="T:FlexRule.DSL.Tokenizer.ITokenDetectorContext">
+            <summary>
+            Context of finding a token
+            </summary>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.ITokenDetectorContext.CreateMatch(FlexRule.DSL.Tokenizer.ISourceScanner,System.Int32,System.Int32,FlexRule.DSL.Tokenizer.ITokenDetector@)">
+            <summary>
+            Creates a match if finds a detector
+            </summary>
+            <param name="stream"></param>
+            <param name="line"></param>
+            <param name="column"></param>
+            <param name="detector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.DSL.Tokenizer.ITokenDetectorContext.FindActivator(FlexRule.DSL.Tokenizer.ISourceScanner,System.Char,System.Int32)">
+            <summary>
+            Finds activator a character
+            </summary>
+            <param name="stream"></param>
+            <param name="ch"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Translation.MultilingualMessageRepository">
+            <summary>
+            Stores multilingual messages based on a key and culture
+            </summary>
+        </member>
+        <member name="M:FlexRule.Translation.MultilingualMessageRepository.Lookup(System.String,System.Globalization.CultureInfo)">
+            <summary>
+            Looks up for a message based on a key on three level hierarchy.
+            </summary>
+            <param name="messageKey"></param>
+            <param name="culture"></param>
+            <remarks>
+            This method will look up to the messages repository on based multiple hierarchy levels, from more specific definition to the more general ones.
+            <list type="bullet">
+            <item><term>Country + Language</term></item>
+            <item><term>Language</term></item>
+            <item><term>Default Provider</term></item>
+            </list>
+            And if a message could not be found, it will return the message key as the result of lookup.
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.TypeLoader.TypeResolver.LoadType(System.String,System.String)">
+            <summary>
+            Loads a type using assembly name and type name
+            </summary>
+            <param name="assembly">This assembly name must include .dll extension</param>
+            <param name="fullTypeName">Type name must be full address. e.g. namespace.type</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.TypeLoader.TypeResolver.LoadFromPrivatePathOrAppDomain(System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            This loads a type from private bin paths or from already loaded assembly in the <see cref="P:System.AppDomain.CurrentDomain"/>
+            </summary>
+            <param name="assembly">assembly name, either full path or the name only</param>
+            <param name="fullTypeName">Type name including namespace</param>
+            <param name="privateBinPaths"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.VariableNotFoundException">
+            <summary>
+            Accessing a variable in the container may raise this exception if the variable does not exits
+            </summary>
+        </member>
+        <member name="M:FlexRule.VariableNotFoundException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="variableName">Variable name</param>
+        </member>
+        <member name="P:FlexRule.VariableNotFoundException.VariableName">
+            <summary>
+            Variable name that does not exit
+            </summary>
+        </member>
+        <member name="T:FlexRule.FunctionsRegistry">
+            <summary>
+            Registers functions in the context of execution for every logic document
+            <remarks>
+            Functions can be registered with Using command in Declaration section of any logic document. This allows to load functions across all documents without loading them individually foreach logic document.
+            </remarks>
+            </summary>
+        </member>
+        <member name="M:FlexRule.FunctionsRegistry.Clear">
+            <summary>
+            Clears the extensions registry, This is when to be used for debugging purposes only.
+            </summary>
+        </member>
+        <member name="M:FlexRule.FunctionsRegistry.Register(System.String,System.String)">
+            <summary>
+            Registers all the functions in the assembly
+            </summary>
+            <param name="assembly"></param>
+            <param name="type">When it is provided, only registers the functions withion the type, otherwise functions within all the types will be registered.</param>
+            <remarks>
+            When you don't want to reference any FlexRule assembly, then your types should be marked with our custom attribute called FlexRuleFunctionExtensionAttribute and methods that are going to be registered must be marked with your own attribute called FlexRuleFunctionAttribute. 
+            <example>
+            class FlexRuleFunctionAttribute : Attribute
+            {
+               public bool Pipe { get; set; }
+               public string Name { get; set; }
+            }
+            
+            class FlexRuleFunctionExtensionAttribute : Attribute
+            {
+            }
+            
+            [Serializable]
+            [FlexRuleFunctionExtensionAttribute]]
+            public class ExtensionSample
+            {
+               [FlexRuleFunctionAttribute(Name = "test1", Pipe = false)]
+               public void test1() { }
+               
+               [FlexRuleFunctionAttribute(Name = "test2", Pipe = true)]
+               public void test2() { }
+            }
+            </example>
+            </remarks>
+        </member>
+        <member name="T:FlexRule.VariableContainer">
+            <summary>
+            Default implementation of IVariableContainer
+            </summary>
+        </member>
+        <member name="M:FlexRule.VariableContainer.#ctor(System.Type,System.String)">
+            <summary>
+            When container represents member values of a specific type 
+            </summary>
+            <param name="parentType"></param>
+            <param name="planKey"></param>
+        </member>
+        <member name="T:FlexRule.VariableContainerExtensions">
+            <summary>
+            Extension methods for <see cref="T:FlexRule.IVariableContainer"/>
+            </summary>
+        </member>
+        <member name="M:FlexRule.VariableContainerExtensions.Compute(FlexRule.IVariableContainer,System.String)">
+            <summary>
+            Evaluates expression on the provided container
+            </summary>
+            <param name="container"></param>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.VariableContainerExtensions.RegisterFormula(FlexRule.IVariableContainer,System.String,FlexRule.DynamicEvaluation.FormulaType,FlexRule.ISourceInfo)">
+            <summary>
+            A formula is an expression that is calculated on-the-fly and its expression tree is not parse until evaluation is required.
+            </summary>
+            <remarks>
+            The format of formula is formulaName = formulaExpression. A formula can be in two forms, a value or a function. If formula name has open and close parentheses, then it becomes a function formula, otherwise it becomes a value formula.
+            </remarks>
+            <param name="container"></param>
+            <param name="formulaExpression"></param>
+            <param name="type">Type of formula</param>
+            <param name="info">source information and addresses about this formula</param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.VariableContainerExtensions.ToDictionary(FlexRule.IVariableContainer)">
+            <summary>
+            Returns the current values in the container
+            </summary>
+            <param name="container"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.VariableContainerExtensions.GetTypes(FlexRule.IVariableContainer)">
+            <summary>
+            Gets all registered type that are extensions from container
+            </summary>
+            <param name="container"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlexRule.VariableContainerExtensions.RegisterType(FlexRule.IVariableContainer,System.Type,System.String)">
+            <summary>
+            Registers a type with its name so static methods can be accessed via type name
+            <remarks>This registration does not register the type with their TypeId. If that's required, you need to register typeId manually on the execution context.</remarks>
+            </summary>
+            <param name="container"></param>
+            <param name="type">Type to be registered in the container</param>
+            <param name="typeAliasName">Replaces the type name to access</param>
+        </member>
+        <member name="M:FlexRule.VariableContainerExtensions.RegisterFunction(FlexRule.IVariableContainer,System.Object)">
+            <summary>
+            Registers all the methods on the type that are marked by <see cref="T:FlexRule.FunctionAttribute"/> 
+            </summary>
+            <param name="container"></param>
+            <param name="target">Type if the methods are static, otherwise object instance</param>
+        </member>
+        <member name="M:FlexRule.VariableContainerExtensions.RegisterFunction(FlexRule.IVariableContainer,System.String,System.Delegate)">
+            <summary>
+            Registers all the methods on the type that are marked by <see cref="T:FlexRule.FunctionAttribute"/> 
+            </summary>
+            <param name="container"></param>
+            <param name="function"></param>
+            <param name="target">Type if the methods are static, otherwise object instance</param>
+        </member>
+        <member name="M:FlexRule.VariableContainerExtensions.RegisterFunction(FlexRule.IVariableContainer,System.String,System.Reflection.MethodInfo,System.Object)">
+            <summary>
+            Registers a function in for expression evaluation, if the <paramref name="function"/> exists already, will be overwritten.
+            </summary>
+            <remarks>
+            Overriding a function allows you to replace an existing function with a new one.
+            </remarks>
+            <param name="container"></param>
+            <param name="function">function name</param>
+            <param name="method"></param>
+            <param name="target">Type if the <paramref name="method"/> is a static member, otherwise object instance</param>
+        </member>
+        <member name="M:FlexRule.VariableContainerExtensions.RegisterFunction(FlexRule.IVariableContainer,System.String,System.String,System.Type[],System.Object)">
+            <summary>
+            Registers a function for expression evaluation
+            </summary>
+            <param name="container"></param>
+            <param name="function"></param>
+            <param name="methodName"></param>
+            <param name="arguments">Arguments of method, it can be null if there is no argument</param>
+            <param name="target">Type if the <paramref name="methodName"/> is a static member, otherwise object instance</param>
+        </member>
+        <member name="T:FlexRule.DynamicEvaluation.VariableData">
+            <summary>
+                Holds a variable value and type
+            </summary>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.VariableData.#ctor(System.Object)">
+            <summary>
+                This constructor is used when the value is not null and type and the value together will be assigned
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.VariableData.#ctor(System.Object,System.Type)">
+            <summary>
+                When a value is null but the type of variable must be assigned
+            </summary>
+            <param name="value"></param>
+            <param name="type"></param>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.VariableData.#ctor(System.Object,System.Reflection.MethodInfo)">
+            <summary>
+            Registers a method as a function
+            </summary>
+            <param name="value">if null then method is on type (static) otherwise it is an instance method</param>
+            <param name="method">Method to be used on function</param>
+        </member>
+        <member name="M:FlexRule.DynamicEvaluation.VariableData.#ctor">
+            <summary>
+                Creates a null one
+            </summary>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.VariableData.Method">
+            <summary>
+            Method information when the value is method or function
+            </summary>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.VariableData.Value">
+            <summary>
+                Variable value
+            </summary>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.VariableData.Type">
+            <summary>
+                Variable type
+            </summary>
+        </member>
+        <member name="P:FlexRule.DynamicEvaluation.VariableData.IsValueNull">
+            <summary>
+                Does variable has any value?
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.VariableDataChangedEventArgs">
+            <summary>
+            Value of a container change event arguments
+            </summary>
+        </member>
+        <member name="P:FlexRule.VariableDataChangedEventArgs.Name">
+            <summary>
+            Name of variable
+            </summary>
+        </member>
+        <member name="T:FlexRule.PliantFramework.OnlineServices.DateTimeProvider">
+            <remarks/>
+        </member>
+        <member name="M:FlexRule.PliantFramework.OnlineServices.DateTimeProvider.#ctor">
+            <remarks/>
+        </member>
+        <member name="M:FlexRule.PliantFramework.OnlineServices.DateTimeProvider.DateTime">
+            <remarks/>
+        </member>
+        <member name="M:FlexRule.PliantFramework.OnlineServices.DateTimeProvider.DateTimeAsync">
+            <remarks/>
+        </member>
+        <member name="M:FlexRule.PliantFramework.OnlineServices.DateTimeProvider.DateTimeAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:FlexRule.PliantFramework.OnlineServices.DateTimeProvider.UtcDateTime">
+            <remarks/>
+        </member>
+        <member name="M:FlexRule.PliantFramework.OnlineServices.DateTimeProvider.UtcDateTimeAsync">
+            <remarks/>
+        </member>
+        <member name="M:FlexRule.PliantFramework.OnlineServices.DateTimeProvider.UtcDateTimeAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:FlexRule.PliantFramework.OnlineServices.DateTimeProvider.CancelAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="E:FlexRule.PliantFramework.OnlineServices.DateTimeProvider.DateTimeCompleted">
+            <remarks/>
+        </member>
+        <member name="E:FlexRule.PliantFramework.OnlineServices.DateTimeProvider.UtcDateTimeCompleted">
+            <remarks/>
+        </member>
+        <member name="T:FlexRule.PliantFramework.OnlineServices.DateTimeCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:FlexRule.PliantFramework.OnlineServices.DateTimeCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:FlexRule.PliantFramework.OnlineServices.DateTimeCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:FlexRule.PliantFramework.OnlineServices.UtcDateTimeCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:FlexRule.PliantFramework.OnlineServices.UtcDateTimeCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:FlexRule.PliantFramework.OnlineServices.UtcDateTimeCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+    </members>
+</doc>

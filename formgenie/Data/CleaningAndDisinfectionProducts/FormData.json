@@ -1,0 +1,10 @@
+﻿{
+  "CleaningAndDisinfectionProducts": 
+    {
+    "D1": 
+      {
+        "cdProceduresSwitch": true,
+        "cdProceduresComments": "default comments"
+    }
+  }
+}

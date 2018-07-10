@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FlexRule.Procedure</name>
+    </assembly>
+    <members>
+        <member name="T:FlexRule.Procedural.ActiveProcedure">
+            <summary>
+            Creates and set context variables
+            </summary>
+        </member>
+        <member name="T:FlexRule.Procedural.IProcedureDescriptions">
+            <summary>
+            Helps to discover the procedure definition
+            </summary>
+        </member>
+        <member name="T:FlexRule.Procedural.SignatureInformationDiscovery">
+            <summary>
+            Discovers all the signature information for variables and types
+            </summary>
+        </member>
+        <member name="M:FlexRule.Procedural.SignatureInformationDiscovery.Create(FlexRule.ActiveElement)">
+            <summary>
+            Creates signature description
+            </summary>
+            <param name="declarationContainer">Can be null to create empty signature</param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Procedural.Procedure">
+            <summary>
+            Creates a procedure for execution using a provided context and model
+            </summary>
+        </member>
+        <member name="M:FlexRule.Procedural.Procedure.#ctor(FlexRule.Deployment.Module)">
+            <summary>
+            Creates execution plan using <see cref="T:FlexRule.Deployment.Module"/>
+            </summary>
+            <param name="module"></param>
+        </member>
+        <member name="M:FlexRule.Procedural.Procedure.#ctor(FlexRule.IElementActivatorRegistry,FlexRule.Core.Model.IElementModel)">
+            <summary>
+            </summary>
+            <param name="ctx">Execution context for this procedure</param>
+            <param name="model">Model which includes the procedure definitions</param>
+        </member>
+        <member name="P:FlexRule.Procedural.Procedure.Name">
+            <summary>
+            Procedure name
+            </summary>
+        </member>
+        <member name="P:FlexRule.Procedural.Procedure.Enabled">
+            <summary>
+            If the procedure is not enabled, the engine throws and exception during execution
+            </summary>
+        </member>
+        <member name="P:FlexRule.Procedural.Procedure.Descriptions">
+            <summary>
+            Provides an interface to discover the procedure descriptions
+            </summary>
+        </member>
+        <member name="T:FlexRule.Procedural.ProcedureEngine">
+            <summary>
+            Execution engine for RuleProcedure object
+            </summary>
+        </member>
+        <member name="M:FlexRule.Procedural.ProcedureEngine.#ctor(FlexRule.Procedural.Procedure)">
+            <summary>
+            This constructor creates <see cref="T:FlexRule.Procedural.ProcedureExecutionContext"/> by default
+            </summary>
+            <param name="procedure"></param>
+        </member>
+        <member name="M:FlexRule.Procedural.ProcedureEngine.#ctor(FlexRule.Procedural.Procedure,System.Boolean)">
+            <summary>
+            This constructor creates <see cref="T:FlexRule.Procedural.ProcedureExecutionContext"/> by default
+            </summary>
+            <param name="procedure"></param>
+            <param name="enableTrace"></param>
+        </member>
+        <member name="F:FlexRule.Procedural.Tasks.ContextMode.New">
+            <summary>
+            Creates a new Context and uses this one for execution
+            </summary>
+        </member>
+        <member name="F:FlexRule.Procedural.Tasks.ContextMode.Shared">
+            <summary>
+            Uses the current context for execution and the new procedure 
+            after finishing the procedure execution, the current execution 
+            variable context (Only out variables) will be copied to the original one
+            </summary>
+        </member>
+        <member name="T:FlexRule.Procedural.IParam">
+            <summary>
+            Parameters to be passed to fill <see cref="T:FlexRule.Signature.ISignatureDescriptions"/>
+            </summary>
+        </member>
+        <member name="T:FlexRule.Procedural.ParamCollection">
+            <summary>
+            Collects all the provided parameters for based on a model
+            </summary>
+        </member>
+        <member name="P:FlexRule.Procedural.ParamCollection.PrivateBinPaths">
+            <summary>
+            List of paths to look for private assembly if required during type loading
+            </summary>
+        </member>
+        <member name="T:FlexRule.Procedural.Tasks.CallValueCollector">
+            <summary>
+            Collects values that are required to call a target engine
+            </summary>
+        </member>
+        <member name="M:FlexRule.Procedural.Tasks.CallValueCollector.CreateValues(FlexRule.ActiveElement,System.Boolean,FlexRule.IActiveElementExecutor,FlexRule.Signature.ISignatureVariableInfo[])">
+            <summary>
+            Creates and collects values that are required for calling a target engine
+            </summary>
+            <param name="current">Current <see cref="T:FlexRule.ActiveElement"/> that is calling other engines</param>
+            <param name="newContext">If current context will be shared true, otherwise new context will be created</param>
+            <param name="executor">Current executor that is used for context provider. If it has a nested scope active variable container otherwise current variable container</param>
+            <param name="targetInputParameters">Input parameters of the target engine</param>
+            <returns></returns>
+        </member>
+        <member name="T:FlexRule.Procedural.TypeInfoContainer">
+            <summary>
+            Exposes information about the type of variable
+            </summary>
+        </member>
+        <member name="T:FlexRule.VariableContainerExtensions">
+            <summary>
+            Extension methods for <see cref="T:FlexRule.IVariableContainer"/>
+            </summary>
+        </member>
+        <member name="M:FlexRule.VariableContainerExtensions.RegisterVariable(FlexRule.IVariableContainer,FlexRule.Signature.ISignatureVariableInfo,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Registers variable in to the provided container
+            </summary>
+            <param name="container">Container that variables will be registered into</param>
+            <param name="var">Variables to be registered in the container</param>
+            <param name="privateBinPaths">Private paths to resolve external types and assemblies</param>
+        </member>
+        <member name="M:FlexRule.VariableContainerExtensions.RegisterVariable(FlexRule.IVariableContainer,System.Collections.Generic.IEnumerable{FlexRule.Signature.ISignatureVariableInfo},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Registers multiple variables in the provided container
+            </summary>
+            <param name="container">Container that variables will be registered into</param>
+            <param name="vars">Variables to be registered in the container</param>
+            <param name="privateBinPaths">Private paths to resolve external types and assemblies</param>
+        </member>
+        <member name="M:FlexRule.VariableContainerExtensions.RegisterType(FlexRule.IVariableContainer,FlexRule.Signature.ISignatureTypeInfo,FlexRule.ITypeIdentifierRegistry,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Registers a type into the provided container
+            </summary>
+            <param name="container">Container that types will be registered into</param>
+            <param name="type">Type that will be register in the provided container</param>
+            <param name="typeIdRegistry">TypeId registry to access type information only by name</param>
+            <param name="privateBinPaths">Private paths to resolve external types and assemblies</param>
+        </member>
+        <member name="M:FlexRule.VariableContainerExtensions.Register(FlexRule.IVariableContainer,FlexRule.Signature.ISignatureDescriptions,FlexRule.ITypeIdentifierRegistry,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Registers Types and Parameters of the signature
+            </summary>
+            <param name="container"></param>
+            <param name="signature"></param>
+            <param name="privateBinPaths">Private paths to resolve external types and assemblies</param>
+        </member>
+        <member name="M:FlexRule.VariableContainerExtensions.RegisterType(FlexRule.IVariableContainer,System.Collections.Generic.IEnumerable{FlexRule.Signature.ISignatureTypeInfo},FlexRule.ITypeIdentifierRegistry,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Registers multiple types into the provided container
+            </summary>
+            <param name="container">Container that types will be registered into</param>
+            <param name="types">Type that will be register in the provided container</param>
+            <param name="privateBinPaths">Private paths to resolve external types and assemblies</param>
+        </member>
+    </members>
+</doc>
